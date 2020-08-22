@@ -1,11 +1,10 @@
 {
-  "name": "FitPlan",
-  "short_name": "fitness",
+  "name": "Room finder",
+  "short_name": "Airbnb2.0",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#2196f3",
-  "theme_color": "#2196f3",
   "scope": "/",
   "gcm_sender_id": "732062635690",
   "applicationServerKey": "AIzaSyAlyzyQGgD4mvxQem5ZJstTi-dcX088w-s",
