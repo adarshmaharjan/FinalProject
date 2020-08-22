@@ -1,35 +1,29 @@
 {
-  "name": "finalproject",
+  "name": "finalProject",
   "version": "1.0.0",
-  "description": "\"final year porject in mern stack\"",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "cd server && npm start",
+    "postinstall": "cd server && npm install",
+    "install-client": "cd client && npm install && npm run build",
+    "heroku-postbuild": "npm run install-client",
+    "client": "npm start --prefix client",
+    "server": "npm run dev --prefix server",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Abskpro/FinalProject.git"
   },
-  "author": "abhishek",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Abskpro/FinalProject/issues"
   },
   "homepage": "https://github.com/Abskpro/FinalProject#readme",
-  "dependencies": {
-    "bcrypt": "^4.0.1",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "crypto-js": "^4.0.0",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "is-empty": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.13",
-    "nodemailer": "^6.4.6",
-    "uuid": "^8.0.0",
-    "validator": "^13.0.0"
+  "devDependencies": {
+    "concurrently": "^5.3.0"
   }
 }
