@@ -15,17 +15,20 @@ if (typeof importScripts === 'function') {
       new workbox.routing.NavigationRoute(
         new workbox.strategies.NetworkFirst({
           cacheName: 'PRODUCTION',
-          plugins: [bgSyncPlugin],
+          // plugins: [bgSyncPlugin],
         }),
       ),
     );
 
-    const bgSyncPlugin = new workbox.backgroundSync.Plugin('myQueue', {
-      maxRetentionTime: 24 * 60,
-      callbacks: {
-        queueDidReplay: showNotification,
+    const bgSyncPlugin = new workbox.backgroundSync.BackgroundSyncPlugin(
+      'myQueue',
+      {
+        maxRetentionTime: 24 * 60,
+        callbacks: {
+          queueDidReplay: showNotification,
+        },
       },
-    });
+    );
   } else {
     console.log('Workbox could not be loaded. No Offline support');
     //
@@ -54,7 +57,7 @@ self.addEventListener('notificationclick', function (event) {
   event.waitUntil(clients.openWindow('/login'));
 });
 
-const showNotification = () => {
+var showNotification = () => {
   self.registration.showNotification('Post Sent', {
     body: 'You are back online and your post was successfully sent!',
   });
