@@ -69,8 +69,8 @@ const registerUser = (req, res, next) => {
                 };
 
                 smtpTrasport.sendMail(mailOptions, function (err, response) {
-                  if (error) {
-                    console.log(error);
+                  if (err) {
+                    console.log(err);
                     res.end('error');
                   } else {
                     console.log('message sent' + response.message);

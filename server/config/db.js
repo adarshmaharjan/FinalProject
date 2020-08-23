@@ -9,6 +9,7 @@ const InitiateMongoServer = async () => {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
     });
     console.log('connected to db');
   } catch (e) {
