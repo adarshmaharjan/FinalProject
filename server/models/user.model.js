@@ -26,6 +26,22 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  pushData: {
+    endpoint: {
+      type: String,
+      default: 'data',
+    },
+    keys: {
+      p256dh: {
+        type: String,
+        default: 'data',
+      },
+      auth: {
+        type: String,
+        default: 'data',
+      },
+    },
+  },
 });
 
 const User = mongoose.model('User', UserSchema);
