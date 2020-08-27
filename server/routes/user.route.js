@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const {
-  registerUser,
-  loginUser,
-  verifyUser,
+    registerUser,
+    loginUser,
+    verifyUser,
 } = require('../controllers/user.controller.js');
 
 router.route('/register').post(registerUser);
