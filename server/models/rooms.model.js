@@ -1,59 +1,59 @@
 const mongoose = require('mongoose');
 const RoomSchema = new mongoose.Schema({
-  createdAt: {
-    type: Date,
-    required: true,
-    default: Date.now(),
-  },
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String,
-    required: true,
-  },
-  coordinates: {
-    lat: {
-      type: String,
-      required: true,
+    createdAt: {
+        type: Date,
+        required: true,
+        default: Date.now(),
     },
-    long: {
-      type: String,
-      required: true,
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
     },
-  },
-  room: {
-    bedroom: {
-      type: Number,
-      required: true,
+    title: {
+        type: String,
+        required: true,
     },
-    kitchen: {
-      type: Number,
-      required: true,
+    location: {
+        type: String,
+        required: true,
     },
-    toilet: {
-      type: Number,
-      required: true,
+    coordinates: {
+        lat: {
+            type: String,
+            required: true,
+        },
+        long: {
+            type: String,
+            required: true,
+        },
     },
-    kitchen: {
-      type: Number,
-      required: true,
+    room: {
+        bedroom: {
+            type: Number,
+            required: true,
+        },
+        kitchen: {
+            type: Number,
+            required: true,
+        },
+        toilet: {
+            type: Number,
+            required: true,
+        },
+        kitchen: {
+            type: Number,
+            required: true,
+        },
     },
-  },
-  price: {
-    type: Number,
-    required: true,
-  },
-  imageCollection: {
-    type: Array,
-    required: true,
-  },
+    price: {
+        type: Number,
+        required: true,
+    },
+    imageCollection: {
+        type: Array,
+        required: true,
+    },
 });
 
 const Room = mongoose.model('Room', RoomSchema);
