@@ -1,7 +1,8 @@
 const router = require('express').Router();
-const {addPost, deletePost} = require('./controller/advertise.controller.js');
+const {addRoomPost, addHousePost}= require('../controllers/advertise.controller');
 
-router.route('/addPost').post(addPost);
-router.route('/deletePost').post(deletePost);
+router.route('/addRoom/:id').post(addRoomPost);
+router.route('/addHouse/:id').post(addHousePost);
+// router.route('/deletePost').post(deletePost);
 
 module.exports = router;
