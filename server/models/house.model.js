@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const RoomSchema = new mongoose.Schema({
+
+const HouseSchema= new mongoose.Schema({
     createdAt: {
         type: Date,
         required: true,
@@ -30,15 +31,15 @@ const RoomSchema = new mongoose.Schema({
     },
     house: {
         rooms: {
-            type: String,
+            type:Number,
             required: true,
         },
         area: {
-            type: String,
+            type:Number,
             required: true,
         },
         floors: {
-            type: String,
+            type:Number,
             required: true,
         },
         bedroom: {
@@ -53,10 +54,6 @@ const RoomSchema = new mongoose.Schema({
             type: Number,
             required: true,
         },
-        kitchen: {
-            type: Number,
-            required: true,
-        },
     },
     price: {
         type: Number,
@@ -68,6 +65,6 @@ const RoomSchema = new mongoose.Schema({
     },
 });
 
-const Room = mongoose.model('Room', RoomSchema);
+const House = mongoose.model('House', HouseSchema);
 
-module.exports = Room;
+module.exports = House;

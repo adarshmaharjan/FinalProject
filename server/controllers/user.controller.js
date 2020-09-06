@@ -7,7 +7,7 @@ const User = require('../models/user.model');
 const Token = require('../models/token.model.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {pushNotification, mailNotification} = require('../controllers/notification.controller');
+const {pushNotification, mailNotification} = require('../middleware/notification.controller');
 
 
 //register new user

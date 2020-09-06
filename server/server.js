@@ -6,6 +6,7 @@ const cors = require('cors');
 const port = process.env.PORT || 5000;
 
 const UserRouter = require('./routes/user.route');
+const AdRouter = require('./routes/advertisement.route');
 const InitiateMongoServer = require('./config/db');
 
 const app = express();
@@ -33,6 +34,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cors());
 
 app.use('/api/user', UserRouter);
+app.use('/api/ad', AdRouter);
 
 // if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, '../client', 'build')));

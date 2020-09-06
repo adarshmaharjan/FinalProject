@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
+
 const RoomSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         required: true,
         default: Date.now(),
     },
-    createdBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-    },
+    // createdBy: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     required: true,
+    // },
     title: {
         type: String,
         required: true,
@@ -19,16 +20,16 @@ const RoomSchema = new mongoose.Schema({
         required: true,
     },
     coordinates: {
-        lat: {
-            type: String,
+        latitude: {
+            type:Number,
             required: true,
         },
-        long: {
-            type: String,
+        longitude: {
+            type:Number,
             required: true,
         },
     },
-    room: {
+    rooms: {
         bedroom: {
             type: Number,
             required: true,
@@ -38,10 +39,6 @@ const RoomSchema = new mongoose.Schema({
             required: true,
         },
         toilet: {
-            type: Number,
-            required: true,
-        },
-        kitchen: {
             type: Number,
             required: true,
         },
@@ -60,5 +57,3 @@ const Room = mongoose.model('Room', RoomSchema);
 
 module.exports = Room;
 
-module.exports = Room;
-module.exports = Room;
