@@ -11,6 +11,18 @@ const RoomSchema = new mongoose.Schema({
     //     ref: 'User',
     //     required: true,
     // },
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    number:{
+        type:Number,
+        required:true
+    },
     title: {
         type: String,
         required: true,
@@ -29,6 +41,10 @@ const RoomSchema = new mongoose.Schema({
             required: true,
         },
     },
+    description:{
+        type:String,
+        required:true
+    },
     rooms: {
         bedroom: {
             type: Number,
@@ -42,6 +58,36 @@ const RoomSchema = new mongoose.Schema({
             type: Number,
             required: true,
         },
+        livingRoom:{
+            type:Number,
+            required:true
+        }
+    },
+    facilities:{
+        cabletv:{
+            type:Boolean,
+            required:true
+        },
+        water:{
+            type:Boolean,
+            required:true
+        },
+        internet:{
+            type:Boolean,
+            required:true
+        },
+        telephone:{
+            type:Boolean,
+            required:true
+        },
+        parking:{
+            type:Boolean,
+            required:true
+        }
+    },
+    furnished:{
+        type:String,
+        required:true
     },
     price: {
         type: Number,
