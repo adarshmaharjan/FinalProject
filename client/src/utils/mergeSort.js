@@ -1,4 +1,4 @@
-function mergesort(Arr) {
+function mergeSort(Arr) {
   if (Arr.length == 1) {
     return Arr;
   } else if (Arr.length == 2) {
@@ -10,8 +10,8 @@ function mergesort(Arr) {
   }
 
   var p = parseInt(Arr.length / 2);
-  var m1 = mergesort(Arr.slice(0, p));
-  var m2 = mergesort(Arr.slice(p));
+  var m1 = mergeSort(Arr.slice(0, p));
+  var m2 = mergeSort(Arr.slice(p));
 
   var ret = [];
 
@@ -38,5 +38,4 @@ function mergesort(Arr) {
   return ret;
 }
 
-var Arr = [5, 9, 1, 3, 4, 6, 6, 3, 2];
-console.log(mergesort(Arr));
+export default mergeSort;
