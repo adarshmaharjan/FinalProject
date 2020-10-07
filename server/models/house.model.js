@@ -54,6 +54,14 @@ const HouseSchema= new mongoose.Schema({
             type: Number,
             required: true,
         },
+        livingRoom: {
+            type:Number,
+            required:true
+        }
+    },
+    isFurnished:{
+        type:Boolean,
+        required:true
     },
     price: {
         type: Number,

@@ -36,11 +36,14 @@ const recommend = async (data, req) => {
                 text = text + `, ${filtered[i]}`;
             }
         }
+        console.log('facilities are',text);
         return text;
     }
 
     var promise = new Promise((resolve, reject) => {
-        let string1 = stringify(req);
+        let string1 = (req.facilities).join(",");
+        console.log(string1);
+        // let string1 = stringify(req);
         const documents = [
             {
                 id: "1",

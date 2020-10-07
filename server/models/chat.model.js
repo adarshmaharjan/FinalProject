@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
+const commentSchema = new mongoose.Schema({
+    postId:{
+        type:String,
+        required:true
+    },
     createdBy: {
         type: String,
         required: true,
@@ -15,19 +19,16 @@ const UserSchema = new mongoose.Schema({
     },
     question: {
         type: String,
-        required: true,
     },
     answer: {
         type: String,
-        default: 'not answered yet',
     },
     isAnswered: {
         type: Boolean,
-        required: true,
         default: false,
     },
 });
 
-const User = mongoose.model('User', UserSchema);
+const Comment = mongoose.model('Comment',commentSchema);
 
-module.exports = User;
+module.exports = Comment;

@@ -79,52 +79,50 @@ const addRoomPost = async(req, res, next) => {
 const addHousePost = async(req, res, next) => {
     let _ = req.body;
     console.log(_)
-    // try{
-    //     const datas = JSON.parse(_.data);
-    //     const arr = [];
-    //     await Promise.all(
-    //         datas.map(async(data)=>{
-    //             let id = uuidv4();
-    //             arr.push(id);
-    //             let response = cloudinay.uploader.upload(data,{
-    //                 upload_preset:'dev_setups',// changes will be made later on
-    //                 public_id:id
-    //             });
-    //             return response;
-    //         }))
-    //         .then(()=>{
-    //             const imageCollection = arr;
-    //             const newHouse = new House({
-    //                 createdBy: req.params.id,
-    //                 title: _.title,
-    //                 location: _.location, 
-    //                 coordinates: {
-    //                     latitude: _.coordinates.latitude,
-    //                     longitude: _.coordinates.longitude,
-    //                 },
-    //                 house:{
-    //                     rooms:_.house.rooms,
-    //                     area: _.house.area,
-    //                     floors: _.house.floors,
-    //                     bedroom: _.rooms.bedroom,
-    //                     kitchen: _.rooms.kitchen,
-    //                     toilet: _.rooms.toilet
-    //                 },
-    //                 price:_.price,
-    //                 imageCollection: imageCollection
-    //             });
-    //             newHouse.save()
-    //                 .then(()=> res.json('post added'))
-    //                 .catch(err => res.status(400).json('error' + err));
-    //         });
-    // }catch(err){
-    //     res.status(500).json({err: 'Something went wrong'});
-    // }
+    try{
+        const datas = JSON.parse(_.data);
+        const arr = [];
+        await Promise.all(
+            datas.map(async(data)=>{
+                let id = uuidv4();
+                arr.push(id);
+                let response = cloudinay.uploader.upload(data,{
+                    upload_preset:'dev_setups',// changes will be made later on
+                    public_id:id
+                });
+                return response;
+            }))
+            .then(()=>{
+                const imageCollection = arr;
+                const newHouse = new House({
+                    createdBy: req.params.id,
+                    title: _.title,
+                    location: _.location, 
+                    coordinates: {
+                        latitude: _.coordinates.latitude,
+                        longitude: _.coordinates.longitude,
+                    },
+                    house:{
+                        rooms:_.house.rooms,
+                        area: _.house.area,
+                        floors: _.house.floors,
+                        bedroom: _.rooms.bedroom,
+                        kitchen: _.rooms.kitchen,
+                        toilet: _.rooms.toilet,
+                        livingRoom: _.rooms.livingRoom
+                    },
+                    furnished:_.furnished,
+                    price:_.price,
+                    imageCollection: imageCollection
+                });
+                newHouse.save()
+                    .then(()=> res.json('post added'))
+                    .catch(err => res.status(400).json('error' + err));
+            });
+    }catch(err){
+        res.status(500).json({err: 'Something went wrong'});
+    }
 };
 
-const testPost = async(req,res,next) =>{
-    console.log("It's working'");
-    console.log(req.body)
-}
 
-module.exports = {addRoomPost, addHousePost, testPost}
+module.exports = {addRoomPost, addHousePost}
