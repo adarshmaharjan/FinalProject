@@ -4,7 +4,6 @@ const recommend = require('../middleware/contentFiltering.middleware');
 
 const searchPost = ((req,res)=>{
     //search is based on the price, location and the facilities the the person is looking for.
-    const location = req.body.location;   
     Room.find({location:req.body.location})
         .then(async data => {
             let arr = new Array(data.length).fill(0)

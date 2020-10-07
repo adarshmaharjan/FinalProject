@@ -1,12 +1,16 @@
 const express = require('express');
 const webpush = require('web-push');
-const router = require('express').Router();
-// const User = require('../models/User.model');
 const nodemailer = require('nodemailer')
 require('dotenv').config();
 const user = process.env.user;
 const password = process.env.password;
 
+/**
+ * pushNotification.
+ *
+ * @param {} push [takes in the actual push data from server side]
+ * @param {} message [types of message to be displayed to the user]
+ */
 const pushNotification = async (push, message) => {
     let subscription = {
         endpoint: push.pushData.endpoint,
@@ -22,6 +26,13 @@ const pushNotification = async (push, message) => {
         .catch(err => console.error(err));
 };
 
+/**
+ * mailNotification.
+ *
+ * @param {} emailId [users email id]
+ * @param {} message [message to be sent to the user]
+ * @param {} link [link to be sent to the user for interation]
+ */
 const mailNotification = async (emailId, message, link) => {
     console.log(emailId,message,link);
     let smtpTrasport = nodemailer.createTransport({
