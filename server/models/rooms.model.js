@@ -64,26 +64,8 @@ const RoomSchema = new mongoose.Schema({
         }
     },
     facilities:{
-        cabletv:{
-            type:Boolean,
-            required:true
-        },
-        water:{
-            type:Boolean,
-            required:true
-        },
-        internet:{
-            type:Boolean,
-            required:true
-        },
-        telephone:{
-            type:Boolean,
-            required:true
-        },
-        parking:{
-            type:Boolean,
-            required:true
-        }
+        type:Array,
+        required:true
     },
     furnished:{
         type:String,

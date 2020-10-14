@@ -3,7 +3,7 @@ const validateLoginInput = require('../validation/login.validate.js');
 const key = require('../config/key.js');
 const {v4: uuidv4} = require('uuid');
 const nodemailer = require('nodemailer');
-const User = require('../models/user.model');
+const User = require('../models/user.model.js');
 const Token = require('../models/token.model.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -127,5 +127,6 @@ const loginUser = (req, res) => {
         });
     });
 };
+
 
 module.exports = {registerUser, loginUser, verifyUser};

@@ -19,35 +19,18 @@ const recommender = new ContentBasedRecommender({
  * @param {} req [object containing users preferences]
  */
 const recommend = async (data, req) => {
-    /**
-     * stringify.
-     *
-     * @param {} value [individual object from array]
-     */
+
     function stringify(value) {
-        let filtered = Object.keys(value.facilities).filter(function (key) {
-            return value.facilities[key];
-        });
-        let text = "";
-        for (let i = 0; i < filtered.length; i++) {
-            if (text === "") {
-                text = text + filtered[i];
-            } else {
-                text = text + `, ${filtered[i]}`;
-            }
-        }
-        console.log('facilities are',text);
-        return text;
+        return (value.facilities).join(",");
     }
 
     var promise = new Promise((resolve, reject) => {
-        let string1 = (req.facilities).join(",");
-        console.log(string1);
-        // let string1 = stringify(req);
+        // let string1 = (req.facilities).join(",");
+        // console.log(string1);
         const documents = [
             {
                 id: "1",
-                content: `${req.preferences.bedroom} bedroom, ${req.preferences.kitchen} kitchen, ${req.preferences.toilet} toilet,${req.preferences.livingRoom} livingRoom in ${req.location}. It is ${req.furnished}. Facilities like ${string1} `
+                content: `${req.preferences.bedroom} bedroom, ${req.preferences.kitchen} kitchen, ${req.preferences.toilet} toilet,${req.preferences.livingRoom} livingRoom in ${req.location}. It is ${req.furnished}. Facilities like ${stringify(req)} are avialable`
             }
         ];
 
@@ -56,7 +39,7 @@ const recommend = async (data, req) => {
 
             documents.push({
                 id: value.id,
-                content: `${value.rooms.bedroom} bedroom, ${value.rooms.kitchen}, ${value.rooms.toilet}, ${value.rooms.livingRoom} in ${value.location}. It is ${value.furnished} . Facilities like ${string}`
+                content: `${value.rooms.bedroom} bedroom, ${value.rooms.kitchen} kitchen, ${value.rooms.toilet} toilet, ${value.rooms.livingRoom} livingroom in ${value.location}. It is ${value.furnished} . Facilities like ${stringify(value)} are avialable`
             });
         });
         resolve(documents);

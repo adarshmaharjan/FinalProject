@@ -47,13 +47,7 @@ const addRoomPost = async(req, res, next) => {
                         toilet: _.rooms.toilet,
                         livingRoom:_.rooms.livingRoom
                     },
-                    facilities:{
-                        cabletv:_.facilities.cabletv,
-                        water:_.facilities.water,
-                        internet:_.facilities.internet,
-                        telephone:_.facilities.telephone,
-                        parking:_.facilities.parking
-                    },
+                    facilities:_.facilities,
                     furnished:_.furnished,
                     price:_.price,
                     imageCollection: imageCollection
