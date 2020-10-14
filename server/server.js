@@ -4,12 +4,13 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const port = process.env.PORT || 5000;
+const InitiateMongoServer = require('./config/db');
 
 const UserRouter = require('./routes/user.route');
 const AdRouter = require('./routes/advertisement.route');
 const SearchRouter = require('./routes/search.route');
 const CommentRouter = require('./routes/comment.route');
-const InitiateMongoServer = require('./config/db');
+const ProfileRouter = require('./routes/profile.route');
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.use('/api/user', UserRouter);
 app.use('/api/ad', AdRouter);
 app.use('/api/search', SearchRouter);
 app.use('/api/comment', CommentRouter);
+app.use('/api/profile',ProfileRouter);
 
 // if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, '../client', 'build')));
