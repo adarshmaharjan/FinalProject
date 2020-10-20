@@ -2,7 +2,7 @@ function mergeSort(Arr) {
   if (Arr.length == 1) {
     return Arr;
   } else if (Arr.length == 2) {
-    if (Arr[0] > Arr[1]) {
+    if (Arr[0].price > Arr[1].price) {
       return [Arr[1], Arr[0]];
     } else {
       return Arr;
@@ -17,7 +17,7 @@ function mergeSort(Arr) {
 
   while (1) {
     if (m1.length > 0 && m2.length > 0) {
-      if (m1[0] <= m2[0]) {
+      if (m1[0].price <= m2[0].price) {
         ret.push(m1[0]);
         m1 = m1.slice(1);
       } else {

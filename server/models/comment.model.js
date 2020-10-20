@@ -19,9 +19,11 @@ const commentSchema = new mongoose.Schema({
     },
     question: {
         type: String,
+        default:null
     },
     answer: {
         type: String,
+        default:null
     },
     isAnswered: {
         type: Boolean,
