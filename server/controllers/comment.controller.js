@@ -1,15 +1,34 @@
-const router = require('express').Router();
-const Comment = require('../models/chat.model');
+const Comment = require('../models/comment.model');
 
-const addComment = async(req,res,next) => {
-    console.log('comment is added');     
+const ADD_COMMENT = async (req,res) => {
+    let {postId, userId} = JSON.parse(req.params.id);
+    const userComment = new Comment({ 
+        postId: postId,
+        createdBy: userId,
+        name: req.body.name,
+        question: req.body.question
+    })
+
+    userComment.save()
+        .then(()=>{
+            res.json('comment is added');
+        })
+        .catch(err => res.status(400).json('error'+err))
 }
 
-const ansComment = async(req,res,next) => {
-    console.log('comment is being answered');
+const ANS_COMMENT = async(req,res) => {
+    var data = {
+        answer:req.body.answer,
+        isAnswered:true,
+    }
+    Comment.findOneAndUpdate({_id: req.params.id},data).then((res) => {
+        res.json("Comment answered successfully")
+    }) 
+    console.log("comment is answered");
 }
 
-module.exports = { addComment , ansComment};
+module.exports = {ADD_COMMENT, ANS_COMMENT};
+
 
 
 
