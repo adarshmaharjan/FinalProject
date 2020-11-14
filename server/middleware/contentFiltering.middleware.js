@@ -9,7 +9,7 @@ const ContentBasedRecommender = require("../utils/contentRecommendation");
 
 const recommender = new ContentBasedRecommender({
     minScore: 0.1,
-    maxSimilarDocuments: 100
+    maxSimilarDocuments: 100,
 });
 
 /**
@@ -19,9 +19,8 @@ const recommender = new ContentBasedRecommender({
  * @param {} req [object containing users preferences]
  */
 const recommend = async (data, req) => {
-
     function stringify(value) {
-        return (value.facilities).join(",");
+        return value.facilities.join(",");
     }
 
     var promise = new Promise((resolve, reject) => {
@@ -30,22 +29,34 @@ const recommend = async (data, req) => {
         const documents = [
             {
                 id: "1",
-                content: `${req.preferences.bedroom} bedroom, ${req.preferences.kitchen} kitchen, ${req.preferences.toilet} toilet,${req.preferences.livingRoom} livingRoom in ${req.location}. It is ${req.furnished}. Facilities like ${stringify(req)} are avialable`
-            }
+                content: `${req.data.preferences.bedroom} bedroom, ${
+                    req.data.preferences.kitchen
+                } kitchen, ${req.data.preferences.toilet} toilet,${
+                    req.data.preferences.livingRoom
+                } livingRoom in ${req.data.location}. It is ${
+                    req.data.furnished
+                }. Facilities like ${stringify(req.data)} are avialable`,
+            },
         ];
 
-        data.map(value => {
+        data.map((value) => {
             let string = stringify(value);
 
             documents.push({
                 id: value.id,
-                content: `${value.rooms.bedroom} bedroom, ${value.rooms.kitchen} kitchen, ${value.rooms.toilet} toilet, ${value.rooms.livingRoom} livingroom in ${value.location}. It is ${value.furnished} . Facilities like ${stringify(value)} are avialable`
+                content: `${value.rooms.bedroom} bedroom, ${
+                    value.rooms.kitchen
+                } kitchen, ${value.rooms.toilet} toilet, ${
+                    value.rooms.livingRoom
+                } livingroom in ${value.location}. It is ${
+                    value.furnished
+                } . Facilities like ${stringify(value)} are avialable`,
             });
         });
         resolve(documents);
     });
     promise
-        .then(documents => {
+        .then((documents) => {
             recommender.train(documents);
         })
         .then(() => {
@@ -54,12 +65,10 @@ const recommend = async (data, req) => {
                 0,
                 10
             );
-            
         });
-    const documents = await promise; 
-    recommender.train(documents)
-    return(recommender.getSimilarDocuments("1",0,10))
-
+    const documents = await promise;
+    recommender.train(documents);
+    return recommender.getSimilarDocuments("1", 0, 10);
 };
 
 module.exports = recommend;

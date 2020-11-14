@@ -1,0 +1,26 @@
+footer{
+    background-color: #b7b7b7;
+    padding: 20px 0;
+}
+.footer-content{
+    text-align: center;
+}
+.footer-content a{
+    display: inline-block;
+    color: #666666;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;  
+    /* padding: 0px 15px; */
+}
+.footer-content a:first-child{
+    padding-right: 15px;
+}
+.footer-content a:last-child{
+    padding-left: 15px;
+}
+.footer-content a:hover,
+.footer-content a:active{
+    color: #ffffff;
+}
