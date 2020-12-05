@@ -1,0 +1,48 @@
+.login-contents {
+    margin-top: 45px;
+    height: 100vh;
+    background-color: #F8F8F8;
+    position: relative;
+   
+}
+.login-contents form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #f1f1f1;  
+    /* padding: 200px; */
+    width: 500px;
+    padding: 150px 30px;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+}
+.login-contents form input[type = email],
+.login-contents form input[type = password]{
+    display: inline-block;
+    width: 90%;
+
+}
+.login-contents form .row::after{
+    content: " ";
+    clear: both;
+    display: table;
+}
+.login-contents form .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+.login-contents form .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+.login-contents form input[type="submit"] {
+    width: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}

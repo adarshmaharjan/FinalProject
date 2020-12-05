@@ -1,0 +1,24 @@
+.post-detail-container{
+    margin:0;
+    padding:0;
+    width:100%;
+}
+
+.image-container{
+    width:70%;
+    margin:0 auto;
+}
+
+#facilities{
+    display:flex;
+    flex-direction:column;
+}
+
+/* warning chaning this will result in css breaking of map */
+.post-room-location{
+    position:relative;
+    height:500px;
+    width:100%;
+    margin:0;
+    padding:0;
+}

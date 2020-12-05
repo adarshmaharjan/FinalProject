@@ -6,13 +6,15 @@ import PropTypes from 'prop-types';
 /**
  * PrivateRoute.
  *
- * @param {}
+ * @param {Component} Component [Component the needs to be protected using private route]
+ * @param {object} auth [User info as jwt to keep user logged in]
+ * @param {object}
  */
-const PrivateRoute = ({components: Component, auth, ...res}) => (
+const PrivateRoute = ({ component: Component, auth, ...res}) => (
     <Route 
     {...res}
     render={props => 
-        auth.isAuthenticatd === true ? (
+        auth.isAuthenticated === true ? (
         <Component {...props}/>
     ) : (
         <Redirect to="/login"/>

@@ -6,10 +6,22 @@ const HouseSchema= new mongoose.Schema({
         required: true,
         default: Date.now(),
     },
-    createdBy: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
+    // createdBy: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     required: true,
+    // },
+    name:{
+        type: String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    number:{
+        type:Number,
+        required:true
     },
     title: {
         type: String,
@@ -29,13 +41,13 @@ const HouseSchema= new mongoose.Schema({
             required: true,
         },
     },
+    description:{
+        type:String,
+        required:true
+    },
     house: {
-        rooms: {
-            type:Number,
-            required: true,
-        },
         area: {
-            type:Number,
+            type:String,
             required: true,
         },
         floors: {
@@ -60,7 +72,7 @@ const HouseSchema= new mongoose.Schema({
         }
     },
     isFurnished:{
-        type:Boolean,
+        type:String,
         required:true
     },
     price: {

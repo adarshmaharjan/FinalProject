@@ -1,0 +1,554 @@
+{
+  "_id": {
+    "$oid": "5faa750a5b5c438c0e8eaf1e"
+  },
+  "name": "Ram Akwal Yadav",
+  "title": "Dhapakhel Civil Homes Housing ",
+  "location": "Homes",
+  "description": "This newly built house located at Civil Homes, Dhapakhel is available for SALE. It is in Civil Homes Phase-IV, Zone 3. The house is built in modified design from regular model of Civil Homes to get larger kitchen, dining, master bedroom and 3rd floor bedroom, Pooja space at top of stairs.One of a kind house with three open sides. Plenty of light from East, South, North side with an extended garden.House Details:1. Living room, guest room, dining kitchen and bathroom on 1st floor.2. Master bedroom with attached bathroom and bedroom with common bathroom on 2nd floor3. Bedroom in the 3rd floor(Pooja room separately created at top of 3rdfloor stairs.)House Features:1. Newly built earthquake resistant house2. Master Bedroom with attached Bathroom3. Garden on two sides4. Located right near to the reputed GEMS school and Sumeru hospital at a walking distance.Features:(Colony)1. Water supply treated with modern technology 2. Open community spaces/park3. Plaza with swimming pool, Shopping mart, and health club4. Paved streets with solar street lights5. Solar backup6. Drainage7. Secure area with security guards available 24-7",
+  "number": {
+    "$numberLong": "9841214585"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply",
+    "Swimming Pool",
+    "Solar Water",
+    "Parking",
+    "Garbage Disposal",
+    "Garden",
+    "Peaceful environment",
+    "Drainage"
+  ],
+  "details": {
+    "Land area": "0-3-2-0",
+    "House area": "1353 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 4",
+    "living": " 1",
+    "kitchen": " 1",
+    "Bathrooms": " 3",
+    "Floors": " 2.5"
+  },
+  "price": {
+    "$numberInt": "25000000"
+  }
+},
+{
+  "_id": {
+    "$oid": "5faa7561e5fbfb08560a4762"
+  },
+  "name": "Asma Banu",
+  "title": "House at Narayantar",
+  "location": "Narayantar",
+  "description": "A beautiful house at Dhshindhoka, Bindushree Durga Mandir, Narayantar, Jorpati is available for rent. It is 1 shutters, 4 bedroom house with 3 bathrooms, a living room, a kitchen and a parking space. Monthly rental price is Rs. 70,000.",
+  "number": {
+    "$numberLong": "9840089412"
+  },
+  "facilities": [
+    "Electricity",
+    "Solar Water",
+    "Parking",
+    "Drainage",
+    "Peaceful environment",
+    "Earthquake resistant",
+    "Garden",
+    "Reserve Tank"
+  ],
+  "details": {
+    "Land area": "0-3-3-0",
+    "House area": "n/a",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 4",
+    "living": " 1",
+    "kitchen": " 1",
+    "Bathrooms": " 3",
+    "Floors": " 2.5"
+  },
+  "price": {
+    "$numberInt": "70000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5faa756abeff54d606f34ba8"
+  },
+  "name": "Maheswor Shrestha",
+  "title": "House at Thulobharang",
+  "location": "Thulobharang",
+  "description": "This newly built house is located at Namgyal chowk, Thulobharang, Kathmandu. It is in a distance of 500 meter from Ringroad. It has 13 feet road access. This is a 2.75 storied house built in the area of 4 aana. It faces towards South and has 6 bedrooms, 3 bathrooms + 2 attaced bsthrooms, 2 kitchens, 2 living rooms and sufficient parking space for 1 car and 6 bikes. It has reserve tank and has drainage and water supply facility.The selling price for this property is 3 crore 35 lakh.",
+  "number": {
+    "$numberLong": "9851143726"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply",
+    "Solar Water",
+    "Parking",
+    "Garbage Disposal",
+    "Garden",
+    "Reserve Tank",
+    "Peaceful environment",
+    "Earthquake resistant"
+  ],
+  "details": {
+    "Land area": "0-4-0-0",
+    "House area": "2700 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 6",
+    "living": " 2",
+    "kitchen": " 2",
+    "Bathrooms": " 5",
+    "Floors": " 2.75"
+  },
+  "price": {
+    "$numberInt": "33500000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5faa757b5a8559e2726d839c"
+  },
+  "name": "Samir Tamang",
+  "title": "House at Duwakot",
+  "location": "Duwakot",
+  "description": "Just newly built modern house at Duwakot near KMC College. It is in a distance of 100 meter from main road. It has 20 feet road access. This is a 2.5 storied house built in the area of 0-3-3-3. It faces towards East and has 6 bedrooms, 3 bathrooms, 3 kitchens, 2 living rooms and a parking space. All the rooms has got separate balcony from where pleasant view can be experienced. It has reserve tank and has drainage and water supply facility.The selling price for this property is 2 crore 25 lakh.",
+  "number": {
+    "$numberLong": "9840855781"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply"
+  ],
+  "details": {
+    "Land area": "0-3-3-3",
+    "House area": "n/a",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 6",
+    "living": " 2",
+    "kitchen": " 3",
+    "Bathrooms": " 3",
+    "Floors": " 2.5"
+  },
+  "price": {
+    "$numberInt": "22500000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5faa75919af33d853085aafc"
+  },
+  "name": "Gopal Tandukar",
+  "title": "House at Bhaisepati",
+  "location": "Bhaisepati",
+  "description": "This newly built house is located inside Mahato Marga, Bhaisepati near Ghantaghar party palace is available for sale. It is in a distance of 100 meter from Mainroad. It has 13 feet road access. This is a 2.75 storied house built in the area of 3 aana. It faces towards North-West and has 4 bedrooms, 4 bathrooms, 1 kitchens, 2 living rooms and a parking space. It has reserve tank and has drainage and water supply facility.The selling price for this property is 2 crore 60 lakh.",
+  "number": {
+    "$numberLong": "9818999010"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply"
+  ],
+  "details": {
+    "Land area": "0-3-0-0",
+    "House area": "n/a",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 4",
+    "living": " 2",
+    "kitchen": " 1",
+    "Bathrooms": " 4",
+    "Floors": " 2.75"
+  },
+  "price": {
+    "$numberInt": "26000000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5faa759f32779c3a2f79d1cd"
+  },
+  "name": "Asim Acharya",
+  "title": "House at Kapan",
+  "location": "Kapan",
+  "description": "This 6 storied building is available for rent at Paiyatar height, Kapan. It is in a distance of 4.2 kilometers from Ring Road. Boudha Stupa & Kapan Monastery are situated nearby. This property is has land area of 7 Ropani, and the house is built in the area of 14,400 square feet. This is a fully engineered building with AC and separate quarter for Guards/Servants.It was built on 2019 and has a multi-purpose hall, 16 rooms, 2 kitchens, 8 bathrooms, 3 phase line and a working elevator which fits up to 6 people It consist a reserve tank of 45000 liters with 2 boaring wells. This house is facing towards East and has access to 2 lane road. This building is partially furnished- Only movable furniture required. And has a panoramic penthouse with full view of the valley",
+  "number": {
+    "$numberLong": "9860276787"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply"
+  ],
+  "details": {
+    "Land area": "7-0-0-0",
+    "House area": "14400 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 16",
+    "living": " -",
+    "kitchen": " 2",
+    "Bathrooms": " 8",
+    "Floors": " 6"
+  },
+  "price": {
+    "$numberInt": "0"
+  }
+}
+{
+  "_id": {
+    "$oid": "5faa75add61dbb0999f474d9"
+  },
+  "name": "Pratap Dani ",
+  "title": "House at Thulobharang",
+  "location": "Thulobharang",
+  "description": "This newly built house is located at Raichowk, Thulobharang, Kathmandu. It is in a distance of 800 meter from Ringroad. It has 16 feet road access. This is a 2.5 storied house built in the area of 3 aana 2 paisa. It faces towards North-West and has 3 bedrooms, 4 bathrooms, 1 kitchens, 1 living rooms, 2 shutters. It has reserve tank and has drainage and water supply facility.The selling price for this property is 2 crore 85 lakh.",
+  "number": {
+    "$numberLong": "9851118707"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply",
+    "Cable TV",
+    "Solar Water",
+    "Garbage Disposal",
+    "Drainage",
+    "Peaceful environment",
+    "Earthquake resistant",
+    "Reserve Tank"
+  ],
+  "details": {
+    "Land area": "0-3-2-0",
+    "House area": "n/a",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 3",
+    "living": " 1",
+    "kitchen": " 1",
+    "Bathrooms": " 4",
+    "Floors": " 2.5"
+  },
+  "price": {
+    "$numberInt": "28500000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5faa75b9bf5885022c73fefb"
+  },
+  "name": "Sangeeta Rajbhandari",
+  "title": "House at Mulpani",
+  "location": "Mulpani",
+  "description": "This 2.5 storied house is located at Mulpani, Green Hill City. This house was built recemtly and is very suitable for residential purpose.It is built in the area of 3 aana 2 daam. It has 4 bedrooms with 1 kitchen and dining, 3 bathrooms, 1 living room and 1 puja room. It also has one parking lot and a reserve tank. It also has a beautiful garden space. The price for this property is 2 crore 10 lakh.",
+  "number": {
+    "$numberLong": "9841296249"
+  },
+  "facilities": [
+    "Electricity",
+    "Parking",
+    "Reserve Tank",
+    "Garden"
+  ],
+  "details": {
+    "Land area": "0-3-0-2",
+    "House area": "1700 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 4",
+    "living": " 1",
+    "kitchen": " 1",
+    "Bathrooms": " 3",
+    "Floors": " 2.5"
+  },
+  "price": {
+    "$numberInt": "21000000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5faa75e32de70b67a07e79ec"
+  },
+  "name": "Deepak Timalsina",
+  "title": "House at Imadol",
+  "location": "Imadol",
+  "description": "This newly built earthquake resistant house is located at Sheetal Height, Imadol, Lalitpur. It is 700 meter from Lubhu Highway. The total land area is 3 aana and house is built in 1900 square feet and has 20 feet access. It is a semi furnished, North facing 2.5 storied house with 5 bedrooms, 2 living rooms, 2 kitchens, 1 store room, 1 puja room, 1 attached and 3 common bathrooms. It has a car and 4 bikes parking space. The property selling price is Rs. 1 crore 87 lakh.",
+  "number": {
+    "$numberLong": "9849124797"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply",
+    "Cable TV",
+    "Parking",
+    "Solar Water",
+    "Peaceful environment",
+    "Reserve Tank"
+  ],
+  "details": {
+    "Land area": "0-3-0-0",
+    "House area": "1900 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 5",
+    "living": " 2",
+    "kitchen": " 2",
+    "Bathrooms": " 3",
+    "Floors": " 2.5"
+  },
+  "price": {
+    "$numberInt": "18700000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5fbb8ea6b384e66b76029581"
+  },
+  "name": "Raj Kumari Gupta",
+  "title": "House at Guheshwori",
+  "location": "Guheshwori",
+  "description": "In the heart of the growing and busy location (in front of Guheshwori temple), a beautiful house is available for rent. It is a very good location for business, mini-mart and office. The area of this property is 2500 sq. ft. facing toward South-East direction. There is big public and private parking spaces. It is 4 storied house with 8 bedrooms, 5 bathrooms, 1 living rooms and 1 kitchen. It is suitable for both residential and commercial purposes. The rental price of this property is one lakh fifty thousand per month.",
+  "number": {
+    "$numberLong": "9779849265487"
+  },
+  "facilities": [
+    "Solar Water",
+    "Cable TV",
+    "Electricity",
+    "Water Supply",
+    "Parking",
+    "Garbage Disposal",
+    "Telephone",
+    "Internet",
+    "Well",
+    "Drainage",
+    "Earthquake resistant",
+    "Reserve Tank"
+  ],
+  "details": {
+    "Land area": "0-5-2-0",
+    "House area": "2500 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 8",
+    "living": " 1",
+    "kitchen": " 1",
+    "Bathrooms": " 5",
+    "Floors": " 4"
+  },
+  "price": {
+    "$numberInt": "150000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5fbb8f38218f1a320846505b"
+  },
+  "name": " Kunchok Lama",
+  "title": "House at Khusibu Town Planning",
+  "location": "Khusibu",
+  "description": "This 3.5 storied commercial/residential house is located at Khusibu, Town Planning, Kathmandu. It is just 250 meters from main road Shorkhutte chowk and nearby Falphul chowk. This property has access to 14 feet wide pitched road. The total land area is 5 aana and the total area of house is built in 3600 square feet. The house is facing towards East direction. It has 4 bedrooms, 3 master bed room with 3 attached bathrooms, 3 separate bathrooms, 3 living rooms, 3 kitchens with dining, 2 storerooms, drainage system. It has facility of well, 24 hour water service, reserve tank, water solar, electric solar and garage for parking. The house is well furnished, well equipped flat system. The price for this property is 4 crore 25 lakh.",
+  "number": {
+    "$numberLong": "9851035163"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply",
+    "Earthquake resistant",
+    "Reserve Tank",
+    "Drainage",
+    "Well",
+    "Rental Income",
+    "Solar Water",
+    "Parking",
+    "Internet",
+    "Telephone",
+    "Cable TV"
+  ],
+  "details": {
+    "Land area": "0-5-0-0",
+    "House area": "3600 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 7",
+    "living": " 3",
+    "kitchen": " 3",
+    "Bathrooms": " 6",
+    "Floors": " 3.5"
+  },
+  "price": {
+    "$numberInt": "42500000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5fbb8f63ce7ec08423427cb3"
+  },
+  "name": "Niranjan ",
+  "title": "Bungalow at Baluwatar",
+  "location": "Baluwatar",
+  "description": "BEAUTIFUL, MODERN BUNGALOW IN THE MOST SOUGHT AFTER NEIGHBORHOOD IN KATHMANDU5 bedrooms, 3 bathrooms with provision for 1 additional bathroom. Premium wooden flooring on all levels. 2 and a half floors with balcony and panoramic view from the terrace with great views of the city. Ample sunlight, secure neighbourhood with garden, backyard and a security guard quarter. Centrally located and 50 yards from the main road so you can enjoy a peaceful and quiet environment while living in one of the best residential neighbourhoods. 24 hour security guard presence gives you peace of mind whether you're at home or away from home. Enough space to comfortably park 3-4 vehicles. Please contact 9866330491 or 4427485 for viewing.",
+  "number": {
+    "$numberLong": "9866330491"
+  },
+  "facilities": [
+    "Solar Water",
+    "Cable TV",
+    "Electricity",
+    "Water Supply",
+    "Parking",
+    "Telephone",
+    "Internet",
+    "Well",
+    "Garden",
+    "Drainage",
+    "Earthquake resistant",
+    "Reserve Tank"
+  ],
+  "details": {
+    "Land area": "0-10-1-0",
+    "House area": "0-10-1-0",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 5",
+    "living": " 1",
+    "kitchen": " 1",
+    "Bathrooms": " 3",
+    "Floors": " 3"
+  },
+  "price": {
+    "$numberInt": "105000000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5fbb8f7348f76b5a4eb36e54"
+  },
+  "name": "Madhav Pd. Ghimire",
+  "title": "House at Imadol",
+  "location": "Imadol",
+  "description": "This newly built, earthquake resistant house is located in a peaceful residential area at Krishna Mandir, Imadol, Lalitpur. It is only 100 from Imadol Krishna Mandir and near by Mahendra Adarsha School. It is built in the area of 3 aana 3 dam land and has access to 10 feet width road in South and East direction. It is a 2.5 storied house with 4 bedrooms, 3 bathrooms, 1 attached bathroom, 2 kitchens, 1 living rooms, 1 puja room. It has a car and bikes parking and small garden space. The house is made under the new Municipality rules. The selling price of this property is 1 crore 97 lakh.",
+  "number": {
+    "$numberLong": "9841408678"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply",
+    "Well",
+    "Drainage",
+    "Earthquake resistant",
+    "Reserve Tank"
+  ],
+  "details": {
+    "Land area": "0-3-0-3",
+    "House area": "1700 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 4",
+    "living": " 1",
+    "kitchen": " 2",
+    "Bathrooms": " 4",
+    "Floors": " 2.5"
+  },
+  "price": {
+    "$numberInt": "19700000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5fbb8f7a6283fedb7db0e0e9"
+  },
+  "name": "Ajay",
+  "title": "House at Itahari",
+  "location": "Itahari",
+  "description": "This earthquake resistant house is located in a residential/Commercial area at Itahari, Hasposa, Sunsari. It is only 50 meter from Koshirajmarg and opposite of Hotel Garima. It has 20 feet blacktopped road access. The house is built in the area of 2667 square feet and the total land area is 6.75 dhur. It is a 2.5 storied house with 6 bedrooms, 1 living room, 1 kitchen, 3 bathrooms, 1 attached bathroom, 1 shutter and has a parking space. The house faces South. The price for this property is 1 crore 15 lakh.",
+  "number": {
+    "$numberLong": "9851127968"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply"
+  ],
+  "details": {
+    "Land area": "n/a",
+    "House area": "2667 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 6",
+    "living": " 1",
+    "kitchen": " 1",
+    "Bathrooms": " 4",
+    "Floors": " 2.5"
+  },
+  "price": {
+    "$numberInt": "11500000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5fbb8f913b8f29cc594d0bee"
+  },
+  "name": "Ajay Khatiwada",
+  "title": "House at Puspalal Chowk, Kapan",
+  "location": "Puspalal",
+  "description": "This is a 2 aana property located at Puspalal Chowk, Kapan. This property has access to 4 feet wide road and can be extended to 10 feet road in the future. It has 10 feet access road in the front, so when the road will be extended in the future it will not effect the land area of this property. It is in a distance of 50 meters from the main road. This is a 2.5 storied house with 4 bedrooms, 2 bathrooms, 1 living room, 2 kitchens and dining rooms. This property is facing towards the East. It has a reserve tank with a water facility. The selling price for this property is 1 crore.",
+  "number": {
+    "$numberLong": "9851127968"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply"
+  ],
+  "details": {
+    "Land area": "0-2-0-0",
+    "House area": "1115 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 4",
+    "living": " 1",
+    "kitchen": " 2",
+    "Bathrooms": " 2",
+    "Floors": " 2.5"
+  },
+  "price": {
+    "$numberInt": "10000000"
+  }
+}
+{
+  "_id": {
+    "$oid": "5fbb8f992725e430319d2d70"
+  },
+  "name": "Ajay Khatiwada",
+  "title": "House at Kharibot, Kapan",
+  "location": "Kharibot,",
+  "description": "This property is located in the prime residential area at Kharibot, Kapan near Kharibot chowk, Kathmandu. The property has access to 13 feet wide pitched road. The total land area is 10 aana 3 paisa in which 2.5 storied house is built in 6 anna 2 paisa and 4 anna 1 paisa land is available separately. This house faces towards east and has 5 bedrooms, 2 kitchens, 3 common bathrooms, 1 attached bathroom with bathtub. The total selling price for this property is 4 crore 10 lakh. The price for the house only is 2 crore 70 lakh and the price for 4 and 1 paisa land is 1 crore 40 lakh.",
+  "number": {
+    "$numberLong": "9851127968"
+  },
+  "facilities": [
+    "Electricity",
+    "Water Supply",
+    "Reserve Tank",
+    "Earthquake resistant",
+    "Drainage",
+    "Garden",
+    "Cable TV",
+    "Parking"
+  ],
+  "details": {
+    "Land area": "0-10-3-0",
+    "House area": "2089 Square feet",
+    "Flat area": "n/a",
+    "Parking area": "n/a",
+    "beds": " 5",
+    "living": " 1",
+    "kitchen": " 2",
+    "Bathrooms": " 2",
+    "Floors": " 2.5"
+  },
+  "price": {
+    "$numberInt": "27000000"
+  }
+}

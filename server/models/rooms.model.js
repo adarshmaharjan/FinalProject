@@ -79,10 +79,6 @@ const RoomSchema = new mongoose.Schema({
         type: Array,
         required: true,
     },
-    // commentId:{
-    //     type:String,
-    //     default: null
-    // }
 });
 
 const Room = mongoose.model('Room', RoomSchema);
