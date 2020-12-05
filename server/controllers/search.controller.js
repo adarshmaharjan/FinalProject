@@ -7,6 +7,7 @@ const searchPost = ((req,res)=>{
     console.log(req.body.data.preferences);
     Room.find({location:req.body.data.location})
         .then(async data => {
+            console.log(data);
             let arr = new Array(data.length).fill(0)
             let arr2 = [];
             const list = await recommend(data,req.body);

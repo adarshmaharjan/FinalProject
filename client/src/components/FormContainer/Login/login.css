@@ -1,5 +1,5 @@
 .login-contents {
-    margin-top: 58px;
+    margin-top: 45px;
     height: 100vh;
     background-color: #F8F8F8;
     position: relative;
@@ -23,17 +23,17 @@
     width: 90%;
 
 }
-.row::after{
+.login-contents form .row::after{
     content: " ";
     clear: both;
     display: table;
 }
-.col-25 {
+.login-contents form .col-25 {
     float: left;
     width: 25%;
     margin-top: 6px;
 }
-.col-75 {
+.login-contents form .col-75 {
     float: left;
     width: 75%;
     margin-top: 6px;

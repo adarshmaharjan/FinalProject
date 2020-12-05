@@ -1,4 +1,7 @@
 
+main{
+    /* margin-top: 45px; */
+}
 .banner{
     background-color: #ebebeb;
     height: 720px;
@@ -25,19 +28,14 @@
 }
 .search-box{
     display: inline-block;
-    /* border: 1px solid #808080; */
+    border: 1px solid #808080;
     padding: 16px 10px;
     background-color: #e1e1e1;
 }
+.search-box.facilities{
+    padding: 10px;
+}
 
-.search-box:first-of-type{
-    /* padding-left: 20px; */
-    /* border-radius: 30px 0 0 30px; */
-}
-.search-box:last-of-type{
-    /* padding-right: 20px; */
-    /* border-radius: 0 30px 30px 0px; */
-}
 
 .search-description{
     text-align: left;
@@ -57,6 +55,9 @@
     font-size: 12px;
     color: #bdb5b5;
 } 
+.search-box select{
+    background-color: #e1e1e1;
+}
 .banner input[type = "submit"]{
     display: inline-block;
     padding: 13px 38px;
@@ -76,4 +77,14 @@
 .search-box input:focus,
 .banner input[type = "submit"]{
     outline: none;
+}
+/*----------mapbox-----------*/
+.search-box .mapboxgl-ctrl-geocoder--input {
+    height: 20px;
+
+}
+.search-box .mapboxgl-ctrl-geocoder--icon-search {
+    left: 7px;
+    top: 1px;
+  
 }

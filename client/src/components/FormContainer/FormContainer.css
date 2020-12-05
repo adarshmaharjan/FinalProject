@@ -1,0 +1,17 @@
+/* .form-container{
+    position: relative;
+}
+.form-contents{
+    height: 200px;
+    width: 200px;
+    position: fixed;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    background-color: black;
+    z-index: 300;  
+    display: none;  
+}
+.form-content.popped{
+    display: block;
+} */

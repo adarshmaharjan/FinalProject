@@ -1,0 +1,19 @@
+.search-page{
+    background-color: #ebebeb;
+}
+.search-page-contents{
+    margin-top: 100px;
+    padding: 16px 0;
+}
+.search-page-content{
+    background-color: #f1f1f1;
+    padding: 16px;
+    margin: 16px 0;
+}
+/* .search-page-image{
+    
+} */
+.search-page-image img{
+    display: inline-block;
+    max-width: 100%;
+}

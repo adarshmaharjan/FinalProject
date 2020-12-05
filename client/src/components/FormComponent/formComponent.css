@@ -1,39 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
-h1{
-    font-size: 36px;
-    font-weight: bold;
-    color: #000;
-}
-input[type=text],input[type = number],input[type = file],select{
+
+.adv-container form input[type=text],
+.adv-container form input[type = number],
+.adv-container form input[type = file],
+.adv-container form select{
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
 }
-label {
+.adv-container form label {
     text-transform: capitalize;
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
-.container {
+.adv-container {
     border-radius: 5px;
     background-color: #f2f2f2;
     padding: 60px;
 }
-.col-25 {
+.adv-container form .col-25 {
     float: left;
     width: 25%;
     margin-top: 6px;
 }
-.col-75 {
+.adv-container form .col-75 {
     float: left;
     width: 75%;
     margin-top: 6px;
 }
-.row:after{
+.adv-container form .adv-row:before,
+.adv-container form .adv-row:after
+{
     content: "";
     display: table;
     clear: both;
@@ -41,10 +42,10 @@ label {
 .mapboxgl-ctrl-geocoder{
     min-width: 100%;
 }
-input.mapboxgl-ctrl-geocoder--input {
+.adv-container form input.mapboxgl-ctrl-geocoder--input {
     padding-left: 35px;
 }
-input[type="submit"] {
+.adv-container form input[type="submit"] {
     width: 100px;
     display: block;
     margin: 0 auto;
@@ -54,11 +55,12 @@ input[type="submit"] {
 }
 
 @media screen and (max-width: 600px) {
-    .col-25, .col-75, input[type=submit] {
+    .adv-container form .col-25, .adv-container form .col-75, .adv-container form input[type=submit] {
       width: 100%;
       margin-top: 0;
     }
 }
+
 
 
 

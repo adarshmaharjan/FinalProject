@@ -1,0 +1,763 @@
+{
+  "_id": {
+    "$oid": "5f619d43ae5a3a02a18032e0"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1600228745915"
+    }
+  },
+  "createdBy": "5f4906de687744110a3874e2",
+  "imageCollection": [
+    "66de182a-0a23-49d6-9872-2bb7786fe350",
+    "7b6eb8f7-397b-4d04-b92a-4b7d2e3b384f",
+    "056833ae-8cee-4496-b703-a22d19961d81"
+  ],
+  "name": "Bibek ",
+  "email": "johndoe@gmail.com",
+  "number": {
+    "$numberLong": "9242342121"
+  },
+  "title": "2 Room On Rent Inside Ringroad, Satdobato",
+  "location": "Kuleshwor",
+  "description": "-2 rooms including kitchen at top floor. -Two and half storyed building. -Separate bathroom -Spacious terrace ( Kausi) -Internet facility -Parking space for motorcycle -Centrally located -Easy road and market access -15 minutes walk to pashupatinath temple",
+  "coordinates": {
+    "latitude": {
+      "$numberDouble": "85.29780654473262"
+    },
+    "longitude": {
+      "$numberDouble": "27.69063480143248"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "1"
+    },
+    "kitchen": {
+      "$numberInt": "1"
+    },
+    "toilet": {
+      "$numberInt": "1"
+    },
+    "livingRoom": {
+      "$numberInt": "0"
+    }
+  },
+  "facilities": [
+    "Parking",
+    "Internet",
+    "Water-Suppply"
+  ],
+  "furnished": "fully furnished",
+  "price": {
+    "$numberInt": "15000"
+  },
+  "__v": {
+    "$numberInt": "0"
+  }
+}
+{
+  "_id": {
+    "$oid": "5f8515a754c97809519dca77"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1602556179775"
+    }
+  },
+  "createdBy": "5f4906de687744110a3874e2",
+  "facilities": [
+    "Parking",
+    "Internet",
+    "Water-Supply",
+    "CableTv"
+  ],
+  "imageCollection": [
+    "43610fc4-fade-4f3d-a54b-1a43913ed19a",
+    "3ffed897-c298-4aae-8427-c47358b4f1c1",
+    "21b17957-d602-4d97-b800-64fabe7f2c1b"
+  ],
+  "name": "mukesh",
+  "email": "muukesh@gmail.com",
+  "number": {
+    "$numberInt": "98234234"
+  },
+  "title": "room at kuleshow",
+  "location": "Kuleshwor",
+  "description": "3 bedroom 2 toilet, 1 kitchen room at Kuleshowr.Room is not furnished. Facilities like cableTv , watersupply, internet, telephone is avialable just at Rs 25000.",
+  "coordinates": {
+    "latitude": {
+      "$numberDouble": "85.32502432812271"
+    },
+    "longitude": {
+      "$numberDouble": "27.608179322525274"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "3"
+    },
+    "kitchen": {
+      "$numberInt": "1"
+    },
+    "toilet": {
+      "$numberInt": "2"
+    },
+    "livingRoom": {
+      "$numberInt": "0"
+    }
+  },
+  "furnished": "Not furnished",
+  "price": {
+    "$numberInt": "25000"
+  },
+  "__v": {
+    "$numberInt": "0"
+  }
+}
+{
+  "_id": {
+    "$oid": "5f851a1c009a25122fd695ed"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1602558323474"
+    }
+  },
+  "facilities": [
+    "Internet",
+    "Water-Supply",
+    "CableTv"
+  ],
+  "imageCollection": [
+    "1cf8e937-9556-4371-a512-3fdd64a2fa57",
+    "44401c29-dae3-4324-be70-5f97cac90d7c",
+    "a4fd5cf0-3633-4a1e-8157-2cd424f9f4a3",
+    "5b5d1664-1b4c-411a-ba93-61c0dbc172b2",
+    "2570b154-5419-4331-9fd0-7f2cb52abc24"
+  ],
+  "name": "Abhishek",
+  "email": "karma1997.acharya@gmail.com",
+  "number": {
+    "$numberInt": "98765332"
+  },
+  "title": "room at kuleshow",
+  "location": "Kuleshwor",
+  "description": "4 bedroom 1 toilet 1 kitchen on rent at kuleshowor. Internet, water, parking space facilities avialable. The room is semi furnished.",
+  "coordinates": {
+    "latitude": {
+      "$numberDouble": "85.28242838911831"
+    },
+    "longitude": {
+      "$numberDouble": "27.893995804097628"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "2"
+    },
+    "kitchen": {
+      "$numberInt": "2"
+    },
+    "toilet": {
+      "$numberInt": "2"
+    },
+    "livingRoom": {
+      "$numberInt": "2"
+    }
+  },
+  "furnished": "Semi furnished",
+  "price": {
+    "$numberInt": "22000"
+  },
+  "__v": {
+    "$numberInt": "0"
+  }
+}
+{
+  "_id": {
+    "$oid": "5f851ab6009a25122fd695ee"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1602558323474"
+    }
+  },
+  "facilities": [
+    "Water-Supply",
+    "Parking"
+  ],
+  "imageCollection": [
+    "df89aee3-4593-44c3-b547-7396b39bbfd1",
+    "90e5c56e-3f7e-426e-aa2a-4d5ee89742ff",
+    "f16538e0-18a7-4b89-af0c-1b942a308c6b",
+    "8d2cd8a8-42c8-4390-af85-2d534ed1faee",
+    "59096d79-883a-4dc9-a0f1-cba5bbe89b3b",
+    "bb6e70b4-84bb-461a-95f4-08df80de95f0",
+    "3b53834e-ef73-4ede-8927-add7e129ae65"
+  ],
+  "name": "Shrestha Ji",
+  "email": "johndoe@gmail.com",
+  "number": {
+    "$numberInt": "98765667"
+  },
+  "title": "room at kuleshow",
+  "location": "Kuleshwor",
+  "description": "2 big rooms with separate bathroom and lobby is on rent at Swoyambhu near Bhagwan pau. - 24/7 wifi , water supply, electricity - separate flat - Parking available - two rooms measuring 9 feet by 17 feet and 13 feet by 16 feet.",
+  "coordinates": {
+    "latitude": {
+      "$numberDouble": "85.28242838911831"
+    },
+    "longitude": {
+      "$numberDouble": "27.724601266204246"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "2"
+    },
+    "kitchen": {
+      "$numberInt": "1"
+    },
+    "toilet": {
+      "$numberInt": "1"
+    },
+    "livingRoom": {
+      "$numberInt": "0"
+    }
+  },
+  "furnished": "Not furnished",
+  "price": {
+    "$numberInt": "130000"
+  },
+  "__v": {
+    "$numberInt": "0"
+  }
+}
+{
+  "_id": {
+    "$oid": "5f851b62009a25122fd695ef"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1602558323474"
+    }
+  },
+  "facilities": [
+    "Water-Supply",
+    "Parking"
+  ],
+  "imageCollection": [
+    "078037db-fdfb-4628-9ee3-c2eccc29c6fb",
+    "d3a8b4c7-0a42-47d4-b50d-19a2a4211994",
+    "b84edfa8-a207-4ab9-924b-f8d516c02899",
+    "921855f4-2577-471f-9145-28040dc7068f",
+    "29ae0215-ea43-4603-87e0-7139ae8034ba",
+    "96a01428-a316-492a-a6fe-42cbfcc66148",
+    "cfedc607-35e7-4ab0-8e02-db483725abb3",
+    "effdd5bc-194c-4d3a-acfa-1d7978d0b080",
+    "3bb5a733-7bcb-400c-bbf8-4ef2eca0d4a7"
+  ],
+  "name": "Saurav Karanjeet",
+  "email": "karanjeet@gmail.com",
+  "number": {
+    "$numberInt": "989777654"
+  },
+  "title": "room at kuleshow",
+  "location": "Kuleshwor",
+  "description": "A beautifully decorated with love, airy & spacious, semi furnished earthquake resistance apartment at Janata Aawas is on Sale. It is 1350 sq feet in size with 3 balconies located on the 4th Floor and facing West. The apartment building is 5 storied and conveniently located in the main Bhaisepati Bungmati Road, 2.5 kms South of Ekantakuna Ringroad at Bhaisepati.  Location: Touched with newly constructed 30+ feet Bhaisepati Bungmati Highway, near Radio Tower, nearly 700 mtrs south from Bhaisepati Chowk, 2.5 kms south from Ekantakuna Ringroad.  Details of floors and room: 4th floor, 1350 sqft, Semi furnished, 3 balconies.  Floor: 1 Master Bed room with Balcony & attached bathroom 2 other bed rooms (1 with balcony facing North), 1 spacious Kitchen and Dining with Small store room and Puja room 1 Living space (with balcony facing West), 1 Common bathroom.  Additional features: 1.Bonus permanent Paid Parking space for 1 car. 2. Semi furnished 3. Convenient transportation from the gate. 4. Close shopping center with delivery services. 5. Beautiful view of Ktm Valley & North mountain range. 6. Peaceful and Fully secured residential area. 7. Suitable for family of 3-6 people who loves quite, clean and peaceful environment.",
+  "coordinates": {
+    "latitude": {
+      "$numberDouble": "85.14563308592903"
+    },
+    "longitude": {
+      "$numberDouble": "27.74881665075449"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "3"
+    },
+    "kitchen": {
+      "$numberInt": "1"
+    },
+    "toilet": {
+      "$numberInt": "1"
+    },
+    "livingRoom": {
+      "$numberInt": "1"
+    }
+  },
+  "furnished": "Semi furnished",
+  "price": {
+    "$numberInt": "12500"
+  },
+  "__v": {
+    "$numberInt": "0"
+  }
+}
+{
+  "_id": {
+    "$oid": "5faac55e2857920237d4a05f"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1605027115502"
+    }
+  },
+  "facilities": [
+    "Parking",
+    "CableTv",
+    "Water-Supply"
+  ],
+  "imageCollection": [
+    "3085f2d2-8f8a-46a7-8fb7-fd983630bf4b",
+    "0577b083-2997-490c-bc50-6200a8108fa2"
+  ],
+  "name": "Subed Ghimire",
+  "email": "subeddubbed@gmail.com",
+  "number": {
+    "$numberInt": "984663218"
+  },
+  "title": "Room at Kalanki",
+  "location": "Kalanki Temple",
+  "description": "3 bedroom 2 toilet, 1 kitchen room at Kuleshowr.Room is not furnished. Facilities like cableTv , watersupply, internet, telephone is avialable just at Rs 25000.",
+  "coordinates": {
+    "latitude": {
+      "$numberDouble": "86.65963661945716"
+    },
+    "longitude": {
+      "$numberDouble": "28.96901113923151"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "2"
+    },
+    "kitchen": {
+      "$numberInt": "1"
+    },
+    "toilet": {
+      "$numberInt": "2"
+    },
+    "livingRoom": {
+      "$numberInt": "1"
+    }
+  },
+  "furnished": "Semi furnished",
+  "price": {
+    "$numberInt": "39982"
+  },
+  "__v": {
+    "$numberInt": "0"
+  }
+}
+{
+  "_id": {
+    "$oid": "5fab2aec168f600257868092"
+  },
+  "createdAt": {
+    "$date": {
+      "$numberLong": "1605052354176"
+    }
+  },
+  "facilities": [
+    "CableTv",
+    "Water-Supply",
+    "Parking"
+  ],
+  "imageCollection": [
+    "5a29a9fb-036f-4ff8-8378-9ac24ce9697d",
+    "75b36a0e-0bfe-4a60-84b7-46e0b2d12125",
+    "8c4f9fef-ef3a-4603-ad1c-4a8e17c215cd"
+  ],
+  "name": "Ramesh Shrestha",
+  "email": "rame@gmail.com",
+  "number": {
+    "$numberInt": "987654231"
+  },
+  "title": "Latest room on rent",
+  "location": "Kuleshwor",
+  "description": "A beautifully decorated with love, airy & spacious, semi furnished earthquake resistance apartment at Janata Aawas is on Sale. It is 1350 sq feet in size with 3 balconies located on the 4th Floor and facing West. The apartment building is 5 storied and conveniently located in the main Bhaisepati Bungmati Road, 2.5 kms South of Ekantakuna Ringroad at Bhaisepati.  Location: Touched with newly constructed 30+ feet Bhaisepati Bungmati Highway, near Radio Tower, nearly 700 mtrs south from Bhaisepati Chowk, 2.5 kms south from Ekantakuna Ringroad.  Details of floors and room: 4th floor, 1350 sqft, Semi furnished, 3 balconies.  Floor: 1 Master Bed room with Balcony & attached bathroom 2 other bed rooms (1 with balcony facing North), 1 spacious Kitchen and Dining with Small store room and Puja room 1 Living space (with balcony facing West), 1 Common bathroom.  Additional features: 1.Bonus permanent Paid Parking space for 1 car. 2. Semi furnished 3. Convenient transportation from the gate. 4. Close shopping center with",
+  "coordinates": {
+    "latitude": {
+      "$numberDouble": "91.23566885937345"
+    },
+    "longitude": {
+      "$numberDouble": "32.40090592361713"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "4"
+    },
+    "kitchen": {
+      "$numberInt": "1"
+    },
+    "toilet": {
+      "$numberInt": "1"
+    },
+    "livingRoom": {
+      "$numberInt": "0"
+    }
+  },
+  "furnished": "Semi furnished",
+  "price": {
+    "$numberInt": "49988"
+  },
+  "__v": {
+    "$numberInt": "0"
+  }
+}
+{
+  "_id": {
+    "$oid": "5fbbb3ffa767522d45ac2510"
+  },
+  "name": "Jessica Congrove",
+  "title": "Room at  New Baneshwor",
+  "number": {
+    "$numberLong": "9841743567"
+  },
+  "email": "xuqjiyf@gmail.com",
+  "location": " New Baneshwor",
+  "description": "flat for rent which is located at Minbhawan,baneshwor with facility of parking and water . It is a huge  halls which can be partitioned  into more room as per requirement and 1 bathroom. It is located in peaceful environment and is for office purpose",
+  "price": {
+    "$numberInt": "140000"
+  },
+  "coordinates": {
+    "latitude": {
+      "$numberInt": "0"
+    },
+    "longitude": {
+      "$numberInt": "0"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "0"
+    },
+    "livingRoom": {
+      "$numberInt": "0"
+    },
+    "kitchen": {
+      "$numberInt": "0"
+    },
+    "toilet": {
+      "$numberInt": "1"
+    }
+  },
+  "facilities": [
+    "Internet",
+    "Parking",
+    "Water-Supply"
+  ],
+  "furnished": "Semi Furnished"
+}
+{
+  "_id": {
+    "$oid": "5fbbb4a4e02dc4b1fe756218"
+  },
+  "name": "Robert Soles",
+  "title": "Room at  Sankhamul",
+  "number": {
+    "$numberLong": "9841743567"
+  },
+  "email": "phlwdtp@gmail.com",
+  "location": " Sankhamul",
+  "description": "open hall flat available for rent at Shankhamul, Lalitpur. It's an open hall having an area of approx 1200 sq. ft. which can be partitioned into more room as per requirement. It has the facility of ample space for parking, sufficient water supply and also the facility of elevator.",
+  "price": {
+    "$numberInt": "150000"
+  },
+  "coordinates": {
+    "latitude": {
+      "$numberInt": "0"
+    },
+    "longitude": {
+      "$numberInt": "0"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "3"
+    },
+    "livingRoom": {
+      "$numberInt": "0"
+    },
+    "kitchen": {
+      "$numberInt": "0"
+    },
+    "toilet": {
+      "$numberInt": "6"
+    }
+  },
+  "facilities": [
+    "Internet",
+    "CableTv",
+    "Water-Supply"
+  ],
+  "furnished": "Not Furnished"
+}
+{
+  "_id": {
+    "$oid": "5fbbb4b6865adf9350461329"
+  },
+  "name": "Miles Coca",
+  "title": "Room at  Dillibazar",
+  "number": {
+    "$numberLong": "9841743567"
+  },
+  "email": "xffwqde@gmail.com",
+  "location": " Dillibazar",
+  "description": "00 Sq ft @ Rs. 65/Sq ft. Its a commercial building and suitable for Corporate Office, IT Companies, Bank, Finances. Sufficient parking is available. Parking space have to purchase additionally.",
+  "price": {
+    "$numberInt": "247000"
+  },
+  "coordinates": {
+    "latitude": {
+      "$numberInt": "0"
+    },
+    "longitude": {
+      "$numberInt": "0"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "0"
+    },
+    "livingRoom": {
+      "$numberInt": "0"
+    },
+    "kitchen": {
+      "$numberInt": "0"
+    },
+    "toilet": {
+      "$numberInt": "0"
+    }
+  },
+  "facilities": [
+    "CableTv",
+    "Parking",
+    "Internet"
+  ],
+  "furnished": "Not Furnished"
+}
+{
+  "_id": {
+    "$oid": "5fbbb4cbd3d2b78a56d71928"
+  },
+  "name": "Thomas Ellis",
+  "title": "Room at  Sukedhara",
+  "number": {
+    "$numberLong": "9841743567"
+  },
+  "email": "qhbdgha@gmail.com",
+  "location": " Sukedhara",
+  "description": "2.5 storey, fully furnished beautiful building on rent at Sukedhara, Kathmandu nearby Hems Hospital. This building offers 2BHK ( 2 Bedrooms with attached bathroom,  hall, kitchen, common bathroom ) on each floor of the building with the big compound having garden and parking space for 2 cars and 3 bikes, 24hrs water supply. This property is mostly preferable for foreigners for residential purpose. Your family and loved ones will love the spacious environment. Perfect for a family gathering. Come and have a look!",
+  "price": {
+    "$numberInt": "220000"
+  },
+  "coordinates": {
+    "latitude": {
+      "$numberInt": "0"
+    },
+    "longitude": {
+      "$numberInt": "0"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "4"
+    },
+    "livingRoom": {
+      "$numberInt": "2"
+    },
+    "kitchen": {
+      "$numberInt": "1"
+    },
+    "toilet": {
+      "$numberInt": "5"
+    }
+  },
+  "facilities": [
+    "Water-Supply",
+    "Internet",
+    "CableTv"
+  ],
+  "furnished": "Not Furnished"
+}
+{
+  "_id": {
+    "$oid": "5fbbb4e165d08a6cc10f4be6"
+  },
+  "name": "Kim Sargent",
+  "title": "Room at  Pasikot",
+  "number": {
+    "$numberLong": "9841743567"
+  },
+  "email": "uzqjabw@gmail.com",
+  "location": " Pasikot",
+  "description": "ilding on rent at Pasikot, Kathmandu. 2.5-storey building constructed on 22 aana land touched by 13 ft pitched road. The building has 4 bedrooms, 1 living room, 1 kitchen, 1 puja room and 4  bathrooms. The building is located at the very prime location of Kathmandu and preferable for residential purpose.Monthly charge of the building is Rs 100000. The building has enough parking space for car and bike. It has adequate water facility in the peaceful environment.",
+  "price": {
+    "$numberInt": "150000"
+  },
+  "coordinates": {
+    "latitude": {
+      "$numberInt": "0"
+    },
+    "longitude": {
+      "$numberInt": "0"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "4"
+    },
+    "livingRoom": {
+      "$numberInt": "1"
+    },
+    "kitchen": {
+      "$numberInt": "1"
+    },
+    "toilet": {
+      "$numberInt": "4"
+    }
+  },
+  "facilities": [
+    "CableTv",
+    "Water-Supply",
+    "Internet"
+  ],
+  "furnished": "Fully Furnished"
+}
+{
+  "_id": {
+    "$oid": "5fbbb4edb3e294bc598cb823"
+  },
+  "name": "Virginia Peacock",
+  "title": "Room at  Thapagaun",
+  "number": {
+    "$numberLong": "9841743567"
+  },
+  "email": "sxtexzp@gmail.com",
+  "location": " Thapagaun",
+  "description": "big room for rent at Thapagaun near poneix clz,Kathmandu. It is suitable for small family& singal student, with the facilities of tap water,bike parking only.",
+  "price": {
+    "$numberInt": "6500"
+  },
+  "coordinates": {
+    "latitude": {
+      "$numberInt": "0"
+    },
+    "longitude": {
+      "$numberInt": "0"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "1"
+    },
+    "livingRoom": {
+      "$numberInt": "0"
+    },
+    "kitchen": {
+      "$numberInt": "0"
+    },
+    "toilet": {
+      "$numberInt": "1"
+    }
+  },
+  "facilities": [
+    "Parking",
+    "Internet",
+    "CableTv"
+  ],
+  "furnished": "Fully Furnished"
+}
+{
+  "_id": {
+    "$oid": "5fbbb4fa7561520f482eb5cd"
+  },
+  "name": "Tommie Yeates",
+  "title": "Room at  Kalanki",
+  "number": {
+    "$numberLong": "9841743567"
+  },
+  "email": "opbpylh@gmail.com",
+  "location": " Kalanki",
+  "description": "fice space is available for rent at Kalanki, Ravibhawan. It's a first floor flat facing the main road and is freshly partitioned for the efficient official purpose. Located just 100 meters away from the main road, high potential for good advertisement companies.",
+  "price": {
+    "$numberInt": "25500"
+  },
+  "coordinates": {
+    "latitude": {
+      "$numberInt": "0"
+    },
+    "longitude": {
+      "$numberInt": "0"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "4"
+    },
+    "livingRoom": {
+      "$numberInt": "0"
+    },
+    "kitchen": {
+      "$numberInt": "0"
+    },
+    "toilet": {
+      "$numberInt": "1"
+    }
+  },
+  "facilities": [
+    "Water-Supply",
+    "Parking",
+    "Internet"
+  ],
+  "furnished": "Not Furnished"
+}
+{
+  "_id": {
+    "$oid": "5fbbb509cc95f7d066a73f4a"
+  },
+  "name": "David Pruitt",
+  "title": "Room at  Bhanimandal",
+  "number": {
+    "$numberLong": "9841743567"
+  },
+  "email": "qigbwnn@gmail.com",
+  "location": " Bhanimandal",
+  "description": "re's a semi furnished flat available for rent around Bhanimandal, Lalitpur ( behind DAV College ). This property offers all the basic facilities for a residential purpose like huge parking space for both cars and bikes, sufficient hot and cold water facilities with 2 bedrooms, 1 living room, kitchen and 2 bathrooms in the suspicious and peaceful environment.",
+  "price": {
+    "$numberInt": "50000"
+  },
+  "coordinates": {
+    "latitude": {
+      "$numberInt": "0"
+    },
+    "longitude": {
+      "$numberInt": "0"
+    }
+  },
+  "rooms": {
+    "bedroom": {
+      "$numberInt": "2"
+    },
+    "livingRoom": {
+      "$numberInt": "1"
+    },
+    "kitchen": {
+      "$numberInt": "1"
+    },
+    "toilet": {
+      "$numberInt": "1"
+    }
+  },
+  "facilities": [
+    "Parking",
+    "Internet",
+    "Water-Supply"
+  ],
+  "furnished": "Not Furnished"
+}
