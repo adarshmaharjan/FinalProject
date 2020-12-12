@@ -1,5 +1,6 @@
 const Room = require("../models/rooms.model.js");
 const User = require("../models/user.model");
+const { cloudinary } = require("../config/cloudinary");
 
 /**
  * USER_PROFILE_POST.
@@ -8,11 +9,11 @@ const User = require("../models/user.model");
  * @param {} res [json format of data]
  */
 const USER_PROFILE_POST = (req, res) => {
-    console.log("profile is loaded");
     try {
         Room.find({ createdBy: req.params.id }).then((data) => {
             if (data) {
                 res.json(data);
+                console.log(data);
             }
         });
     } catch (e) {
@@ -62,16 +63,18 @@ const UPDATE_USER_POST = (req, res) => {
  * DELETE_USER_POST.
  *
  * @param {} req [post request that contains the id of post to be deleted]
- * @param {} res 
+ * @param {} res
  */
 const DELETE_USER_POST = (req, res) => {
+    console.log(req.params.id);
     Room.findByIdAndDelete(req.params.id)
         .then((data) => {
             console.log(data);
-            cloudinary.v2.api.delete_resources(
-                [...data.imageCollection],
-                (error, result) => console.log(result, error)
-            );
+            data.imageCollection.map((id) => {
+                cloudinary.uploader.destroy(id, (error, result) =>
+                    console.log(result, error)
+                );
+            });
         })
         .then(() => res.json("post deleted"))
         .catch((err) => res.status(404).json("error" + err));

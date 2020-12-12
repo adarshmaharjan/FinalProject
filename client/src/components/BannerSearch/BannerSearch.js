@@ -10,7 +10,7 @@ import axios from "axios";
 import "../FormComponent/search.css";/*search css hatune*/
 
 import "./BannerSearch.css";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 
 mapboxgl.accessToken = "pk.eyJ1IjoiYWJzazEyMzQiLCJhIjoiY2s3Z3Z3azB6MDQyNzNmbzkxd3MwN3hnNyJ9.-paJt9fSR1rw0Wq0LwSmig";
 
@@ -106,136 +106,151 @@ const BannerSearch = (props) => {
                         </h1>
                         <form onSubmit={submit}>
                             <div className="search-box-container">
-                                <div className="search-box">
-                                    <div className="search-description">
-                                        Location
-                                    </div>
-                                    <div id="location"></div>
-                                </div>
-                                <div className="search-box">
-                                    <div className="search-description">
-                                        Property Type
-                                    </div>
-                                    <select
-                                        id="type"
-                                        value={type}
-                                        onChange={(e) => updatetype(e.target.value)}
-                                    >
-                                        <option value="house">House</option>
-                                        <option value="room">Room</option>
-                                    </select>
-                                </div>
-                                <div className="search-box">
-                                    <div className="search-description">
-                                        Price Range
-                                    </div>
-                                    <input
-                                        type="number"
-                                        value={price}
-                                        placeholder="What’s your budget?"
-                                        onChange={e=>updateprice(e.target.value)}
-                                    />
-                                </div>
-                                <div className="search-box dropdown">
-                                    <div className="search-description">
-                                        Preference
-                                    </div>
-                                    <button
-                                        className="dropbtn"
-                                        onClick={(e) => e.preventDefault()}
-                                    >
-                                        Preference
-                                    </button>
-                                    <div className="dropdown-content">
-                                        <div className="flex-content-pref">
-                                            <label>Bedroom</label>
+                                <Row>
+                                    <Col lg = "2" sm = "4" xs = "6">
+                                        <div className="search-box">
+                                            <div className="search-description">
+                                                Location
+                                            </div>
+                                            <div id="location"></div>
+                                        </div>
+                                    </Col>
+                                <Col  lg = "2" sm = "4" xs = "6">
+                                        <div className="search-box">
+                                            <div className="search-description">
+                                                Property Type
+                                            </div>
+                                            <select
+                                                id="type"
+                                                value={type}
+                                                onChange={(e) => updatetype(e.target.value)}
+                                            >
+                                                <option value="house">House</option>
+                                                <option value="room">Room</option>
+                                            </select>
+                                        </div> 
+                                </Col>
+                                    <Col lg = "2" sm = "4" xs = "6">
+                                        <div className="search-box">
+                                            <div className="search-description">
+                                                Price Range
+                                            </div>
                                             <input
                                                 type="number"
-                                                name="bedroom"
-                                                value={bedroom}
-                                                onChange={onChangePreference}
-                                                max="5"
-                                                min="1"
+                                                value={price}
+                                                placeholder="What’s your budget?"
+                                                onChange={e=>updateprice(e.target.value)}
                                             />
                                         </div>
-                                        <div className="flex-content-pref">
-                                            <label>Livingroom</label>
-                                            <input
-                                                type="number"
-                                                name="livingroom"
-                                                value={livingRoom}
-                                                onChange={onChangePreference}
-                                                max="2"
-                                                min="1"
+                                    </Col>
+                                    <Col lg = "2" sm = "4" xs = "6">
+                                        <div className="search-box dropdown">
+                                            <div className="search-description">
+                                                Preference
+                                            </div>
+                                            <button
+                                                className="dropbtn"
+                                                onClick={(e) => e.preventDefault()}
+                                            >
+                                                Preference
+                                            </button>
+                                            <div className="dropdown-content">
+                                                <div className="flex-content-pref">
+                                                    <label>Bedroom</label>
+                                                    <input
+                                                        type="number"
+                                                        name="bedroom"
+                                                        value={bedroom}
+                                                        onChange={onChangePreference}
+                                                        max="5"
+                                                        min="1"
+                                                    />
+                                                </div>
+                                                <div className="flex-content-pref">
+                                                    <label>Livingroom</label>
+                                                    <input
+                                                        type="number"
+                                                        name="livingroom"
+                                                        value={livingRoom}
+                                                        onChange={onChangePreference}
+                                                        max="2"
+                                                        min="1"
+                                                    />
+                                                </div>
+                                                <div className="flex-content-pref">
+                                                    <label>Kitchen</label>
+                                                    <input
+                                                        type="number"
+                                                        value={kitchen}
+                                                        name="kitchen"
+                                                        onChange={onChangePreference}
+                                                        max="2"
+                                                        min="1"
+                                                    />
+                                                </div>
+                                                <div className="flex-content-pref">
+                                                    <label>Toilet</label>
+                                                    <input
+                                                        type="number"
+                                                        value={toilet}
+                                                        name="toilet"
+                                                        onChange={onChangePreference}
+                                                        max="2"
+                                                        min="1"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                    <Col lg = "2" sm = "4" xs = "6">
+                                        <div className="search-box facilities">
+                                            <div className="search-description">
+                                                Facilities
+                                            </div>
+                                            <Multiselect
+                                                options={options}
+                                                isObject={false}
+                                                onSelect={onSelect}
+                                                onRemove={onSelect}
                                             />
                                         </div>
-                                        <div className="flex-content-pref">
-                                            <label>Kitchen</label>
-                                            <input
-                                                type="number"
-                                                value={kitchen}
-                                                name="kitchen"
-                                                onChange={onChangePreference}
-                                                max="2"
-                                                min="1"
-                                            />
-                                        </div>
-                                        <div className="flex-content-pref">
-                                            <label>Toilet</label>
-                                            <input
-                                                type="number"
-                                                value={toilet}
-                                                name="toilet"
-                                                onChange={onChangePreference}
-                                                max="2"
-                                                min="1"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="search-box facilities">
-                                    <div className="search-description">
-                                        Facilities
-                                    </div>
-                                    <Multiselect
-                                        options={options}
-                                        isObject={false}
-                                        onSelect={onSelect}
-                                        onRemove={onSelect}
-                                    />
-                                </div>
-                                <div className="search-box">
-                                    <div className="search-description">
-                                        Furnished ?
-                                    </div>
+                                    </Col>
+                                    <Col lg = "2" sm = "4" xs = "6">
+                                        <div className="search-box">
+                                            <div className="search-description">
+                                                Furnished ?
+                                            </div>
 
-                                    <select
-                                        value={furnished}
-                                        onChange={(e) =>
-                                            updateFurnished(e.target.value)
-                                        }
-                                    >
-                                        <option value="FullyFurnished">
-                                            FullyFurnished
-                                        </option>
-                                        <option value="Semi-Furnished">
-                                            Semi-Furnished
-                                        </option>
-                                        <option value="Not-Furnished">
-                                            Not-Furnished
-                                        </option>
-                                    </select>
-                                </div>
+                                            <select
+                                                value={furnished}
+                                                onChange={(e) =>
+                                                    updateFurnished(e.target.value)
+                                                }
+                                            >
+                                                <option value="FullyFurnished">
+                                                    FullyFurnished
+                                                </option>
+                                                <option value="Semi-Furnished">
+                                                    Semi-Furnished
+                                                </option>
+                                                <option value="Not-Furnished">
+                                                    Not-Furnished
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </Col>
+                                </Row>        
                             </div>
-                            <input type="submit" value="Search" />
+                            <input type="submit" value="Search" className = "submit-button"/>
                         </form>
                     </div>
-           
+        
                 </Container>
                     
             </section>
         
-        </main>
+    </main>
+
     );
 };
 
