@@ -30,7 +30,7 @@ const addRoomPost = async(req, res, next) => {
             .then(()=>{
                 const imageCollection = arr;
                 const newRoom = new Room({
-                    // createdBy: req.params.id,
+                    createdBy: req.params.id,
                     name:_.name,
                     email:_.email,
                     number:_.number,

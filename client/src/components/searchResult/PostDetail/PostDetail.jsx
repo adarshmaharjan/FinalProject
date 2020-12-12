@@ -36,7 +36,7 @@ const PostDetail = (props) => {
                     <div className="basic-info">
                         <div>Name: {props.location.state.name}</div>
                         <div>Email: {props.location.state.email}</div>
-                        <div>number: {props.location.state.number}</div>
+                            <div>Number:<a href={props.location.state.number}>{props.location.state.number}</a></div>
                     </div>
                     <br />
                     <br />

@@ -6,11 +6,11 @@ const RoomSchema = new mongoose.Schema({
         required: true,
         default: Date.now(),
     },
-    // createdBy: {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'User',
-    //     required: true,
-    // },
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true,
+    },
     name:{
         type:String,
         required:true

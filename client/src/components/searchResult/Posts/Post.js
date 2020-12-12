@@ -25,7 +25,7 @@ const Post = (props) => (
           <p className="search-page-description">{props.post.description}</p>
           <div>{props.post.price}</div>
           <div className="detail">
-            <Link to={{ pathname: "/details/", state: props.post }}>
+            <Link to={{ pathname: `${props.url}`, state: props.post }}>
               Details
             </Link>
           </div>
@@ -45,7 +45,7 @@ const Posts = (props) => {
         console.log(props)
         return props.posts.map((post, index) => {
             console.log(props)
-            return <Post post={post} key={post._id} />;
+            return <Post post={post} key={post._id} url={props.url}/>;
         });
     }
 

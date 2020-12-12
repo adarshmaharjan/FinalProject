@@ -1,22 +1,23 @@
 import React, { Fragment, Component } from "react";
 import mapboxgl from "mapbox-gl";
+import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import axios from "axios";
 //this is changed
 import { Multiselect } from "multiselect-react-dropdown";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import { Container, Row, Col } from "react-bootstrap";
-import "./formComponent.css";
+import "./EditPost.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
 mapboxgl.accessToken =
     "pk.eyJ1IjoiYWJzazEyMzQiLCJhIjoiY2s3Z3Z3azB6MDQyNzNmbzkxd3MwN3hnNyJ9.-paJt9fSR1rw0Wq0LwSmig";
 
-class Addroom extends Component {
+class EditPost extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: null,
             title: "",
             name: "",
             email: "",
@@ -35,7 +36,6 @@ class Addroom extends Component {
             lng: 85.314038,
             lat: 27.70549,
             zoom: 5,
-            //this is changed
             facilities: [],
         };
 
@@ -43,12 +43,32 @@ class Addroom extends Component {
         this.onChangeInput = this.onChangeInput.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onPreviewFile = this.onPreviewFile.bind(this);
-        //this is changed
         this.onSelect = this.onSelect.bind(this);
+        this.onDelete = this.onDelete.bind(this);
     }
 
     componentDidMount() {
-        console.log(this.props.auth.user.id);
+        console.log(this.props.location.state._id);
+        const data = this.props.location.state;
+        let coor = [data.coordinates.longitude, data.coordinates.latitude];
+        console.log(coor);
+        console.log(data.coordinates.longitude);
+        this.setState({ id: this.props.location.state._id });
+        this.setState({ title: data.title });
+        this.setState({ name: data.name });
+        this.setState({ description: data.description });
+        this.setState({ email: data.email });
+        this.setState({ number: data.number });
+        this.setState({ location: data.location });
+        this.setState({ price: data.price });
+        this.setState({ facilities: data.facilities });
+        this.setState({ furnished: data.furnished });
+        this.setState({ bedroom: data.rooms.bedroom });
+        this.setState({ kitchen: data.rooms.kitchen });
+        this.setState({ livingRoom: data.rooms.livingRoom });
+        this.setState({ toilet: data.rooms.toilet });
+        this.setState({ coordinates: coor });
+
         const map = new mapboxgl.Map({
             container: this.mapContainer,
             style: "mapbox://styles/mapbox/streets-v11",
@@ -56,6 +76,7 @@ class Addroom extends Component {
             zoom: this.state.zoom,
         });
 
+        map.addControl(new mapboxgl.NavigationControl());
         var geolocate = new mapboxgl.GeolocateControl({
             positionOptions: {
                 enableHighAccuracy: true,
@@ -70,11 +91,11 @@ class Addroom extends Component {
                 zoom: map.getZoom().toFixed(2),
             });
         });
-        map.addControl(new mapboxgl.NavigationControl());
+        console.log(this.state.id);
         var marker = new mapboxgl.Marker({
             draggable: true,
         })
-            .setLngLat([84.124, 28.3949])
+            .setLngLat([this.state.coordinates[1], this.state.coordinates[0]])
             .addTo(map);
 
         const onDragEnd = () => {
@@ -87,6 +108,7 @@ class Addroom extends Component {
         var geocoder = new MapboxGeocoder({
             accessToken: mapboxgl.accessToken,
             countries: "np",
+            placeholder: this.state.location,
         });
 
         geocoder.addTo("#location");
@@ -94,6 +116,8 @@ class Addroom extends Component {
             console.log(result.result.text);
             this.setState({ location: result.result.text });
         });
+        console.log(this.state.coordinates[0], this.state.coordinates[1]);
+        console.log(this.state);
     }
 
     onChangeLocation(e) {
@@ -167,14 +191,20 @@ class Addroom extends Component {
         console.log(data);
         console.log(typeof JSON.stringify(data));
         axios
-            .post(
-                `http://localhost:5000/api/ad/addRoom/${this.props.auth.user.id}`,
-                data
-            )
+            .post("http://localhost:5000/api/ad/addRoom", data)
             .then((res) => console.log(res.data))
             .catch((error) => {
                 console.log(error.response);
             });
+    }
+
+    onDelete(e) {
+        axios
+            .delete(
+                `http://localhost:5000/api/profile/deletepost/${this.props.location.state._id}`
+            )
+            .then((res) => console.log(res.data))
+            .catch((error) => console.log(error.response));
     }
 
     render() {
@@ -183,6 +213,15 @@ class Addroom extends Component {
             <section className="form-section" style={{}}>
                 <Container>
                     <div className="form-section-holder">
+                        <div>
+                            <button
+                                className="btn-delete btn-danger"
+                                onClick={this.onDelete}
+                            >
+                                DELETE
+                            </button>
+                        </div>
+
                         <form
                             onSubmit={this.onSubmit}
                             encType="multipart/form-data"
@@ -320,8 +359,6 @@ class Addroom extends Component {
                                         type="number"
                                         name="livingRoom"
                                         id="livingRoom"
-                                        min="0"
-                                        max="2"
                                         onChange={this.onChangeInput}
                                         value={this.state.livingRoom}
                                     />
@@ -359,6 +396,7 @@ class Addroom extends Component {
                                         isObject={false}
                                         onSelect={this.onSelect}
                                         onRemove={this.onSelect}
+                                        selectedValues={this.state.facilities}
                                     />
                                 </Col>
                             </Row>
@@ -408,7 +446,7 @@ class Addroom extends Component {
 
                             <Row>
                                 <Col>
-                                    <input type="submit" value="Submit" />
+                                    <input type="submit" value="UPDATE" />
                                 </Col>
                             </Row>
                         </form>
@@ -428,8 +466,7 @@ class Addroom extends Component {
     }
 }
 
-// export default Addroom;
-Addroom.propTypes = {
+EditPost.propTypes = {
     auth: PropTypes.object.isRequired,
     errors: PropTypes.object.isRequired,
 };
@@ -439,4 +476,4 @@ const mapStateToProps = (state) => ({
     errors: state.errors,
 });
 
-export default connect(mapStateToProps)(Addroom);
+export default connect(mapStateToProps)(EditPost);

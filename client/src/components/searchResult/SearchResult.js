@@ -9,6 +9,7 @@ import './SearchResult.css';
 import Post from "./Posts/Post.js";
 import FilterBar from '../FilterBar/FilterBar';
 import Pagination from "./Pagination/Pagination.jsx";
+import priceFiltering from '../../utils/priceFilter';
 
 const SearchResult = (props) => {
     const [posts, setPosts] = useState([]);
@@ -24,7 +25,7 @@ const SearchResult = (props) => {
                 props.data
             );
             setPosts(res.data);
-            sessionStorage.setItem("contentFiltered",res.data);
+            sessionStorage.setItem("contentFiltered",JSON.stringify(res.data));
             setLoading(false);
         };
 
@@ -41,12 +42,22 @@ const SearchResult = (props) => {
         setCurrentPage(pageNumber);
     };
 
+    const filterOptions = (val, min=20000, max=40000) => {
+        console.log(val,max,min);
+        if(val === "Price"){
+            setPosts(priceFiltering(posts,min, max)); 
+        }
+        else{
+            setPosts(JSON.parse(sessionStorage.getItem("contentFiltered")));
+        }
+    }
+
     return(
         <section className = "search-page">
-            <FilterBar/>
+            <FilterBar onselect={filterOptions} />
             <Container>
                 <section className = "search-page-contents">
-                    <Post posts={currentPosts} loading={loading} />
+                    <Post posts={currentPosts} loading={loading} url="/details/"/>
                     <Pagination
                 postPerPage={postPerPage}
                 totalPosts={posts.length}
@@ -57,7 +68,6 @@ const SearchResult = (props) => {
         </section>
     );
 }
-// export default SearchResult;
 
 
 SearchResult.propTypes = {

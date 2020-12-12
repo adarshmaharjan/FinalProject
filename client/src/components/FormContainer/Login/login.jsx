@@ -20,7 +20,7 @@ class Login extends React.Component {
        //if logged in and user navigates to login page, redirect to dashboard
        if (this.props.auth.isAuthenticated) {
            this.props.history.push({
-               pathname: '/dashboard/form',
+               pathname: '/form',
                state: this.props.auth,
            });
        }
@@ -29,7 +29,7 @@ class Login extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
             this.props.history.push({
-                pathname: '/dashboard/form',
+                pathname: '/form',
                 state: nextProps.auth,
             });
         }

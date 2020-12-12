@@ -74,7 +74,7 @@ header{
    
     outline: none;
 }
-@media(max-width:768px) {
+@media(max-width:768px) {.spacer
     .toolbar-nav{
         padding: 0 16px;
     }
@@ -89,4 +89,13 @@ header{
     .toolbar-logo{
         margin-left: 0;
     }
+}
+
+
+.btn-profile{
+   padding-right:10px; 
+}
+
+.btn-post{
+   padding-right:10px; 
 }

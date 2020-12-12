@@ -41,3 +41,12 @@
     -webkit-appearance: none;
     margin: 0;
 }
+
+.btn-filter{
+    margin-left:20px;
+    background-color:#4CF926;
+    padding-right:10px;
+    padding-left:10px;
+    border-radius:5px ;
+     
+}
