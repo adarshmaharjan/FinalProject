@@ -1,20 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import {Container,Row,Col} from 'react-bootstrap';
+import { Container, Row, Col } from "react-bootstrap";
 // import {connect} from "react-redux";
-import {displayDetails} from '../../../actions/postAction.js';
-
+import { displayDetails } from "../../../actions/postAction.js";
 
 const Post = (props) => (
-    <div className="search-page-content">
+  <div className="search-page-content">
     <Row>
       <Col xs="6" md="2">
         <div className="search-page-image">
           <img
-            src={`https://res.cloudinary.com/ds6o6pq2w/image/upload/v1607069456/images/${
-              props.post.imageCollection[0]
-            }.jpg`}
+            src={`https://res.cloudinary.com/ds6o6pq2w/image/upload/v1607069456/images/${props.post.imageCollection[0]}.jpg`}
             alt="#"
           />
         </div>
@@ -36,24 +33,22 @@ const Post = (props) => (
 );
 
 const Posts = (props) => {
-    if (props.loading) {
-        return <h2> Loading .... </h2>;
-    }
+  if (props.loading) {
+    return <h2> Loading .... </h2>;
+  }
+  if (props.status) {
+    return <h2>No results found try a different location</h2>;
+  }
 
+  function displayPost() {
+    console.log(props);
+    return props.posts.map((post, index) => {
+      console.log(props);
+      return <Post post={post} key={post._id} url={props.url} />;
+    });
+  }
 
-    function displayPost() {
-        console.log(props)
-        return props.posts.map((post, index) => {
-            console.log(props)
-            return <Post post={post} key={post._id} url={props.url}/>;
-        });
-    }
-
-    return (
-        <div className="posts-group-container">
-            {displayPost()}
-        </div>
-    );
+  return <div className="posts-group-container">{displayPost()}</div>;
 };
 
 export default Posts;

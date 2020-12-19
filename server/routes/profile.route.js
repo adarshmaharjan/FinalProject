@@ -11,7 +11,8 @@ const {
 router.route('/post/:id').get(USER_PROFILE_POST);
 router.route('/info/:id').get(USER_PROFILE_INFO);
 router.route('/updatepost/:id').put(UPDATE_USER_POST);
-router.route('/updateUser/:id').put(USER_PROFILE_INFO);
+router.route('/updateUser/:id').put(UPDATE_USER_INFO);
 router.route('/deletepost/:id').delete(DELETE_USER_POST);
+
 
 module.exports = router

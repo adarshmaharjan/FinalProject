@@ -14,8 +14,9 @@ import priceFiltering from '../../utils/priceFilter';
 const SearchResult = (props) => {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [postPerPage] = useState(1);
+    const [postPerPage] = useState(2);
 
     useEffect(() => {
         const fetchPost = async (props) => {
@@ -24,9 +25,15 @@ const SearchResult = (props) => {
                 "http://localhost:5000/api/search/search-post",
                 props.data
             );
-            setPosts(res.data);
-            sessionStorage.setItem("contentFiltered",JSON.stringify(res.data));
-            setLoading(false);
+            if(res.data.length != 0){
+              setPosts(res.data);
+              sessionStorage.setItem("contentFiltered",JSON.stringify(res.data));
+              setLoading(false);
+            }else{
+               setLoading(false);
+               setStatus(true); 
+            }
+            console.log(res.data);
         };
 
         fetchPost(props);
@@ -57,7 +64,7 @@ const SearchResult = (props) => {
             <FilterBar onselect={filterOptions} />
             <Container>
                 <section className = "search-page-contents">
-                    <Post posts={currentPosts} loading={loading} url="/details/"/>
+                    <Post posts={currentPosts} loading={loading} url="/details/" status={status}/>
                     <Pagination
                 postPerPage={postPerPage}
                 totalPosts={posts.length}

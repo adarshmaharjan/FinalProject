@@ -3,6 +3,5 @@ const {addRoomPost, addHousePost, testPost}= require('../controllers/advertise.c
 
 router.route('/addRoom/:id').post(addRoomPost);
 router.route('/addHouse/:id').post(addHousePost);
-// router.route('/deletePost').post(deletePost);
 
 module.exports = router;

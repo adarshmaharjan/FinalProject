@@ -9,16 +9,16 @@ const { cloudinary } = require("../config/cloudinary");
  * @param {} res [json format of data]
  */
 const USER_PROFILE_POST = (req, res) => {
-    try {
-        Room.find({ createdBy: req.params.id }).then((data) => {
-            if (data) {
-                res.json(data);
-                console.log(data);
-            }
-        });
-    } catch (e) {
-        res.json("There seems to be some problem try refreshing your page");
-    }
+  try {
+    Room.find({ createdBy: req.params.id }).then((data) => {
+      if (data) {
+        res.json(data);
+        console.log(data);
+      }
+    });
+  } catch (e) {
+    res.json("There seems to be some problem try refreshing your page");
+  }
 };
 
 /**
@@ -28,9 +28,9 @@ const USER_PROFILE_POST = (req, res) => {
  * @param {} res
  */
 const USER_PROFILE_INFO = (req, res) => {
-    User.findById(req.params.id).then((data) => {
-        res.json(data);
-    });
+  User.findById(req.params.id).then((data) => {
+    res.json(data);
+  });
 };
 
 /**
@@ -40,10 +40,15 @@ const USER_PROFILE_INFO = (req, res) => {
  * @param {} res
  */
 const UPDATE_USER_INFO = (req, res) => {
-    User.findByIdAndUpdate({ _id: req.params.id }, { data }).then((data) => {
-        res.json({ message: "updated" });
-        res.json(data);
-    });
+  console.log(req.body, req.params.id);
+  const data = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+  User.findByIdAndUpdate(req.params.id, data).then((data) => {
+      console.log(data);
+      res.json({ message: "Info updated" });
+  });
 };
 
 /**
@@ -53,10 +58,11 @@ const UPDATE_USER_INFO = (req, res) => {
  * @param {} res
  */
 const UPDATE_USER_POST = (req, res) => {
-    Room.findByIdAndUpdate({ _id: req.params.id }, { data }).then((data) => {
-        res.json({ message: "Post successfully updated" });
-        res.json(data);
-    });
+  
+  Room.findByIdAndUpdate({ _id: req.params.id }, { data }).then((data) => {
+    res.json({ message: "Post successfully updated" });
+    res.json(data);
+  });
 };
 
 /**
@@ -66,24 +72,24 @@ const UPDATE_USER_POST = (req, res) => {
  * @param {} res
  */
 const DELETE_USER_POST = (req, res) => {
-    console.log(req.params.id);
-    Room.findByIdAndDelete(req.params.id)
-        .then((data) => {
-            console.log(data);
-            data.imageCollection.map((id) => {
-                cloudinary.uploader.destroy(id, (error, result) =>
-                    console.log(result, error)
-                );
-            });
-        })
-        .then(() => res.json("post deleted"))
-        .catch((err) => res.status(404).json("error" + err));
+  console.log(req.params.id);
+  Room.findByIdAndDelete(req.params.id)
+    .then((data) => {
+      console.log(data);
+      data.imageCollection.map((id) => {
+        cloudinary.uploader.destroy(id, (error, result) =>
+          console.log(result, error)
+        );
+      });
+    })
+    .then(() => res.json("post deleted"))
+    .catch((err) => res.status(404).json("error" + err));
 };
 
 module.exports = {
-    USER_PROFILE_POST,
-    USER_PROFILE_INFO,
-    UPDATE_USER_INFO,
-    UPDATE_USER_POST,
-    DELETE_USER_POST,
+  USER_PROFILE_POST,
+  USER_PROFILE_INFO,
+  UPDATE_USER_INFO,
+  UPDATE_USER_POST,
+  DELETE_USER_POST,
 };

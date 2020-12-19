@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import mapboxgl from "mapbox-gl";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -11,432 +12,454 @@ import "./formComponent.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 
 mapboxgl.accessToken =
-    "pk.eyJ1IjoiYWJzazEyMzQiLCJhIjoiY2s3Z3Z3azB6MDQyNzNmbzkxd3MwN3hnNyJ9.-paJt9fSR1rw0Wq0LwSmig";
+  "pk.eyJ1IjoiYWJzazEyMzQiLCJhIjoiY2s3Z3Z3azB6MDQyNzNmbzkxd3MwN3hnNyJ9.-paJt9fSR1rw0Wq0LwSmig";
 
 class Addroom extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: "",
-            name: "",
-            email: "",
-            number: 0,
-            location: "",
-            description: "",
-            coordinates: [0, 0],
-            bedroom: 0,
-            kitchen: 0,
-            toilet: 0,
-            livingRoom: 0,
-            price: 0,
-            furnished: "",
-            imageCollection: null,
-            previewSource: [],
-            lng: 85.314038,
-            lat: 27.70549,
-            zoom: 5,
-            //this is changed
-            facilities: [],
-        };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      name: "",
+      email: "",
+      number: 0,
+      type: "Room",
+      location: "",
+      description: "",
+      area: 0,
+      coordinates: [0, 0],
+      bedroom: 0,
+      kitchen: 0,
+      toilet: 0,
+      livingRoom: 0,
+      price: 0,
+      furnished: "",
+      imageCollection: null,
+      previewSource: [],
+      lng: 85.314038,
+      lat: 27.70549,
+      zoom: 5,
+      //this is changed
+      facilities: [],
+    };
 
-        this.onFileChange = this.onFileChange.bind(this);
-        this.onChangeInput = this.onChangeInput.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.onPreviewFile = this.onPreviewFile.bind(this);
-        //this is changed
-        this.onSelect = this.onSelect.bind(this);
-    }
-
-    componentDidMount() {
-        console.log(this.props.auth.user.id);
-        const map = new mapboxgl.Map({
-            container: this.mapContainer,
-            style: "mapbox://styles/mapbox/streets-v11",
-            center: [this.state.lng, this.state.lat],
-            zoom: this.state.zoom,
-        });
-
-        var geolocate = new mapboxgl.GeolocateControl({
-            positionOptions: {
-                enableHighAccuracy: true,
-            },
-            trackUserLocation: true,
-        });
-        map.addControl(geolocate);
-        map.on("move", () => {
-            this.setState({
-                lng: map.getCenter().lng.toFixed(4),
-                lat: map.getCenter().lat.toFixed(4),
-                zoom: map.getZoom().toFixed(2),
-            });
-        });
-        map.addControl(new mapboxgl.NavigationControl());
-        var marker = new mapboxgl.Marker({
-            draggable: true,
-        })
-            .setLngLat([84.124, 28.3949])
-            .addTo(map);
-
-        const onDragEnd = () => {
-            var lngLat = marker.getLngLat();
-            console.log(lngLat.lng, lngLat.lat);
-            this.setState({ coordinates: [lngLat.lng, lngLat.lat] });
-        };
-        marker.on("dragend", onDragEnd);
-
-        var geocoder = new MapboxGeocoder({
-            accessToken: mapboxgl.accessToken,
-            countries: "np",
-        });
-
-        geocoder.addTo("#location");
-        geocoder.on("result", (result) => {
-            console.log(result.result.text);
-            this.setState({ location: result.result.text });
-        });
-    }
-
-    onChangeLocation(e) {
-        console.log(e.target.value);
-        this.setState({ location: e.target.value });
-    }
-
-    onPreviewFile(file) {
-        for (let i = 0; i < file.length; i++) {
-            ((file) => {
-                const reader = new FileReader();
-                const blob = new Blob([file], { type: "image/png" });
-                reader.readAsDataURL(blob);
-                console.log(blob);
-                reader.onload = () => {
-                    let data = [...this.state.previewSource];
-                    data.push(reader.result);
-                    this.setState({ previewSource: data });
-                };
-            })(file[i]);
-        }
-    }
-
-    onChangeInput(e) {
-        if (e.target.type === "checkbox") {
-            this.setState({ [e.target.id]: e.target.checked });
-        } else {
-            this.setState({ [e.target.id]: e.target.value });
-        }
-        console.log(e.target.value);
-    }
-
-    onFileChange(e) {
-        let file = [];
-        file = [...e.target.files];
-        console.log(e.target.files[0]);
-        this.setState({ imageCollection: file });
-        this.onPreviewFile(file);
-    }
-
+    this.onFileChange = this.onFileChange.bind(this);
+    this.onChangeInput = this.onChangeInput.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.onPreviewFile = this.onPreviewFile.bind(this);
     //this is changed
-    onSelect(value) {
-        this.setState({ facilities: value });
-        console.log(this.state.facilities);
-    }
+    this.onSelect = this.onSelect.bind(this);
+  }
 
-    async onSubmit(e) {
-        e.preventDefault();
-        const data = {
-            name: this.state.name,
-            email: this.state.email,
-            number: parseInt(this.state.number),
-            title: this.state.title,
-            location: this.state.location,
-            description: this.state.description,
-            coordinates: {
-                latitude: this.state.coordinates[0],
-                longitude: this.state.coordinates[1],
-            },
-            rooms: {
-                bedroom: parseInt(this.state.bedroom),
-                kitchen: parseInt(this.state.kitchen),
-                toilet: parseInt(this.state.toilet),
-                livingRoom: parseInt(this.state.livingRoom),
-            },
-            furnished: this.state.furnished,
-            facilities: this.state.facilities,
-            price: parseInt(this.state.price),
-            imageCollection: JSON.stringify(this.state.previewSource),
+  componentDidMount() {
+    console.log(this.props.auth.user.id);
+    const map = new mapboxgl.Map({
+      container: this.mapContainer,
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: [this.state.lng, this.state.lat],
+      zoom: this.state.zoom,
+    });
+
+    var geolocate = new mapboxgl.GeolocateControl({
+      positionOptions: {
+        enableHighAccuracy: true,
+      },
+      trackUserLocation: true,
+    });
+    map.addControl(geolocate);
+    map.on("move", () => {
+      this.setState({
+        lng: map.getCenter().lng.toFixed(4),
+        lat: map.getCenter().lat.toFixed(4),
+        zoom: map.getZoom().toFixed(2),
+      });
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+    var marker = new mapboxgl.Marker({
+      draggable: true,
+    })
+      .setLngLat([84.124, 28.3949])
+      .addTo(map);
+
+    const onDragEnd = () => {
+      var lngLat = marker.getLngLat();
+      console.log(lngLat.lng, lngLat.lat);
+      this.setState({ coordinates: [lngLat.lng, lngLat.lat] });
+    };
+    marker.on("dragend", onDragEnd);
+
+    var geocoder = new MapboxGeocoder({
+      accessToken: mapboxgl.accessToken,
+      countries: "np",
+    });
+
+    geocoder.addTo("#location");
+    geocoder.on("result", (result) => {
+      console.log(result.result.text);
+      this.setState({ location: result.result.text });
+    });
+  }
+
+  onChangeLocation(e) {
+    console.log(e.target.value);
+    this.setState({ location: e.target.value });
+  }
+
+  onPreviewFile(file) {
+    for (let i = 0; i < file.length; i++) {
+      ((file) => {
+        const reader = new FileReader();
+        const blob = new Blob([file], { type: "image/png" });
+        reader.readAsDataURL(blob);
+        console.log(blob);
+        reader.onload = () => {
+          let data = [...this.state.previewSource];
+          data.push(reader.result);
+          this.setState({ previewSource: data });
         };
-        console.log(data);
-        console.log(typeof JSON.stringify(data));
-        axios
-            .post(
-                `http://localhost:5000/api/ad/addRoom/${this.props.auth.user.id}`,
-                data
-            )
-            .then((res) => console.log(res.data))
-            .catch((error) => {
-                console.log(error.response);
-            });
+      })(file[i]);
+    }
+  }
+
+  onChangeInput(e) {
+    if (e.target.type === "checkbox") {
+      this.setState({ [e.target.id]: e.target.checked });
+    } else {
+      this.setState({ [e.target.id]: e.target.value });
+    }
+    console.log(e.target.value);
+  }
+
+  onFileChange(e) {
+    let file = [];
+    file = [...e.target.files];
+    console.log(e.target.files[0]);
+    this.setState({ imageCollection: file });
+    this.onPreviewFile(file);
+  }
+
+  //this is changed
+  onSelect(value) {
+    this.setState({ facilities: value });
+    console.log(this.state.facilities);
+  }
+
+  async onSubmit(e) {
+    e.preventDefault();
+    const data = {
+      name: this.state.name,
+      email: this.state.email,
+      number: parseInt(this.state.number),
+      title: this.state.title,
+      location: this.state.location,
+      area: parseInt(this.state.area),
+      description: this.state.description,
+      coordinates: {
+        latitude: this.state.coordinates[0],
+        longitude: this.state.coordinates[1],
+      },
+      rooms: {
+        bedroom: parseInt(this.state.bedroom),
+        kitchen: parseInt(this.state.kitchen),
+        toilet: parseInt(this.state.toilet),
+        livingRoom: parseInt(this.state.livingRoom),
+      },
+      furnished: this.state.furnished,
+      facilities: this.state.facilities,
+      price: parseInt(this.state.price),
+      imageCollection: JSON.stringify(this.state.previewSource),
+    };
+    console.log(data);
+    console.log(typeof JSON.stringify(data));
+
+    var url;
+    if (this.state.type == "Room") {
+      url = "http://localhost:5000/api/ad/addRoom";
+    } else {
+      url = "http://localhost:5000/api/ad/addHouse";
     }
 
-    render() {
-        const options = ["CableTv", "Parking", "Internet", "Water-Supply"];
-        return (
-            <section className="form-section" style={{}}>
-                <Container>
-                    <div className="form-section-holder">
-                        <form
-                            onSubmit={this.onSubmit}
-                            encType="multipart/form-data"
-                        >
-                            <Row>
-                                <Col>
-                                    <label htmlFor="title">Title</label>
+    axios
+      .post(`${url}/${this.props.auth.user.id}`, data)
+      .then((res) =>
+        toast.info(`🦄 ${res.data.message}`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+      )
+      .catch((error) => {
+        console.log(error.response);
+      });
+  }
 
-                                    <input
-                                        type="text"
-                                        name="title"
-                                        id="title"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.title}
-                                    />
-                                </Col>
+  render() {
+    const options = ["CableTv", "Parking", "Internet", "Water-Supply"];
+    return (
+      <section className="form-section" style={{}}>
+        <Container>
+          <div className="form-section-holder">
+            <form onSubmit={this.onSubmit} encType="multipart/form-data">
+              <Row>
+                <Col>
+                  <label htmlFor="Type">Type</label>
+                  <select
+                    id="type"
+                    value={this.state.type}
+                    id="type"
+                    onChange={this.onChangeInput}
+                  >
+                    <option value="House">House</option>
+                    <option value="Room">Room</option>
+                  </select>
+                </Col>
+                <Col>
+                  <label htmlFor="title">Title</label>
 
-                                <Col>
-                                    <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    onChange={this.onChangeInput}
+                    value={this.state.title}
+                  />
+                </Col>
 
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        id="name"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.name}
-                                    />
-                                </Col>
-                            </Row>
+                <Col>
+                  <label htmlFor="name">Name</label>
 
-                            <Row>
-                                <Col>
-                                    <label htmlFor="email">email</label>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    onChange={this.onChangeInput}
+                    value={this.state.name}
+                  />
+                </Col>
+              </Row>
 
-                                    <input
-                                        type="text"
-                                        name="email"
-                                        id="email"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.email}
-                                    />
-                                </Col>
+              <Row>
+                <Col>
+                  <label htmlFor="email">email</label>
 
-                                <Col>
-                                    <label htmlFor="number">number</label>
+                  <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    onChange={this.onChangeInput}
+                    value={this.state.email}
+                  />
+                </Col>
 
-                                    <input
-                                        type="number"
-                                        name="number"
-                                        id="number"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.number}
-                                    />
-                                </Col>
-                            </Row>
+                <Col>
+                  <label htmlFor="number">number</label>
 
-                            <Row>
-                                <Col>
-                                    <label htmlFor="location">
-                                        location of room
-                                    </label>
+                  <input
+                    type="number"
+                    name="number"
+                    id="number"
+                    onChange={this.onChangeInput}
+                    value={this.state.number}
+                  />
+                </Col>
+              </Row>
 
-                                    <div
-                                        id="location"
-                                        value={this.state.location}
-                                    />
-                                </Col>
+              <Row>
+                <Col>
+                  <label htmlFor="location">location of room</label>
 
-                                <Col>
-                                    <label htmlFor="description">
-                                        description
-                                    </label>
+                  <div id="location" value={this.state.location} />
+                </Col>
 
-                                    <input
-                                        type="text"
-                                        name="description"
-                                        id="description"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.description}
-                                    />
-                                </Col>
-                            </Row>
+                <Col>
+                  <label htmlFor="description">description</label>
 
-                            <Row>
-                                <Col>
-                                    <label htmlFor="bedroom">
-                                        Number of bedroom
-                                    </label>
+                  <input
+                    type="text"
+                    name="description"
+                    id="description"
+                    onChange={this.onChangeInput}
+                    value={this.state.description}
+                  />
+                </Col>
+                {this.state.type == "House" && (
+                  <Col>
+                    <label htmlFor="area">Area Sqft</label>
+                    <input
+                      type="number"
+                      name="area"
+                      id="area"
+                      onChange={this.onChangeInput}
+                      value={this.state.area}
+                    />
+                  </Col>
+                )}
+              </Row>
 
-                                    <input
-                                        type="number"
-                                        name="bedroom"
-                                        id="bedroom"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.bedroom}
-                                    />
-                                </Col>
+              <Row>
+                <Col>
+                  <label htmlFor="bedroom">Number of bedroom</label>
 
-                                <Col>
-                                    <label htmlFor="title">
-                                        Number of kitchen
-                                    </label>
+                  <input
+                    type="number"
+                    name="bedroom"
+                    id="bedroom"
+                    onChange={this.onChangeInput}
+                    value={this.state.bedroom}
+                  />
+                </Col>
 
-                                    <input
-                                        type="number"
-                                        name="kitchen"
-                                        id="kitchen"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.kitchen}
-                                    />
-                                </Col>
-                            </Row>
+                <Col>
+                  <label htmlFor="title">Number of kitchen</label>
 
-                            <Row>
-                                <Col>
-                                    <label htmlFor="title">
-                                        Number of toilet
-                                    </label>
+                  <input
+                    type="number"
+                    name="kitchen"
+                    id="kitchen"
+                    onChange={this.onChangeInput}
+                    value={this.state.kitchen}
+                  />
+                </Col>
+              </Row>
 
-                                    <input
-                                        type="number"
-                                        name="toilet"
-                                        id="toilet"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.toilet}
-                                    />
-                                </Col>
+              <Row>
+                <Col>
+                  <label htmlFor="title">Number of toilet</label>
 
-                                <Col>
-                                    <label htmlFor="title">
-                                        Number of livingRoom
-                                    </label>
+                  <input
+                    type="number"
+                    name="toilet"
+                    id="toilet"
+                    onChange={this.onChangeInput}
+                    value={this.state.toilet}
+                  />
+                </Col>
 
-                                    <input
-                                        type="number"
-                                        name="livingRoom"
-                                        id="livingRoom"
-                                        min="0"
-                                        max="2"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.livingRoom}
-                                    />
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <label htmlFor="furnished">Furnished</label>
+                <Col>
+                  <label htmlFor="title">Number of livingRoom</label>
 
-                                    <select
-                                        id="furnished"
-                                        name="furnish"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.furnished}
-                                    >
-                                        <option value="Furnished">
-                                            Furnished
-                                        </option>
-                                        <option value="Not furnished">
-                                            Not Furnished
-                                        </option>
-                                        <option value="Semi furnished">
-                                            Semi Furnished
-                                        </option>
-                                    </select>
-                                </Col>
+                  <input
+                    type="number"
+                    name="livingRoom"
+                    id="livingRoom"
+                    min="0"
+                    max="2"
+                    onChange={this.onChangeInput}
+                    value={this.state.livingRoom}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <label htmlFor="furnished">Furnished</label>
 
-                                <Col>
-                                    <label htmlFor="facilities">
-                                        Facilities
-                                    </label>
+                  <select
+                    id="furnished"
+                    name="furnish"
+                    onChange={this.onChangeInput}
+                    value={this.state.furnished}
+                  >
+                    <option value="Furnished">Furnished</option>
+                    <option value="Not furnished">Not Furnished</option>
+                    <option value="Semi furnished">Semi Furnished</option>
+                  </select>
+                </Col>
 
-                                    <Multiselect
-                                        options={options}
-                                        isObject={false}
-                                        onSelect={this.onSelect}
-                                        onRemove={this.onSelect}
-                                    />
-                                </Col>
-                            </Row>
+                <Col>
+                  <label htmlFor="facilities">Facilities</label>
 
-                            <Row>
-                                <Col>
-                                    <label htmlFor="title">price </label>
+                  <Multiselect
+                    options={options}
+                    isObject={false}
+                    onSelect={this.onSelect}
+                    onRemove={this.onSelect}
+                  />
+                </Col>
+              </Row>
 
-                                    <input
-                                        type="number"
-                                        name="price"
-                                        id="price"
-                                        onChange={this.onChangeInput}
-                                        value={this.state.price}
-                                    />
-                                </Col>
+              <Row>
+                <Col>
+                  <label htmlFor="title">price </label>
 
-                                <Col>
-                                    <label htmlFor="images">
-                                        Upload multiple images
-                                    </label>
+                  <input
+                    type="number"
+                    name="price"
+                    id="price"
+                    onChange={this.onChangeInput}
+                    value={this.state.price}
+                  />
+                </Col>
 
-                                    <input
-                                        type="file"
-                                        id="fileInput"
-                                        name="image"
-                                        onChange={this.onFileChange}
-                                        multiple
-                                    />
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <label htmlFor="map">
-                                        Drag the marker to the location
-                                    </label>
-                                    <div className="map-content">
-                                        <div
-                                            ref={(el) =>
-                                                (this.mapContainer = el)
-                                            }
-                                            className="mapContainer"
-                                        ></div>
-                                    </div>
-                                </Col>
-                            </Row>
+                <Col>
+                  <label htmlFor="images">Upload multiple images</label>
 
-                            <Row>
-                                <Col>
-                                    <input type="submit" value="Submit" />
-                                </Col>
-                            </Row>
-                        </form>
-                        {this.state.previewSource[0] &&
-                            this.state.previewSource.map((data, index) => (
-                                <img
-                                    src={data}
-                                    key={index}
-                                    alt="choosen"
-                                    style={{ height: "300px" }}
-                                />
-                            ))}
-                    </div>
-                </Container>
-            </section>
-        );
-    }
+                  <input
+                    type="file"
+                    id="fileInput"
+                    name="image"
+                    onChange={this.onFileChange}
+                    multiple
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <label htmlFor="map">Drag the marker to the location</label>
+                  <div className="map-content">
+                    <div
+                      ref={(el) => (this.mapContainer = el)}
+                      className="mapContainer"
+                    ></div>
+                  </div>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col>
+                  <input type="submit" value="Submit" />
+                </Col>
+              </Row>
+            </form>
+            {this.state.previewSource[0] &&
+              this.state.previewSource.map((data, index) => (
+                <img
+                  src={data}
+                  key={index}
+                  alt="choosen"
+                  style={{ height: "300px" }}
+                />
+              ))}
+          </div>
+        </Container>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </section>
+    );
+  }
 }
 
 // export default Addroom;
 Addroom.propTypes = {
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-    auth: state.auth,
-    errors: state.errors,
+  auth: state.auth,
+  errors: state.errors,
 });
 
 export default connect(mapStateToProps)(Addroom);
