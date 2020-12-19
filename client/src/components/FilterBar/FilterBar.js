@@ -49,7 +49,7 @@ const FilterBar = (props) => {
                         </div>
                     )}
                     <div className="filter-bar-content">
-                        <button class="btn-filter" onClick={onSelect}>Filter</button>
+                        <button className="btn-filter" onClick={onSelect}>Filter</button>
                     </div>
                 </nav>
             </Container>

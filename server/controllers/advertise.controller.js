@@ -72,15 +72,15 @@ const addRoomPost = async(req, res, next) => {
 
 const addHousePost = async(req, res, next) => {
     let _ = req.body;
-    console.log(_)
     try{
-        const datas = JSON.parse(_.data);
+        const datas = JSON.parse(_.imageCollection);
         const arr = [];
+        console.log("asdfas");
         await Promise.all(
             datas.map(async(data)=>{
                 let id = uuidv4();
                 arr.push(id);
-                let response = cloudinay.uploader.upload(data,{
+                let response = cloudinary.uploader.upload(data,{
                     upload_preset:'dev_setups',// changes will be made later on
                     public_id:id
                 });
@@ -90,25 +90,50 @@ const addHousePost = async(req, res, next) => {
                 const imageCollection = arr;
                 const newHouse = new House({
                     createdBy: req.params.id,
+                    name:_.name,
+                    email:_.email,
+                    number:_.number,
                     title: _.title,
                     location: _.location, 
+                    description:_.description,
                     coordinates: {
                         latitude: _.coordinates.latitude,
                         longitude: _.coordinates.longitude,
                     },
-                    house:{
-                        rooms:_.house.rooms,
-                        area: _.house.area,
-                        floors: _.house.floors,
+                    area: _.area,
+                    rooms:{
                         bedroom: _.rooms.bedroom,
                         kitchen: _.rooms.kitchen,
                         toilet: _.rooms.toilet,
-                        livingRoom: _.rooms.livingRoom
+                        livingRoom:_.rooms.livingRoom
                     },
+                    facilities:_.facilities,
                     furnished:_.furnished,
                     price:_.price,
                     imageCollection: imageCollection
                 });
+                console.log(newHouse);
+                // const newHouse = new House({
+                //     createdBy: req.params.id,
+                //     title: _.title,
+                //     location: _.location, 
+                //     coordinates: {
+                //         latitude: _.coordinates.latitude,
+                //         longitude: _.coordinates.longitude,
+                //     },
+                //     house:{
+                //         rooms:_.house.rooms,
+                //         area: _.house.area,
+                //         floors: _.house.floors,
+                //         bedroom: _.rooms.bedroom,
+                //         kitchen: _.rooms.kitchen,
+                //         toilet: _.rooms.toilet,
+                //         livingRoom: _.rooms.livingRoom
+                //     },
+                //     furnished:_.furnished,
+                //     price:_.price,
+                //     imageCollection: imageCollection
+                // });
                 newHouse.save()
                     .then(()=> res.json('post added'))
                     .catch(err => res.status(400).json('error' + err));
