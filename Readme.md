@@ -13,3 +13,5 @@ Run npm install inside client server directory
 3. In the root folder run 
    npm run dev
    and open http://localhost:3000 on browser 
+   
+4. Content based filtering
