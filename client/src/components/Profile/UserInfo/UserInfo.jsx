@@ -16,7 +16,7 @@ const UserInfo = (props) => {
   useEffect(() => {
     const fetchInfo = async (props) => {
       const res = await axios.get(
-        `http://localhost:5000/api/profile/info/${props.auth.user.id}`
+        `/api/profile/info/${props.auth.user.id}`
       );
       console.log(res.data);
       setName(res.data.name);
@@ -34,7 +34,7 @@ const UserInfo = (props) => {
     };
     axios
       .put(
-        `http://localhost:5000/api/profile/updateUser/${props.auth.user.id}`,
+        `/api/profile/updateUser/${props.auth.user.id}`,
         newInfo
       )
       .then((res) =>

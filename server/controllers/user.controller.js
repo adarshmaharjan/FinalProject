@@ -138,7 +138,7 @@ const loginUser = (req, res) => {
             } else {
                 return res
                     .status(400)
-                    .json({ passwordincorrect: "Passsword incorrect" });
+                    .json({error: "username or passsword incorrect" });
             }
             console.log("logged");
         });

@@ -174,9 +174,9 @@ class Addroom extends Component {
 
     var url;
     if (this.state.type == "Room") {
-      url = "http://localhost:5000/api/ad/addRoom";
+      url = "/api/ad/addRoom";
     } else {
-      url = "http://localhost:5000/api/ad/addHouse";
+      url = "/api/ad/addHouse";
     }
 
     axios
