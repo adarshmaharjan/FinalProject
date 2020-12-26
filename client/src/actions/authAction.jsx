@@ -11,10 +11,11 @@ import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from "./types";
  */
 export const registerUser = (userData, history) => (dispatch) => {
     axios
-        .post("http://localhost:5000/api/user/register", userData)
-        .then((res) => history.push("/login"))
+        .post("/api/user/register", userData)
+        .then((res) => history.push({pathname:"/login", state:'verify your email'}))
         .catch((err) =>
-            dispatch({ type: GET_ERRORS, payload: err.response.data })
+            // dispatch({ type: GET_ERRORS, payload: err.response.data })
+            dispatch({ type: GET_ERRORS, payload: err })
         );
 };
 
@@ -25,7 +26,7 @@ export const registerUser = (userData, history) => (dispatch) => {
  */
 export const loginUser = (userData) => (dispatch) => {
     axios
-        .post("http://localhost:5000/api/user/login", userData)
+        .post("/api/user/login", userData)
         .then((res) => {
             console.log(res);
             const { token } = res.data;
@@ -43,10 +44,10 @@ export const loginUser = (userData) => (dispatch) => {
         .then((data) => {
             console.log(data);
         })
-        // .catch((err) => {
-        //     console.log(err);
-        //     dispatch({ type: GET_ERRORS, payload: err.response.data});
-        // });
+        .catch((err) => {
+            console.log(err);
+            dispatch({ type: GET_ERRORS, payload: err});
+        });
 };
 
 /**

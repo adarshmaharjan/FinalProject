@@ -191,7 +191,7 @@ class EditPost extends Component {
     console.log(data);
     console.log(typeof JSON.stringify(data));
     axios
-      .post("http://localhost:5000/api/ad/addRoom", data)
+      .post("/api/ad/addRoom", data)
       .then((res) => console.log(res.data))
       .catch((error) => {
         console.log(error.response);
@@ -201,7 +201,7 @@ class EditPost extends Component {
   onDelete(e) {
     axios
       .delete(
-        `http://localhost:5000/api/profile/deletepost/${this.props.location.state._id}`
+        `/api/profile/deletepost/${this.props.location.state._id}`
       )
       .then((res) => console.log(res.data))
       .catch((error) => console.log(error.response));

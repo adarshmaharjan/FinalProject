@@ -17,7 +17,7 @@ const UserPosts = (props) => {
         console.log(props.auth.user.id);
         const fetchPost = async (props) => {
             const res = await axios.get(
-                `http://localhost:5000/api/profile/post/${props.auth.user.id}`
+                `/api/profile/post/${props.auth.user.id}`
             );
             setPosts(res.data);
         };
