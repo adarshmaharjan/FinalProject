@@ -1,21 +1,15 @@
 .reg-contents {
     margin-top: 58px;
     height: 100vh;
-    background-color: #F8F8F8;
-    position: relative;
+    background-color: #ebebeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
    
 }
 .reg-contents form{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: #f1f1f1;  
     /* padding: 200px; */
-    width: 500px;
-    padding: 150px 30px;
-    box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+    width: 50%;
 }
 .reg-contents form input[type = text],
 .reg-contents form input[type = tel],
@@ -24,7 +18,7 @@
     display: inline-block;
     width: 90%;
     padding: 10px 15px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 
 }
 .row::after{

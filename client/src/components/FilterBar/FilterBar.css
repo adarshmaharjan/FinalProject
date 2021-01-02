@@ -10,17 +10,17 @@
 .filter-bar-contents{
     display: flex;
     height: 100%;
+    justify-content: flex-start;
     align-items: center;
     height: 40px;
 }
+
 .filter-bar-content{
     /* vertical-align: middle; */
 }
 .filter-bar-content label{
     display: inline-block;
     padding: 0 8px;
-    
-
 }
 
 .filter-bar-content label input{
@@ -36,6 +36,10 @@
     padding-left: 4px;
 
 }
+.filter-bar-content select{
+    padding: 4px ;
+    outline: none;
+}
 .filter-bar-contents label input[type = 'number']::-webkit-outer-spin-button,
 .filter-bar-contents label input[type = 'number']::-webkit-inner-spin-button{
     -webkit-appearance: none;
@@ -44,7 +48,7 @@
 
 .btn-filter{
     margin-left:20px;
-    background-color:#4CF926;
+    background-color:#b7b7b7;
     padding-right:10px;
     padding-left:10px;
     border-radius:5px ;

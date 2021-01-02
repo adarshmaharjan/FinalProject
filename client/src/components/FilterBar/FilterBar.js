@@ -18,7 +18,7 @@ const FilterBar = (props) => {
                 <nav className="filter-bar-contents">
                     <div className="filter-bar-content">
                         <label className="filter-text">Filter By</label>
-                            <select onChange={e=>setSelected(e.target.value)} value={selected}>
+                        <select onChange={e=>setSelected(e.target.value)} value={selected}>
                             <option value="Content">Content Based</option>
                             <option value="Price">Price Based</option>
                         </select>

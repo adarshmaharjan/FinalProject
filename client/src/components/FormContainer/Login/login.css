@@ -1,21 +1,17 @@
 .login-contents {
-    margin-top: 45px;
+    margin-top: 60px;
     height: 100vh;
-    background-color: #F8F8F8;
-    position: relative;
-   
+    background-color: #ebebeb;
+    /* position: relative; */
+    /* display: table */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .login-contents form{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: #f1f1f1;  
-    /* padding: 200px; */
-    width: 500px;
-    padding: 150px 30px;
-    box-shadow: 5px 5px rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
+    /* text-align: center; */
+    padding: 16px;
+    width: 50%;
 }
 .login-contents form input[type = email],
 .login-contents form input[type = password]{
@@ -37,6 +33,13 @@
     float: left;
     width: 75%;
     margin-top: 6px;
+}
+.login-contents input[type = "email"],
+.login-contents input[type = "password"]{
+    display: inline-block;
+    width: 90%;
+    padding: 10px 15px;
+
 }
 .login-contents form input[type="submit"] {
     width: 100px;
