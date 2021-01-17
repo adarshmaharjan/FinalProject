@@ -1,17 +1,47 @@
 .post-detail-container{
-    margin:0;
-    padding:0;
-    width:100%;
+    margin-top:60px;
+    background-color: #ebebeb;
+
+    /* padding:0; */
+    /* width:100%; */
 }
 
 .image-container{
-    width:70%;
-    margin:0 auto;
+    
+    padding: 36px  0;
 }
-
+.basic-info{
+    font-size: 18px;
+    padding: 0 16px;
+    
+}
+.basic-info a{
+    text-decoration: underline;
+    color: #000;
+    transition: all 0.45s ease-in-out;
+}
+.basic-info a:hover,
+.basic-info a:active{
+    color: blue;
+}
+.post-description{
+    margin: 16px 0;
+}
+.post-description p{
+    margin: 0 16px;
+    font-size: inherit ;
+}
 #facilities{
-    display:flex;
-    flex-direction:column;
+    /* display:flex; */
+    text-transform: capitalize;
+    
+}
+#facilities li{
+    padding: 0 16px;
+}
+.post-room-facilities ul li{
+    /* list-style-type: disc; */
+    padding: 0 16px;
 }
 
 /* warning chaning this will result in css breaking of map */
