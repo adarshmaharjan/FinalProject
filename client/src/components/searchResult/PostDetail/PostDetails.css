@@ -52,3 +52,45 @@
     margin:0;
     padding:0;
 }
+
+/* this is new */ 
+.btn-cmnt-add{
+  padding:5px;
+  border-radius: 8px;
+  border-style:solid;
+}
+
+.btn-enabled{
+  color:black;
+  background-color: grey;
+}
+
+.btn-disabled{
+  color:red;
+  background-color: blue;
+}
+
+.btn-cmnt-add:focus{
+  outline-style: none;
+}
+
+#comment{
+  border-radius:15px;
+  padding:10px;
+  resize:none;
+}
+
+#comment:focus{
+  outline-style: none;
+}
+
+.comment{
+  margin-top:20px;
+  width:500px;
+  border:0.5px solid black;
+}
+
+.comment-flex-container{
+  display:flex;
+  flex-direction:row;
+}
