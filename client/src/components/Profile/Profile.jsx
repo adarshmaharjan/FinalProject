@@ -24,6 +24,8 @@ const Profile = () => {
                     <Tab eventKey="profile" title="Profile">
                         <UserInfo/> 
                     </Tab>
+                    <Tab eventKey="answer" title="Q&A">
+                    </Tab>
                 </Tabs>
     
             </Container>
