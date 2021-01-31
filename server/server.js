@@ -11,6 +11,7 @@ const AdRouter = require('./routes/advertisement.route');
 const SearchRouter = require('./routes/search.route');
 const CommentRouter = require('./routes/comment.route');
 const ProfileRouter = require('./routes/profile.route');
+const AdminRouter = require('./routes/admin.route');
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use('/api/ad', AdRouter);
 app.use('/api/search', SearchRouter);
 app.use('/api/comment', CommentRouter);
 app.use('/api/profile',ProfileRouter);
+app.use('/api/admin',AdminRouter);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, '../client', 'build')));
