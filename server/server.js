@@ -33,6 +33,7 @@ app.use(function(req, res, next) {
 
 InitiateMongoServer();
 
+app.use('/admin',AdminRouter);
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit:"50mb",extended: false}));
 app.use(cors());
@@ -42,7 +43,8 @@ app.use('/api/ad', AdRouter);
 app.use('/api/search', SearchRouter);
 app.use('/api/comment', CommentRouter);
 app.use('/api/profile',ProfileRouter);
-app.use('/api/admin',AdminRouter);
+// app.use('/api/admin',AdminRouter);
+
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, '../client', 'build')));

@@ -1,8 +1,11 @@
+const AdminBro = require('admin-bro');
+const AdminBroExpress = require('@admin-bro/express');
 const router = require("express").Router();
 const House = require("../models/house.model.js");
 const Room = require("../models/rooms.model.js");
 const { v4: uuidv4 } = require("uuid");
 const { cloudinary } = require("../config/cloudinary");
+
 
 const HouseFetch = (req, res) => {
   House.find({}).then((data) => {
