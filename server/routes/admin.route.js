@@ -1,12 +1,33 @@
-const router = require('express').Router();
-const {HouseFetch, RoomFetch, DeletePost, FetchRoomByLocation, FetchHouseByLocation}= require('../controllers/admin.controller'); 
-
-router.route('/fetch-house/:id').get(HouseFetch);
-router.route('/fetch-room/:id').get(RoomFetch);
-router.route('/post-delete/:id').delete(DeletePost);
-router.route('/house-location/:id').get(FetchHouseByLocation);
-router.route('/room-location/:id').get(FetchRoomByLocation);
+const AdminBro = require('admin-bro')
+const AdminBroMongoose = require('@admin-bro/mongoose')
+const AdminBroExpress = require('@admin-bro/express')
+const House = require("../models/house.model.js");
+const Room = require("../models/rooms.model.js");
+const mongoose = require('mongoose')
 
 
+AdminBro.registerAdapter(AdminBroMongoose);
+
+const Bro = new AdminBro({
+  databases:[mongoose],
+  rootPath:'/admin'
+})
+
+const ADMIN = {
+  email: process.env.ADMIN_EMAIL || 'admin@project.com',
+  password: process.env.ADMIN_PASSWORD || 'password1',
+}
+
+
+const router = AdminBroExpress.buildAuthenticatedRouter(Bro, {
+  cookieName: process.env.ADMIN_COOKIE_NAME || 'admin-bro',
+  cookiePassword: process.env.ADMIN_COOKIE_PASS || 'supersecret-and-long-password-for-a-cookie-in-the-browser',
+  authenticate: async (email, password) => {
+    if (email === ADMIN.email && password === ADMIN.password) {
+      return ADMIN
+    }
+    return null
+  }
+})
 
 module.exports = router;
