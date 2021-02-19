@@ -18,11 +18,12 @@ const ADD_COMMENT = async (req, res) => {
 };
 
 const ANS_COMMENT = async (req, res) => {
+  console.log(req.body.answer);
   var data = {
     answer: req.body.answer,
     isAnswered: true,
   };
-  Comment.findOneAndUpdate({ _id: req.params.id }, data).then((res) => {
+  Comment.findOneAndUpdate({ _id: req.params.id }, data).then(() => {
     res.json("Comment answered successfully");
   });
   console.log("comment is answered");
@@ -32,6 +33,8 @@ const LOAD_COMMENT = async (req, res) => {
   Comment.find({ postId: req.params.id }).then((data) => {
     return res.json(data);
   });
+  
 };
+
 
 module.exports = { ADD_COMMENT, ANS_COMMENT , LOAD_COMMENT};

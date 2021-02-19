@@ -2,13 +2,13 @@ import React, {useState} from "react";
 import { Tabs, Tab, Container } from "react-bootstrap";
 import UserPosts from './UserPosts/UserPosts.jsx';
 import UserInfo from './UserInfo/UserInfo.jsx';
+import AnswerComment from './AnswerComment/AnswerComment.jsx';
 import './Profile.css';
 
 
 
 const Profile = () => {
-
-    const [key, setKey] = useState('profile');
+    const [key, setKey] = useState('answer');
     return (
         <section className = "tab-section">
             <Container>
@@ -25,6 +25,7 @@ const Profile = () => {
                         <UserInfo/> 
                     </Tab>
                     <Tab eventKey="answer" title="Q&A">
+                      <AnswerComment/>
                     </Tab>
                 </Tabs>
     

@@ -1,5 +1,7 @@
 const Room = require("../models/rooms.model.js");
+const House = require("../models/house.model");
 const User = require("../models/user.model");
+const Comment = require("../models/comment.model");
 const { cloudinary } = require("../config/cloudinary");
 
 /**
@@ -46,8 +48,8 @@ const UPDATE_USER_INFO = (req, res) => {
     email: req.body.email,
   };
   User.findByIdAndUpdate(req.params.id, data).then((data) => {
-      console.log(data);
-      res.json({ message: "Info updated" });
+    console.log(data);
+    res.json({ message: "Info updated" });
   });
 };
 
@@ -58,7 +60,6 @@ const UPDATE_USER_INFO = (req, res) => {
  * @param {} res
  */
 const UPDATE_USER_POST = (req, res) => {
-  
   Room.findByIdAndUpdate({ _id: req.params.id }, { data }).then((data) => {
     res.json({ message: "Post successfully updated" });
     res.json(data);
@@ -86,10 +87,45 @@ const DELETE_USER_POST = (req, res) => {
     .catch((err) => res.status(404).json("error" + err));
 };
 
+const ANSWER_USER_COMMENTS = (req, res) => {
+  console.log("ansercomment");
+  Room.find({ createdBy: req.params.id })
+    .then(async (data) => {
+      let datum1 = await Promise.all(
+        data.map(async (item) => {
+          return await Comment.find({ postId: item._id }).then((comment) => {
+            // console.log(comment);
+            return {
+              title: item.title,
+              image: item.imageCollection[0],
+              comment: comment,
+            };
+          });
+        })
+      );
+      return datum1;
+    })
+    .then((datum1) => {
+      House.find({ createdBy: req.params.id }).then(async (data) => {
+        let datum2 = await Promise.all(data.map(async (item) => {
+          return await Comment.find({ postId: item._id }).then((comment) => {
+             return {
+              title: item.title,
+              image: item.imageCollection[0],
+              comment: comment,
+            };
+          });
+        }));
+        res.json([...datum1, ...datum2]);
+      });
+    })
+};
+
 module.exports = {
   USER_PROFILE_POST,
   USER_PROFILE_INFO,
   UPDATE_USER_INFO,
   UPDATE_USER_POST,
   DELETE_USER_POST,
+  ANSWER_USER_COMMENTS,
 };
