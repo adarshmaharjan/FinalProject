@@ -57,7 +57,7 @@ class Login extends React.Component {
   // }
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push({
-        pathname: "/form",
+        pathname: "/profile",
         state: nextProps.auth,
       });
     }
