@@ -118,6 +118,7 @@ const BannerSearch = (props) => {
   return (
     <main>
       <section className="banner">
+
         <Container>
           <div className="banner-container">
             <h1>
@@ -247,20 +248,17 @@ const BannerSearch = (props) => {
           </div>
         </Container>
       </section>
-      <section>
+      
+      <section className = "recent">
         <Container>
-          <Row>
-            <div>
-              <h3>Room Listing</h3>
-            </div>
+          <h3>Room Listing</h3>
+          <Row> 
+            {loadRoom()}
           </Row>
-          <Row>{loadRoom()}</Row>
+          <h3>House Listing</h3>
           <Row>
-            <div>
-              <h3>House Listing</h3>
-            </div>
+            {loadHouse()}
           </Row>
-          <Row>{loadHouse()}</Row>
         </Container>
       </section>
     </main>
@@ -276,16 +274,20 @@ const navigate = (props) => {
 };
 
 const Posts = (props) => (
-  <Col onClick={() => navigate(props)}  className="post-card">
-    <div className="img-container">
-      <img
-        src={`https://res.cloudinary.com/ds6o6pq2w/image/upload/v1607069456/images/${props.post.imageCollection[0]}.jpg`}
-        alt="#"
-      />
+  <Col onClick={() => navigate(props)} >
+
+    <div className = "post-card">
+      <div className="post-card-img-container">
+        <img
+          src={`https://res.cloudinary.com/ds6o6pq2w/image/upload/v1607069456/images/${props.post.imageCollection[0]}.jpg`}
+          alt="#"
+        />
+      </div>
+
+      <div className="recent-content-item recent-content-title">{props.post.title}</div>
+      <div className = "recent-content-item recent-content-location">{props.post.location}</div>
+      <div className = "recent-content-item recent-content-price">{props.post.price}</div>
     </div>
-    <h2 className="search-page-title">{props.post.title}</h2>
-    <div>{props.post.location}</div>
-    <div>{props.post.price}</div>
   </Col>
 );
 

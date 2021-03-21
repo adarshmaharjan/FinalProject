@@ -114,16 +114,66 @@ main{
 
 /*-----------Latest Posts-----------*/
 
-img{
-  max-width:100%;
-  max-height:100%;
+.post-card-img-container{
+    height: 200px;
 }
-
-.img-container{
+.post-card img{
+  width:100%;
   height:200px;
+  object-fit: fill;
+}
+/* My CSS for recent contents*/
+
+.recent{
+    background-color: #ebebeb;
+    padding: 36px 0;
+    
 }
 
-.post-card{
-  margin-left:10px;
-  border:1px solid black;
+.recent h3{
+    margin: 36px 0;
+    position: relative;
 }
+.recent h3::after{
+    content: ' ';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.post-card{
+    padding: 8px;
+    transition: 0.3s all ease-in-out;
+}
+.post-card:hover,
+.post-card:active{
+    cursor: pointer;
+    opacity: 0.9;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.16), 0 2px 5px 0 rgba(0,0,0,.26);
+}
+.recent-content-item{
+    /* margin-bottom: 4px; */
+    text-align: center;
+    margin-top: 4px;
+}
+.recent-content-title{
+    
+    margin-top : 8px;
+    font-size: 12px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.recent-content-location,
+.recent-content-price{
+    font-size: 12px;
+    font-weight: 600;
+}
+.recent-content-price{
+    margin-top: 0;
+}
+
+
+

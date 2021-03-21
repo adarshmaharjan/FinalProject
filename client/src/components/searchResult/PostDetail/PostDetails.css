@@ -1,19 +1,51 @@
 .post-detail-container{
     margin-top:60px;
     background-color: #ebebeb;
-
-    /* padding:0; */
-    /* width:100%; */
+    padding-bottom: 16px;
 }
+.post-detail-container h2{
+  padding-top: 36px;
+  position: relative;
+}
+.post-detail-container h2:after{
+  content: ' ';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
 
+}
+.post-detail-content{
+  margin-top: 16px;
+}
 .image-container{
-    
-    padding: 36px  0;
+  padding-top: 8px;
 }
-.basic-info{
-    font-size: 18px;
-    padding: 0 16px;
-    
+.post-title{
+  padding-left: 8px;
+}
+.post-title h5,
+.post-description h5,
+.post-room-state h5,
+.post-room-facilities h5,
+.post-room-location-container h5,
+.post-room-comment{
+  text-transform: capitalize;
+  text-decoration: underline;
+  letter-spacing: 0.5px;
+}
+.basic-info,
+.post-description,
+.post-room-state,
+.post-room-facilities{
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 300;
+  padding-left: 8px;
+  letter-spacing: 0.2px;
+  margin-bottom: 16px;
 }
 .basic-info a{
     text-decoration: underline;
@@ -24,33 +56,31 @@
 .basic-info a:active{
     color: blue;
 }
-.post-description{
-    margin: 16px 0;
-}
 .post-description p{
-    margin: 0 16px;
-    font-size: inherit ;
+    /* margin: 0 16px; */
+    font-style: italic;
 }
-#facilities{
-    /* display:flex; */
-    text-transform: capitalize;
-    
+
+.post-room-location-container h5{
+  margin-bottom: 16px;
 }
-#facilities li{
-    padding: 0 16px;
-}
-.post-room-facilities ul li{
-    /* list-style-type: disc; */
-    padding: 0 16px;
-}
+
 
 /* warning chaning this will result in css breaking of map */
 .post-room-location{
-    position:relative;
-    height:500px;
-    width:100%;
-    margin:0;
-    padding:0;
+  
+  position:relative;
+  height:250px;
+  width:100%;
+  margin:0;
+  padding:0;
+}
+#comment{
+  border-radius:8px;
+  margin: 16px 0;
+  padding:16px;
+  width: 100%;
+  resize:none;
 }
 
 /* this is new */ 
@@ -59,26 +89,32 @@
   border-radius: 8px;
   border-style:solid;
 }
+#comment-btn{
+  padding: 10px 12px;
+  text-transform: uppercase;
+  transition: 0.3s all ease-in-out;
+  background-color: #bcbcbc;
+
+}
+.btn-disable{
+  color:#fff;
+}
 
 .btn-enabled{
   color:black;
-  background-color: grey;
 }
-
-.btn-disabled{
-  color:red;
-  background-color: blue;
-}
-
-.btn-cmnt-add:focus{
+.comment-btn:focus{
   outline-style: none;
 }
 
-#comment{
-  border-radius:15px;
-  padding:10px;
-  resize:none;
-}
+
+
+/* this css is not changing */
+/* #commment::placeholder{
+  padding: 16px 0;
+  color: #000;
+  
+} */
 
 #comment:focus{
   outline-style: none;
@@ -87,10 +123,25 @@
 .comment{
   margin-top:20px;
   width:500px;
-  border:0.5px solid black;
+  max-width: 100%;
+  padding: 10px 16px;
+  background-color: rgba(255, 255, 255,0.5);
+  /* border:0.5px solid black; */
+}
+.user-name{
+  text-transform: lowercase;
+  font-size: 12px;
+  font-weight: 400;
+  color: #bcbcbc;
+  text-decoration: none; /*I dont know why tf this is not working*/
+  margin-bottom: 8px;
 }
 
 .comment-flex-container{
   display:flex;
   flex-direction:row;
+}
+.user-comment{
+  text-decoration: none; /*I dont know why tf this is not working*/
+
 }
