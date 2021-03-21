@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import { Container } from "react-bootstrap";
+import { Container,Row,Col } from "react-bootstrap";
 
 import "./PostDetails.css";
 import Map from "./Map.jsx";
@@ -18,16 +18,13 @@ const Image = (props) => (
 
 const Comment = (props) => (
   <div className="comment">
-    <div className="user-name">{props.comment.name}</div>
+    <div className="user-name">by {props.comment.name}</div>
       <div className="comment-flex-container">
-        <div>
-          Q)
-          </div>
-    <div className="user-comment">
-      {props.comment.question}
-    </div>
-
+        <div className="user-comment">
+          {props.comment.question}
         </div>
+
+      </div>
   </div>
 );
 
@@ -100,89 +97,119 @@ const PostDetail = (props) => {
   return (
     <div className="post-detail-container">
       <Container>
-        <div className="image-container">
-          <Carousel autoPlay>{displayImage()}</Carousel>
-          <div className="post-details-info">
-            <div className="post-title">
-              <h3>{props.location.state.title}</h3>
-            </div>
+        <h2>Room Description</h2>
 
-            <div className="basic-info">
-              <div>Name: {props.location.state.name}</div>
-              <div>Email: {props.location.state.email}</div>
-              <div>
-                Number:{" "}
-                <a href={props.location.state.number}>
-                  {props.location.state.number}
-                </a>
+        <Row>
+          <Col>
+            <div className="post-detail-content image-container">
+              <Carousel autoPlay>{displayImage()}</Carousel>
+            </div>
+          </Col>
+            
+          <Col>
+            <div className=" post-detail-content post-details-info">
+
+              <div className="post-title">
+                <h5>{props.location.state.title}</h5>
               </div>
-            </div>
 
-            <div className="post-description">
-              <h3>Description</h3>
-              <p>{props.location.state.description}</p>
-            </div>
-
-            <div className="post-room-description">
-              <ul id="facilities">
-                <li>Room: {props.location.state.furnished}</li>
-
-                <li>Bedroom: {props.location.state.rooms.bedroom}</li>
-                <li>Kitchen: {props.location.state.rooms.kitchen}</li>
-                <li>livingRoom: {props.location.state.rooms.livingRoom}</li>
-
-                <li>toilet: {props.location.state.rooms.toilet}</li>
-              </ul>
-            </div>
-
-            <div className="post-room-facilities">
-              <h3>Facilities:</h3>
-              <ul>
-                {props.location.state.facilities.map((facility, index) => (
-                  <li>{facility}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="post-room-location">
-              <div>Map</div>
-              <Map
-                lng={props.location.state.coordinates.longitude}
-                lat={props.location.state.coordinates.latitude}
-              />
-            </div>
-
-            <div className="post-room-comment">
-              <div>Comment</div>
-              {isLogged ? (
-                <div className="cmnt-container">
-                  <textarea
-                    name="cmnt"
-                    id="comment"
-                    cols="70"
-                    rows="3"
-                    placeholder="Add comment"
-                    onChange={(e) => {
-                      setQuestion(e.target.value);
-                    }}
-                  ></textarea>
-                  <button
-                    disabled={question.length < 1}
-                    className={btnColor}
-                    onClick={comment}
-                  >
-                    Add Comment
-                  </button>
-                  <div className="post-comments">
-                    <div className="comment-container">{loadComment()}</div>
-                  </div>
+              <div className="basic-info">
+                <div>Name: {props.location.state.name}</div>
+                <div>Email: <a href = "#">{props.location.state.email}</a></div>
+                <div>
+                  Number:{" "}
+                  <a href={props.location.state.number}>
+                    {props.location.state.number}
+                  </a>
                 </div>
-              ) : (
-                <span>Log in to add comment</span>
-              )}
+              </div>
+
+              <div className="post-description">
+                <h5>Description</h5>
+                <p>{props.location.state.description}</p>
+              </div>
+
+              <div className="post-room-state">
+                <h5>Benifits</h5>
+                <ul id="room-status">
+                  <li>Room: {props.location.state.furnished}</li>
+
+                  <li>Bedroom: {props.location.state.rooms.bedroom}</li>
+                  <li>Kitchen: {props.location.state.rooms.kitchen}</li>
+                  <li>livingRoom: {props.location.state.rooms.livingRoom}</li>
+
+                  <li>toilet: {props.location.state.rooms.toilet}</li>
+                </ul>
+              </div>
+
+              <div className="post-room-facilities">
+                <h5>Facilities:</h5>
+                <ul>
+                  {props.location.state.facilities.map((facility, index) => (
+                    <li>{facility}</li>
+                  ))}
+                </ul>
+              </div>
+
             </div>
+
+          </Col>
+       
+    
+       </Row>
+
+        <div className = "post-detail-outer-content">
+          
+         <div className="post-room-location-container">
+          <h5>Location</h5>
+          <div className="post-room-location">
+              
+              <div>Map</div>
+                <Map
+                  lng={props.location.state.coordinates.longitude}
+                  lat={props.location.state.coordinates.latitude}
+                />
+            </div>
+         </div>
+
+          <div className="post-room-comment">
+
+            <h5>Comment</h5>
+            {isLogged ? (
+              <div className="cmnt-container">
+                <textarea
+                  name="cmnt"
+                  id="comment"
+                  cols="70"
+                  rows="3"
+                  placeholder="Add Comment"
+                  onChange={(e) => {
+                    setQuestion(e.target.value);
+                  }}
+                ></textarea>
+                
+                <button
+                  disabled={question.length < 1}
+                  className={btnColor}
+                  id = "comment-btn"
+                  onClick={comment}
+                >
+                  Add Comment
+                </button>
+                
+                <div className="post-comments">
+                  <div className="comment-container">{loadComment()}</div>
+                </div>
+              
+              </div>
+            ) : (
+              <span>Log in to add comment</span>
+            )}
+
           </div>
+        
         </div>
+        
       </Container>
     </div>
   );
