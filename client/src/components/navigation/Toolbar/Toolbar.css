@@ -52,14 +52,19 @@ header{
     color: #000;
     text-decoration:none;
     font-size: 12px;
+    text-transform: uppercase;
 }
 
 .spacer{
     flex: 1;
 }
-.login-button{
-    font-size: 16px;
+.login-button {
+    font-size: 14px;
+    background-color: rgba(0,0,0,0.1);
+    padding: 8px 12px;
+    text-transform: uppercase;
     border: none;
+    transition: all 0.3s ease-in-out ;
 }
 .toolbar-nav-items a:hover,
 .toolbar-nav-items a:active,
@@ -69,6 +74,7 @@ header{
     border: none;
     color: #fa923f;
 }
+
 
 .login-button:focus{
    
