@@ -69,6 +69,17 @@ main{
     display: block;
     text-align: left;
 }
+.dropbtn{
+    padding: 0;
+    background-color: #e1e1e1;
+    color: #bdb5b5;
+}
+.dropbtn:hover,
+.dropbtn:active,
+.dropbtn:focus{
+    background-color: #e1e1e1;
+    outline: none;
+}
 .banner input[type = "submit"]{
     display: inline-block;
     padding: 13px 38px;
@@ -122,6 +133,7 @@ main{
   height:200px;
   object-fit: fill;
 }
+
 /* My CSS for recent contents*/
 
 .recent{

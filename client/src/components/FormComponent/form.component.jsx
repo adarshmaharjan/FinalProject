@@ -200,9 +200,9 @@ class Addroom extends Component {
   render() {
     const options = ["CableTv", "Parking", "Internet", "Water-Supply"];
     return (
-      <section className="form-section" style={{}}>
+      <section className="user-section" style={{}}>
         <Container>
-          <div className="form-section-holder">
+          <div className="user-section-holder">
             <form onSubmit={this.onSubmit} encType="multipart/form-data">
               <Row>
                 <Col>

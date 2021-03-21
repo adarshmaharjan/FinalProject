@@ -85,9 +85,25 @@ const Toolbar = (props) => {
 
                             <div className="toolbar-nav-items">
                                 <ul>
-                                    <li>
-                                        <a href="/">FOR RENT</a>
-                                    </li>
+                                    <Link to="/">
+                                        <li>
+                                            <a href="/">FOR RENT</a>
+                                        </li>
+                                    </Link>
+                                    
+                                    <Link to="/profile">
+                                        <li className="btn-profile">
+                                            Profile
+                                        </li>
+                                    </Link>
+
+                                    <Link to="/form">
+                                        <li className="btn-post">
+                                            Add Post
+                                        </li>
+                                    </Link>
+                                    
+
                                 </ul>
                             </div>
                             <div className="spacer" />
@@ -98,20 +114,7 @@ const Toolbar = (props) => {
                                 />
                             </div>
 
-                            <div>
-                                <Link to="/profile">
-                                    <button className="btn-profile">
-                                        Profile
-                                    </button>
-                                </Link>
-
-                                <Link to="/form">
-                                    <button className="btn-post">
-                                        Add Post
-                                    </button>
-                                </Link>
-                            </div>
-
+        
                             <button
                                 className="login-button"
                                 onClick={onLogoutClick}
