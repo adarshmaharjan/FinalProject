@@ -139,7 +139,7 @@
 
 .comment-flex-container{
   display:flex;
-  flex-direction:row;
+  flex-direction:column;
 }
 .user-comment{
   text-decoration: none; /*I dont know why tf this is not working*/

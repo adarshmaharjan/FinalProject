@@ -23,7 +23,10 @@ const Comment = (props) => (
         <div className="user-comment">
           {props.comment.question}
         </div>
-
+          <br />
+          <div className="user-reply">
+              {props.comment.answer}
+          </div>
       </div>
   </div>
 );
@@ -49,6 +52,7 @@ const PostDetail = (props) => {
         `http://localhost:5000/api/comment/loadComment/${props.location.state._id}`
       )
       .then((data) => {
+        console.log(data.data);
         setComments(data.data);
       });
 
@@ -86,6 +90,7 @@ const PostDetail = (props) => {
               `http://localhost:5000/api/comment/loadComment/${props.location.state._id}`
             )
             .then((data) => {
+              console.log(data);
               setComments(data.data);
             });
         });
