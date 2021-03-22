@@ -55,7 +55,7 @@ const Model = (props) => {
                       className="cmt-txt-border"
                       cols="40"
                       row="10"
-                      placeholder={props.comment.comment.isAnswered ? props.comment.comment.answer : "Enter your response" }
+                      // placeholder={props.comment.comment.isAnswered ? props.comment.comment.answer : "Enter your response" }
                     ></textarea>
                   </div>
                 </form>

@@ -7,6 +7,7 @@ import { withRouter } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import Model from "./Modal/Modal.jsx";
 import { Link } from "react-router-dom";
+import "./AnswerComment.css";
 
 async function fetchUserComments(props) {
   return axios
@@ -20,6 +21,7 @@ const AnswerComment = (props) => {
   const [selectedComment, setSelectedComment] = useState({});
   const [clicked, setClicked] = useState(false);
   const [response, setResponse] = useState("");
+  const [reload, reloadPage] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -28,7 +30,7 @@ const AnswerComment = (props) => {
       console.log(list.data);
     }
     fetchData();
-  }, [props]);
+  }, [props, reload]);
 
   function responseSetter(e) {
     if (e.target.value) {
@@ -39,14 +41,15 @@ const AnswerComment = (props) => {
   }
 
   function saveReply(e) {
-    let reply= {
-      answer:response,
+    let reply = {
+      answer: response,
     };
     axios
-      .put(`/api/comment/ansComment/${selectedComment.comment._id}`,reply)
-      .then((res) =>{
-        setModalShow(false);}
-      )
+      .put(`/api/comment/ansComment/${selectedComment.comment._id}`, reply)
+      .then((res) => {
+        setModalShow(false);
+        reloadPage(!reload);
+      })
       .catch((err) => console.log(err));
   }
 
@@ -64,15 +67,16 @@ const AnswerComment = (props) => {
         <div className="search-page-descriptions">
           <h3 className="search-page-title">{props.post.title}</h3>
         </div>
-        <div className="comment-container">
+        <div className="comment-container flex-text">
+          <div>Q: &nbsp;</div>
           <p className="cmnt">{props.comment.question}</p>
         </div>
-          {
-          props.comment.isAnswered  && 
-          <div>
+        {props.comment.isAnswered && (
+          <div className="answer-container flex-text">
+            <div>A: &nbsp;</div>
             <p className="reply">{props.comment.answer}</p>
           </div>
-          } 
+        )}
         <div>
           <button
             onClick={() => {
@@ -106,6 +110,7 @@ const AnswerComment = (props) => {
         onChange={responseSetter}
         comment={selectedComment}
         save={saveReply}
+        centered
       />
     );
   }
