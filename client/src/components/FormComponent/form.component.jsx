@@ -181,8 +181,8 @@ class Addroom extends Component {
 
     axios
       .post(`${url}/${this.props.auth.user.id}`, data)
-      .then((res) =>
-        toast.info(`🦄 ${res.data.message}`, {
+      .then((res) =>{
+        toast.info(`🦄 ${res.data}`, {
           position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
@@ -191,7 +191,7 @@ class Addroom extends Component {
           draggable: true,
           progress: undefined,
         })
-      )
+})
       .catch((error) => {
         console.log(error.response);
       });
