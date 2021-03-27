@@ -41,9 +41,6 @@ export const loginUser = (userData) => (dispatch) => {
             console.log(res.data);
             return res.data;
         })
-        .then((data) => {
-            console.log(data);
-        })
         .catch((err) => {
             console.log(err);
             dispatch({ type: GET_ERRORS, payload: err});

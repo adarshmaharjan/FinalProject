@@ -110,7 +110,7 @@ const loginUser = (req, res) => {
 
         if (!user.isVerified) {
             return res.status(401).json({
-                message: "User is not verified please verify you account",
+                msg: "User is not verified please verify you account",
             });
         }
 
@@ -138,7 +138,7 @@ const loginUser = (req, res) => {
             } else {
                 return res
                     .status(400)
-                    .json({error: "username or passsword incorrect" });
+                    .send({error: "username or passsword incorrect" });
             }
             console.log("logged");
         });

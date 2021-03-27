@@ -43,18 +43,30 @@ class Login extends React.Component {
 
   componentWillReceiveProps(nextProps) {
   console.log(nextProps);
-  // if(nextProps.errors.response.status == 400 && !nextProps.auth.isAuthenticated){
-  //     toast.info(`🦄 ${nextProps.errors.response.data.error}`, {
-  //         position: "bottom-right",
-  //         autoClose: 5000,
-  //         hideProgressBar: false,
-  //         closeOnClick: true,
-  //         pauseOnHover: true,
-  //         draggable: true,
-  //         progress: undefined,
-  //       })
+  if(nextProps.errors.response.status == 404 && !nextProps.auth.isAuthenticated){
+      toast.info(`Username or password incorrect`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+  }
 
-  // }
+  if(nextProps.errors.response.status == 401){
+     toast.info(`Please verify your profile`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        })
+  }
+
     if (nextProps.auth.isAuthenticated) {
       this.props.history.push({
         pathname: "/profile",
