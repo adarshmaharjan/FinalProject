@@ -1,7 +1,7 @@
 
 
 
-.form-section{ 
+.user-section{ 
     margin-top: 60px;
     /* padding: 16px 0; */
     height: 100vh;
@@ -9,15 +9,15 @@
     background-color: #ebebeb;
     
 }
-.form-section::-webkit-scrollbar{
+.user-section::-webkit-scrollbar{
     display: none;
 }
-.form-section-holder form .col{
+.user-section-holder form .col{
     margin: 16px;
 }
-.form-section-holder form label,
-.form-section-holder form input,
-.form-section-holder form select{
+.user-section-holder form label,
+.user-section-holder form input,
+.user-section-holder form select{
     font-size: 16px;
     display: block;
     width: 100%;
@@ -25,20 +25,20 @@
     
 }
 
-.form-section-holder form label{
+.user-section-holder form label{
     text-transform: capitalize;
 }
 
-.form-section-holder form input{
+.user-section-holder form input{
   
     border-radius: 4px;
     padding-left:8px;
 }
-.form-section-holder .map-content{
+.user-section-holder .map-content{
     height: 200px;
     position: relative;
 }
-.form-section ._2iA8p44d0WZ-WqRBGcAuEV {
+.user-section ._2iA8p44d0WZ-WqRBGcAuEV {
     border: none;
     border-radius: none;
     padding: 0px;
@@ -48,12 +48,12 @@
 
     
 }
-.form-section .mapboxgl-ctrl-geocoder{
+.user-section .mapboxgl-ctrl-geocoder{
     box-shadow: none;
     min-width: 100%;
 }
-.form-section input[type = "submit"]{
-    display: block;
+.user-section input[type = "submit"]{
+    display: inline-block;
     width: 100px;
     margin: 0 auto;
     padding: 10px 16px;
@@ -61,15 +61,13 @@
     
 
 }
-.form-section .mapboxgl-ctrl-geocoder--icon {
+.user-section .mapboxgl-ctrl-geocoder--icon {
     top: 3px;
 }
 
-.form-section .mapContainer{
-    /* display: none; */
-}
+
 @media(min-width: 640px){
-    .form-section .mapboxgl-ctrl-geocoder--input{
+    .user-section .mapboxgl-ctrl-geocoder--input{
         height: 25px;
         padding: 6px 35px;
     }
@@ -90,9 +88,13 @@
     width:100%;
     height:200px;
 }
-
+.btn-content{
+    text-align: center;
+}
 .btn-delete{
-    padding:5px 10px 5px 10px;
+    display: inline-block;
+    padding: 10px 16px;
+    margin-left: 32px;
     border-radius: 5px;
     cursor: pointer;
 }

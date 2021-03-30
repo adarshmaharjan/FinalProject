@@ -210,16 +210,13 @@ class EditPost extends Component {
   render() {
     const options = ["CableTv", "Parking", "Internet", "Water-Supply"];
     return (
-      <section className="form-section" style={{}}>
+      <section className="user-section" style={{}}>
         <Container>
-          <div className="form-section-holder">
-            <div>
-              <button className="btn-delete btn-danger" onClick={this.onDelete}>
-                DELETE
-              </button>
-            </div>
+          <div className="user-section-holder">
+            
 
             <form onSubmit={this.onSubmit} encType="multipart/form-data">
+             
               <Row>
                 <Col>
                   <label htmlFor="title">Title</label>
@@ -411,9 +408,18 @@ class EditPost extends Component {
 
               <Row>
                 <Col>
-                  <input type="submit" value="UPDATE" />
+                  <div className="btn-content">
+                    <input type="submit" value="UPDATE" />
+                  
+                    <button className="btn-delete btn-danger" onClick={this.onDelete}>
+                      DELETE
+                    </button>
+                  </div>
+                 
                 </Col>
               </Row>
+
+              
             </form>
             {this.state.previewSource[0] &&
               this.state.previewSource.map((data, index) => (

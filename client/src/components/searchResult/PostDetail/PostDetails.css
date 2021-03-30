@@ -52,6 +52,9 @@
     color: #000;
     transition: all 0.45s ease-in-out;
 }
+#mail{
+  text-transform: lowercase;
+}
 .basic-info a:hover,
 .basic-info a:active{
     color: blue;

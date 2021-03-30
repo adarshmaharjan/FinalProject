@@ -120,7 +120,7 @@ const PostDetail = (props) => {
 
               <div className="basic-info">
                 <div>Name: {props.location.state.name}</div>
-                <div>Email: <a href = "#">{props.location.state.email}</a></div>
+                <div>Email: <a href = "#" id = "mail">{props.location.state.email}</a></div>
                 <div>
                   Number:{" "}
                   <a href={props.location.state.number}>
