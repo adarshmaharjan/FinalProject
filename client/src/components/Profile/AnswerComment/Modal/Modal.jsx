@@ -23,46 +23,49 @@ const Model = (props) => {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className="show-grid">
-        <Container>
-          <Row>
-            <Col xs={12} md={4}>
+        <div className = "modal-content">
+          <div className = "modal-content-row">
+            <div className = "modal-content-col">
               <img
                 src={`https://res.cloudinary.com/ds6o6pq2w/image/upload/v1607069456/images/${props.comment.post.image}.jpg`}
                 alt="#"
               />
-            </Col>
-            <Col xs={6} md={8}>
+            </div>
+
+            <div className = "modal-content-col">
               <div className="usr-info">
-                <div>User</div>
-                  <div>{props.comment.comment.name}</div>
+                <label className = "usr-info-title">User :</label>
+                <label className = "usr-info-name">
+                  &nbsp;
+                  {props.comment.comment.name}</label>
               </div>
+
               <div className="usr-cmt">
-                <h5>{props.comment.comment.question}</h5>
-                <em>
+                <div>{props.comment.comment.question}</div>
+                <div className = "usr-cmt-date">
                   <span>Posted in</span>
-                    &nbsp;
                     &nbsp;
                   <span>
                     {`${props.comment.comment.createdAt}`.slice(0, 10)}
                   </span>
-                </em>
+                </div>
               </div>
-              <Col>
-                <form>
-                  <div>
-                    <textarea
-                      onChange={(e) => props.onChange(e)}
-                      className="cmt-txt-border"
-                      cols="40"
-                      row="10"
-                      // placeholder={props.comment.comment.isAnswered ? props.comment.comment.answer : "Enter your response" }
-                    ></textarea>
-                  </div>
-                </form>
-              </Col>
-            </Col>
-          </Row>
-        </Container>
+
+              <form>
+                <div>
+                  <textarea
+                    onChange={(e) => props.onChange(e)}
+                    className="cmt-txt"
+                    
+                    // placeholder={props.comment.comment.isAnswered ? props.comment.comment.answer : "Enter your response" }
+                  ></textarea>
+                </div>
+              </form>
+              
+            </div>
+          </div>
+         
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={props.onHide}>
