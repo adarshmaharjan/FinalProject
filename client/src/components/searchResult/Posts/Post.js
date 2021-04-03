@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
 // import {connect} from "react-redux";
 import { displayDetails } from "../../../actions/postAction.js";
-
+import './Post.css'
 const Post = (props) => (
   <div className="search-page-content">
     <Row>

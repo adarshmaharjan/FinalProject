@@ -2,4 +2,33 @@
   display:flex;
 }
 
+.ans-cmt-contents{
+  margin: 16px 0;
+  padding: 16px 12px;
+  background-color: #f1f1f1;
+  /* border-radius: 12px; */
+
+}
+.comment-container,
+.answer-container{
+  padding-left: 16px;
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+  margin: 8px 0;
+}
+
+.reply-btn{
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 8px 10px;
+  background-color: #e1e1e1;
+  letter-spacing: 0.5px;
+}
+.reply-btn:hover,
+.reply-btn:active{
+  color: #fff;
+  cursor: pointer;
+}
 
