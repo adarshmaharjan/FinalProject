@@ -8,7 +8,7 @@ import './Profile.css';
 
 
 const Profile = () => {
-    const [key, setKey] = useState('answer');
+    const [key, setKey] = useState('home');
     return (
         <section className = "tab-section">
             <Container>
@@ -21,11 +21,11 @@ const Profile = () => {
                     <Tab eventKey="home" title="Your Posts">
                         <UserPosts/>
                     </Tab>
-                    <Tab eventKey="profile" title="Profile">
-                        <UserInfo/> 
-                    </Tab>
                     <Tab eventKey="answer" title="Q&A">
                       <AnswerComment/>
+                    </Tab>
+                    <Tab eventKey="profile" title="Profile">
+                        <UserInfo/> 
                     </Tab>
                 </Tabs>
     

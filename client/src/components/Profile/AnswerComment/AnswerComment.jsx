@@ -22,11 +22,14 @@ const AnswerComment = (props) => {
   const [clicked, setClicked] = useState(false);
   const [response, setResponse] = useState("");
   const [reload, reloadPage] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true);
       let list = await fetchUserComments(props);
       setComment(list.data);
+      setLoading(false);
       console.log(list.data);
     }
     fetchData();
@@ -115,7 +118,11 @@ const AnswerComment = (props) => {
     );
   }
 
-  return (
+  return loading == true ? (
+    <h2>Loading ...</h2>
+  ) : comment.length === 0 ? (
+    <h2>No comments found</h2>
+  ) : (
     <div className="post-comment-container">
       {displayQueries()}
       {clicked ? displayModal() : null}

@@ -1,0 +1,11 @@
+/* warning changing this will result in css breaking of map */
+.mapContainer{
+    position:absolute;
+    overflow: hidden;
+    top:0;
+    bottom:0; 
+    width:100%;
+}
+
+
+

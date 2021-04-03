@@ -1,11 +1,18 @@
 function priceFiltering(data, min, max) {
     console.log(data, min, max);
+    if(!min || !max ){
+    return "zero";
+
+    }else if(max < min || min > max){
+      return "incorrect";
+    }else{
     var filtered = data.filter(function (post) {
         if (post.price <= max && post.price >= min) {
             return post;
         }
     });
     return mergeSort(filtered);
+    }
 }
 
 function mergeSort(Arr) {

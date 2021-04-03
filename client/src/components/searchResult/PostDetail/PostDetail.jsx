@@ -5,10 +5,13 @@ import { withRouter } from "react-router-dom";
 import axios from "axios";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import { Container,Row,Col } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "./PostDetails.css";
-import Map from "./Map.jsx";
+// import Map from "./Map.jsx";
+import Map from '../../../utils/Maps/Map.jsx';
 
 const Image = (props) => (
   <div>
@@ -19,15 +22,11 @@ const Image = (props) => (
 const Comment = (props) => (
   <div className="comment">
     <div className="user-name">by {props.comment.name}</div>
-      <div className="comment-flex-container">
-        <div className="user-comment">
-          {props.comment.question}
-        </div>
-          <br />
-          <div className="user-reply">
-              {props.comment.answer}
-          </div>
-      </div>
+    <div className="comment-flex-container">
+      <div className="user-comment">{props.comment.question}</div>
+      <br />
+      <div className="user-reply">{props.comment.answer}</div>
+    </div>
   </div>
 );
 
@@ -55,12 +54,10 @@ const PostDetail = (props) => {
         console.log(data.data);
         setComments(data.data);
       });
-
-  },[]);
+  }, []);
 
   function loadComment() {
     return comments.map((currentComment, index) => {
-        console.log(currentComment.postId);
       return <Comment comment={currentComment} key={currentComment._id} />;
     });
   }
@@ -84,6 +81,30 @@ const PostDetail = (props) => {
           data
         )
         .then((data) => {
+          setQuestion("");
+          if (data.status == 200) {
+            toast.info(`${data.data.msg}`, {
+              position: "bottom-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+          if (data.status == 400) {
+            toast.info("Unable to add comment", {
+              position: "bottom-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+
           console.log(data);
           axios
             .get(
@@ -110,17 +131,21 @@ const PostDetail = (props) => {
               <Carousel autoPlay>{displayImage()}</Carousel>
             </div>
           </Col>
-            
+
           <Col>
             <div className=" post-detail-content post-details-info">
-
               <div className="post-title">
                 <h5>{props.location.state.title}</h5>
               </div>
 
               <div className="basic-info">
                 <div>Name: {props.location.state.name}</div>
-                <div>Email: <a href = "#" id = "mail">{props.location.state.email}</a></div>
+                <div>
+                  Email:{" "}
+                  <a href="#" id="mail">
+                    {props.location.state.email}
+                  </a>
+                </div>
                 <div>
                   Number:{" "}
                   <a href={props.location.state.number}>
@@ -155,30 +180,23 @@ const PostDetail = (props) => {
                   ))}
                 </ul>
               </div>
-
             </div>
-
           </Col>
-       
-    
-       </Row>
+        </Row>
 
-        <div className = "post-detail-outer-content">
-          
-         <div className="post-room-location-container">
-          <h5>Location</h5>
-          <div className="post-room-location">
-              
+        <div className="post-detail-outer-content">
+          <div className="post-room-location-container">
+            <h5>Location</h5>
+            <div className="post-room-location">
               <div>Map</div>
-                <Map
-                  lng={props.location.state.coordinates.longitude}
-                  lat={props.location.state.coordinates.latitude}
-                />
+              <Map
+                lng={props.location.state.coordinates.longitude}
+                lat={props.location.state.coordinates.latitude}
+              />
             </div>
-         </div>
+          </div>
 
           <div className="post-room-comment">
-
             <h5>Comment</h5>
             {isLogged ? (
               <div className="cmnt-container">
@@ -188,33 +206,41 @@ const PostDetail = (props) => {
                   cols="70"
                   rows="3"
                   placeholder="Add Comment"
+                  value={question}
                   onChange={(e) => {
                     setQuestion(e.target.value);
                   }}
                 ></textarea>
-                
+
                 <button
                   disabled={question.length < 1}
                   className={btnColor}
-                  id = "comment-btn"
+                  id="comment-btn"
                   onClick={comment}
                 >
                   Add Comment
                 </button>
-                
+
                 <div className="post-comments">
                   <div className="comment-container">{loadComment()}</div>
                 </div>
-              
               </div>
             ) : (
               <span>Log in to add comment</span>
             )}
-
           </div>
-        
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
         </div>
-        
       </Container>
     </div>
   );

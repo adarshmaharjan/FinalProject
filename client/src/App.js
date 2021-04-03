@@ -20,6 +20,7 @@ import Addroom from "./components/FormComponent/form.component.jsx";
 import Login from "./components/FormContainer/Login/login.jsx";
 import Registration from "./components/FormContainer/Registration/registration.jsx";
 import PrivateRoute from "./components/privateRoute/privateRoute.jsx";
+import EditPost from './components/Profile/EditPost/EditPost.jsx';
 
 import SearchResult from './components/searchResult/SearchResult';
 import PostDetail from './components/searchResult/PostDetail/PostDetail.jsx'
@@ -27,7 +28,6 @@ import setAuthToken from "./utils/setAuthToken.jsx";
 import { setCurrentUser, logoutUser } from "./actions/authAction.jsx";
 import Profile from './components/Profile/Profile.jsx';
 // import EditPost from './components/Profile/EditPost/form.component.jsx';
-import EditPost from './components/Profile/EditPost/EditPost.jsx';
 
 (() => {
   //check for token to keep user logged in
