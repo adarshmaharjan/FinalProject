@@ -420,7 +420,10 @@ class Addroom extends Component {
 
               <Row>
                 <Col>
+                <div className = "btn-content">
                   <input type="submit" value="Submit" />
+
+                </div>
                 </Col>
               </Row>
             </form>
