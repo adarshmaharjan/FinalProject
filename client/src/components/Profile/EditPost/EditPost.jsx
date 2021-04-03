@@ -95,7 +95,7 @@ class EditPost extends Component {
     var marker = new mapboxgl.Marker({
       draggable: true,
     })
-      .setLngLat([this.state.coordinates[1], this.state.coordinates[0]])
+      .setLngLat([this.props.location.state.coordinates.latitude, this.props.location.state.coordinates.longitude])
       .addTo(map);
 
     const onDragEnd = () => {

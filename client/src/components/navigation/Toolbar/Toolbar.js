@@ -93,7 +93,7 @@ const Toolbar = (props) => {
                                     
                                     <Link to="/profile">
                                         <li className="btn-profile">
-                                            Profile
+                                           Dashboard 
                                         </li>
                                     </Link>
 
