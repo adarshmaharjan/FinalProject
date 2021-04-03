@@ -54,13 +54,16 @@
     min-width: 100%;
 }
 .user-section input[type = "submit"]{
-    display: block;
+    display: inline-block;
     width: 100px;
     margin: 0 auto;
     padding: 10px 16px;
     background-color: #fff;
     
 
+}
+.btn-content{
+    text-align: center;
 }
 .user-section .mapboxgl-ctrl-geocoder--icon {
     top: 3px;
