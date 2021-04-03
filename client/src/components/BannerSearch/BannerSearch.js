@@ -128,7 +128,7 @@ const BannerSearch = (props) => {
             </h1>
             <form onSubmit={submit}>
               <div className="search-box-container">
-                <Row>
+                <Row className = "justify-content-center">
                   <Col lg="2" sm="4" xs="6">
                     <div className="search-box">
                       <div className="search-description">Location</div>
@@ -148,17 +148,7 @@ const BannerSearch = (props) => {
                       </select>
                     </div>
                   </Col>
-                  <Col lg="2" sm="4" xs="6">
-                    <div className="search-box">
-                      <div className="search-description">Price Range</div>
-                      <input
-                        type="number"
-                        value={price}
-                        placeholder="What’s your budget?"
-                        onChange={(e) => updateprice(e.target.value)}
-                      />
-                    </div>
-                  </Col>
+                  
                   <Col lg="2" sm="4" xs="6">
                     <div className="search-box dropdown">
                       <div className="search-description">Preference</div>
