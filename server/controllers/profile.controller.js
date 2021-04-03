@@ -77,8 +77,9 @@ const DELETE_USER_POST = (req, res) => {
   Room.findByIdAndDelete(req.params.id)
     .then((data) => {
       console.log(data);
-      data.imageCollection.map((id) => {
-        cloudinary.uploader.destroy(id, (error, result) =>
+      data.imageCollection.map(async(id) => {
+        console.log("deleted" + id);
+        await cloudinary.uploader.destroy(id, async(error, result) =>
           console.log(result, error)
         );
       });
@@ -107,18 +108,20 @@ const ANSWER_USER_COMMENTS = (req, res) => {
     })
     .then((datum1) => {
       House.find({ createdBy: req.params.id }).then(async (data) => {
-        let datum2 = await Promise.all(data.map(async (item) => {
-          return await Comment.find({ postId: item._id }).then((comment) => {
-             return {
-              title: item.title,
-              image: item.imageCollection[0],
-              comment: comment,
-            };
-          });
-        }));
+        let datum2 = await Promise.all(
+          data.map(async (item) => {
+            return await Comment.find({ postId: item._id }).then((comment) => {
+              return {
+                title: item.title,
+                image: item.imageCollection[0],
+                comment: comment,
+              };
+            });
+          })
+        );
         res.json([...datum1, ...datum2]);
       });
-    })
+    });
 };
 
 module.exports = {

@@ -76,6 +76,18 @@ nextProps.errors.response.status == 400
           progress: undefined,
         });
       }
+      
+      if (nextProps.errors.response.status == 404) {
+        toast.info(`User does not exists`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
     }
 
     if (nextProps.errors) {

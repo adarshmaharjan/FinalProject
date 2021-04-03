@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import mapboxgl from "mapbox-gl";
 
 import './Map.css';
+import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+
 
 
 mapboxgl.accessToken = "pk.eyJ1IjoiYWJzazEyMzQiLCJhIjoiY2s3Z3Z3azB6MDQyNzNmbzkxd3MwN3hnNyJ9.-paJt9fSR1rw0Wq0LwSmig";
@@ -11,8 +13,8 @@ class Map extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lng: props.lat,
-            lat: props.lng,
+            lng: props.lng,
+            lat: props.lat,
             zoom: 13,
         };
     }

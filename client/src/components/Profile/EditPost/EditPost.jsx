@@ -68,6 +68,7 @@ class EditPost extends Component {
     this.setState({ livingRoom: data.rooms.livingRoom });
     this.setState({ toilet: data.rooms.toilet });
     this.setState({ coordinates: coor });
+    this.setState({ imageCollection: data.imageCollection });
 
     const map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -75,7 +76,9 @@ class EditPost extends Component {
       center: [this.state.lng, this.state.lat],
       zoom: this.state.zoom,
     });
-
+    setTimeout(() => {
+      console.log(this.state.imageCollection);
+    }, 5000);
     map.addControl(new mapboxgl.NavigationControl());
     var geolocate = new mapboxgl.GeolocateControl({
       positionOptions: {
@@ -95,7 +98,10 @@ class EditPost extends Component {
     var marker = new mapboxgl.Marker({
       draggable: true,
     })
-      .setLngLat([this.props.location.state.coordinates.latitude, this.props.location.state.coordinates.longitude])
+      .setLngLat([
+        this.props.location.state.coordinates.longitude,
+        this.props.location.state.coordinates.latitude,
+      ])
       .addTo(map);
 
     const onDragEnd = () => {
@@ -200,9 +206,7 @@ class EditPost extends Component {
 
   onDelete(e) {
     axios
-      .delete(
-        `/api/profile/deletepost/${this.props.location.state._id}`
-      )
+      .delete(`/api/profile/deletepost/${this.props.location.state._id}`)
       .then((res) => console.log(res.data))
       .catch((error) => console.log(error.response));
   }
@@ -213,10 +217,7 @@ class EditPost extends Component {
       <section className="user-section" style={{}}>
         <Container>
           <div className="user-section-holder">
-            
-
             <form onSubmit={this.onSubmit} encType="multipart/form-data">
-             
               <Row>
                 <Col>
                   <label htmlFor="title">Title</label>
@@ -410,17 +411,28 @@ class EditPost extends Component {
                 <Col>
                   <div className="btn-content">
                     <input type="submit" value="UPDATE" />
-                  
-                    <button className="btn-delete btn-danger" onClick={this.onDelete}>
+
+                    <button
+                      className="btn-delete btn-danger"
+                      onClick={this.onDelete}
+                    >
                       DELETE
                     </button>
                   </div>
-                 
                 </Col>
               </Row>
-
-              
             </form>
+            {this.state.imageCollection &&
+              this.state.imageCollection.map((image) => {
+                return (
+                  <div className="image">
+                    <img
+                      src={`https://res.cloudinary.com/ds6o6pq2w/image/upload/v1607069456/images/${image}.jpg`}
+                      alt="#"
+                    />
+                  </div>
+                );
+              })}
             {this.state.previewSource[0] &&
               this.state.previewSource.map((data, index) => (
                 <img

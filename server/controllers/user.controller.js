@@ -8,141 +8,139 @@ const Token = require("../models/token.model.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const {
-    pushNotification,
-    mailNotification,
+  pushNotification,
+  mailNotification,
 } = require("../middleware/notification.controller");
 
 //register new user
 const registerUser = (req, res, next) => {
-    console.log("api is working");
-    const { errors, isValid } = validateRegisterInput(req.body);
+  console.log("api is working");
+  const { errors, isValid } = validateRegisterInput(req.body);
 
-    //check validation
-    if (!isValid) {
-        return res.status(400).json(errors);
-    }
+  //check validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
 
-    User.findOne({ email: req.body.email }).then((user) => {
-        if (user) {
-            return res.status(400).json({msg: "email already exists" });
-        } else {
-            const newUser = new User({
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password,
-            });
+  User.findOne({ email: req.body.email }).then((user) => {
+    if (user) {
+      return res.status(400).json({ msg: "email already exists" });
+    } else {
+      const newUser = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+      });
 
-            //hash password before saving in databse
-            bcrypt.genSalt(10, (err, salt) => {
-                bcrypt.hash(newUser.password, salt, (err, hash) => {
-                    if (err) throw err;
-                    newUser.password = hash;
-                    newUser
-                        .save()
-                        .then((user) => {
-                            const token = uuidv4();
-                            const newToken = new Token({
-                                _userId: user._id,
-                                token: token,
-                            });
-                            newToken.save(function (err) {
-                                if (err) {
-                                    return res
-                                        .status(500)
-                                        .send({ msg: err.message });
-                                }
+      //hash password before saving in databse
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then((user) => {
+              const token = uuidv4();
+              const newToken = new Token({
+                _userId: user._id,
+                token: token,
+              });
+              newToken.save(function (err) {
+                if (err) {
+                  return res.status(500).send({ msg: err.message });
+                }
 
-                                let link =
-                                    "Hello,<br> Please Click on the link to verify you email.<br><a href=" +
-                                    `http://${req.get(
-                                        "host"
-                                    )}/api/user/verify?id=${token}` +
-                                    ">Click here to verify</a>";
+                let link =
+                  "Hello,<br> Please Click on the link to verify you email.<br><a href=" +
+                  `http://${req.get("host")}/api/user/verify?id=${token}` +
+                  ">Click here to verify</a>";
 
-                                mailNotification(
-                                    `${req.body.email}`,
-                                    `${req.body.name}`,
-                                    link
-                                ).then((response) => {
-                                    res.json(response);
-                                    res.end(response);
-                                });
-                            });
-                        })
-                        .catch((err) => console.log(err));
+                mailNotification(
+                  `${req.body.email}`,
+                  `${req.body.name}`,
+                  link
+                ).then((response) => {
+                  return res
+                    .status(201)
+                    .json({ msg: "User created Please verify account" });
+                  res.json(response);
+                  res.end(response);
                 });
-            });
-        }
-    });
+              });
+            })
+            .catch((err) => console.log(err));
+        });
+      });
+    }
+  });
 };
 
 const verifyUser = (req, res) => {
-    console.log(req.query.id, req.protocol, req.get("host"));
-    Token.findOne({ token: req.query.id }).then((token) => {
-        if (!token) {
-            return res.status(400).json({ token: "token doest exist" });
-        }
-        console.log(token._id, token._userId);
-        User.findOneAndUpdate(
-            { _id: token._userId },
-            { isVerified: true }
-        ).then(res.json({ message: "you have been verified" }));
-    });
+  console.log(req.query.id, req.protocol, req.get("host"));
+  Token.findOne({ token: req.query.id }).then((token) => {
+    if (!token) {
+      return res.status(400).json({ token: "token doest exist" });
+    }
+    console.log(token._id, token._userId);
+    User.findOneAndUpdate({ _id: token._userId }, { isVerified: true }).then(
+      res.json({ message: "you have been verified" })
+    );
+  });
 };
 
 const loginUser = (req, res) => {
-    //form validation
-    const { errors, isValid } = validateLoginInput(req.body);
+  //form validation
+  const { errors, isValid } = validateLoginInput(req.body);
 
-    //check validation
-    if (!isValid) {
-        return res.status(400).json(errors);
+  //check validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  const email = req.body.email;
+  const password = req.body.password;
+
+  User.findOne({ email }).then((user) => {
+    //check if user exists
+    if (!user) {
+      return res.status(404).json({ emailnotfound: "Email not found" });
     }
 
-    const email = req.body.email;
-    const password = req.body.password;
+    if (!user.isVerified) {
+      return res.status(401).json({
+        msg: "User is not verified please verify you account",
+      });
+    }
 
-    User.findOne({ email }).then((user) => {
-        //check if user exists
-        if (!user) {
-            return res.status(404).json({ emailnotfound: "Email not found" });
-        }
+    bcrypt.compare(password, user.password).then((isMatch) => {
+      if (isMatch) {
+        const payload = {
+          id: user.id,
+          name: user.name,
+          profile: user.profile,
+        };
 
-        if (!user.isVerified) {
-            return res.status(401).json({
-                msg: "User is not verified please verify you account",
+        jwt.sign(
+          payload,
+          key.secretKey,
+          {
+            expiresIn: 3600,
+          },
+          (err, token) => {
+            res.json({
+              success: true,
+              token: "Bearer" + token,
             });
-        }
-
-        bcrypt.compare(password, user.password).then((isMatch) => {
-            if (isMatch) {
-                const payload = {
-                    id: user.id,
-                    name: user.name,
-                    profile: user.profile,
-                };
-
-                jwt.sign(
-                    payload,
-                    key.secretKey,
-                    {
-                        expiresIn: 3600,
-                    },
-                    (err, token) => {
-                        res.json({
-                            success: true,
-                            token: "Bearer" + token,
-                        });
-                    }
-                );
-            } else {
-                return res
-                    .status(400)
-                    .send({error: "username or passsword incorrect" });
-            }
-            console.log("logged");
-        });
+          }
+        );
+      } else {
+        return res
+          .status(400)
+          .send({ error: "username or passsword incorrect" });
+      }
+      console.log("logged");
     });
+  });
 };
 
 module.exports = { registerUser, loginUser, verifyUser };

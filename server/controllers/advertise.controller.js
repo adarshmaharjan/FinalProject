@@ -114,27 +114,6 @@ const addHousePost = async (req, res, next) => {
         imageCollection: imageCollection,
       });
       console.log(newHouse);
-      // const newHouse = new House({
-      //     createdBy: req.params.id,
-      //     title: _.title,
-      //     location: _.location,
-      //     coordinates: {
-      //         latitude: _.coordinates.latitude,
-      //         longitude: _.coordinates.longitude,
-      //     },
-      //     house:{
-      //         rooms:_.house.rooms,
-      //         area: _.house.area,
-      //         floors: _.house.floors,
-      //         bedroom: _.rooms.bedroom,
-      //         kitchen: _.rooms.kitchen,
-      //         toilet: _.rooms.toilet,
-      //         livingRoom: _.rooms.livingRoom
-      //     },
-      //     furnished:_.furnished,
-      //     price:_.price,
-      //     imageCollection: imageCollection
-      // });
       newHouse
         .save()
         .then(() => res.json("post added"))
