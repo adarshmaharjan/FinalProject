@@ -57,43 +57,54 @@ const AnswerComment = (props) => {
   }
 
   const Post = (props) => (
-    <Row>
-      <Col xs="6" md="2">
-        <div className="search-page-image">
-          <img
-            src={`https://res.cloudinary.com/ds6o6pq2w/image/upload/v1607069456/images/${props.post.image}.jpg`}
-            alt="#"
-          />
-        </div>
-      </Col>
-      <Col xs="6" md="10">
-        <div className="search-page-descriptions">
-          <h3 className="search-page-title">{props.post.title}</h3>
-        </div>
-        <div className="comment-container flex-text">
-          <div>Q: &nbsp;</div>
-          <p className="cmnt">{props.comment.question}</p>
-        </div>
-        {props.comment.isAnswered && (
-          <div className="answer-container flex-text">
-            <div>A: &nbsp;</div>
-            <p className="reply">{props.comment.answer}</p>
-          </div>
-        )}
-        <div>
-          <button
-            onClick={() => {
-              console.log("clicked");
-              setSelectedComment(props);
-              setModalShow(true);
-              setClicked(true);
-            }}
-          >
-            Reply
-          </button>
-        </div>
-      </Col>
+    <div className="ans-cmt-contents">
+        <Row>
+          <Col xs="6" md="2">
+            <div className="ans-cmt-content">
+              <div className="search-page-image">
+                <img
+                  src={`https://res.cloudinary.com/ds6o6pq2w/image/upload/v1607069456/images/${props.post.image}.jpg`}
+                  alt="#"
+                />
+              </div>
+            </div>
+          </Col>
+          
+          <Col xs="6" md="10">
+            <div className="ans-cmt-content">
+              <div className="search-page-descriptions">
+                <h4 className="search-page-title">{props.post.title}</h4>
+              </div>
+              <div className="comment-container flex-text">
+                <div>Q: &nbsp;</div>
+                <div className="cmnt">{props.comment.question}</div>
+              </div>
+              {props.comment.isAnswered && (
+                <div className="answer-container flex-text">
+                  <div>A: &nbsp;</div>
+                  <div className="reply">{props.comment.answer}</div>
+                </div>
+              )}
+              <div>
+                <button
+                  className = "reply-btn"
+                  onClick={() => {
+                    console.log("clicked");
+                    setSelectedComment(props);
+                    setModalShow(true);
+                    setClicked(true);
+                  
+                  }}
+                >
+                  Reply
+                </button>
+              </div>
+            </div>
+          </Col>
+      
     </Row>
+  
+    </div>
   );
 
   function displayQueries() {
