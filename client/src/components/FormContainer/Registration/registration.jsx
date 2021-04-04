@@ -45,6 +45,17 @@ class Registration extends React.Component {
         progress: undefined,
       });
     }
+    if (nextProps.errors.response.status == 201) {
+      toast.info(`${nextProps.errors.response.data.msg}`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   }
 
   onChange = (e) => {

@@ -32,7 +32,7 @@ class Addroom extends Component {
       toilet: 0,
       livingRoom: 0,
       price: 0,
-      furnished: "",
+      furnished: "Furnished",
       imageCollection: null,
       previewSource: [],
       lng: 85.314038,
@@ -155,8 +155,8 @@ class Addroom extends Component {
       area: parseInt(this.state.area),
       description: this.state.description,
       coordinates: {
-        latitude: this.state.coordinates[0],
-        longitude: this.state.coordinates[1],
+        longitude: this.state.coordinates[0],
+        latitude: this.state.coordinates[1],
       },
       rooms: {
         bedroom: parseInt(this.state.bedroom),

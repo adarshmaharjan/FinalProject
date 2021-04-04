@@ -10,8 +10,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./PostDetails.css";
-// import Map from "./Map.jsx";
-import Map from '../../../utils/Maps/Map.jsx';
+import Map from "./Map.jsx";
+// import Map from '../../../utils/Maps/Map.jsx';
 
 const Image = (props) => (
   <div>
@@ -180,6 +180,13 @@ const PostDetail = (props) => {
                   ))}
                 </ul>
               </div>
+
+              {props.location.state.area && (
+                <div className="post-room-facilities">
+                  <h5>Area:</h5>
+                  <p>{props.location.state.area} sqft</p>         
+                </div>
+              )}
             </div>
           </Col>
         </Row>
