@@ -180,6 +180,13 @@ const PostDetail = (props) => {
                   ))}
                 </ul>
               </div>
+
+              {props.location.state.area && (
+                <div className="post-room-facilities">
+                  <h5>Area:</h5>
+                  <p>{props.location.state.area} sqft</p>         
+                </div>
+              )}
             </div>
           </Col>
         </Row>

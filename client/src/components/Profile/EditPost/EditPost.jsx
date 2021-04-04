@@ -30,6 +30,7 @@ class EditPost extends Component {
       toilet: 0,
       livingRoom: 0,
       price: 0,
+      area:0,
       furnished: "Furnished",
       imageCollection: null,
       previewSource: [],
@@ -69,6 +70,9 @@ class EditPost extends Component {
     this.setState({ toilet: data.rooms.toilet });
     this.setState({ coordinates: coor });
     this.setState({ imageCollection: data.imageCollection });
+    if(this.props.location.state.area){
+      this.setState({area: data.area});
+    }
 
     const map = new mapboxgl.Map({
       container: this.mapContainer,
@@ -119,11 +123,9 @@ class EditPost extends Component {
 
     geocoder.addTo("#location");
     geocoder.on("result", (result) => {
-      console.log(result.result.text);
       this.setState({ location: result.result.text });
     });
     console.log(this.state.coordinates[0], this.state.coordinates[1]);
-    console.log(this.state);
   }
 
   onChangeLocation(e) {
@@ -160,7 +162,7 @@ class EditPost extends Component {
     let file = [];
     file = [...e.target.files];
     console.log(e.target.files[0]);
-    this.setState({ imageCollection: file });
+    // this.setState({ imageCollection: file });
     this.onPreviewFile(file);
   }
 
@@ -192,16 +194,51 @@ class EditPost extends Component {
       furnished: this.state.furnished,
       facilities: this.state.facilities,
       price: parseInt(this.state.price),
-      imageCollection: JSON.stringify(this.state.previewSource),
+      imageCollection: this.state.imageCollection,
+      additionalImage: JSON.stringify(this.state.previewSource),
+    };
+
+    const House = {
+      name: this.state.name,
+      email: this.state.email,
+      number: parseInt(this.state.number),
+      title: this.state.title,
+      location: this.state.location,
+      description: this.state.description,
+      coordinates: {
+        latitude: this.state.coordinates[0],
+        longitude: this.state.coordinates[1],
+      },
+      area:this.state.area,
+      rooms: {
+        bedroom: parseInt(this.state.bedroom),
+        kitchen: parseInt(this.state.kitchen),
+        toilet: parseInt(this.state.toilet),
+        livingRoom: parseInt(this.state.livingRoom),
+      },
+      furnished: this.state.furnished,
+      facilities: this.state.facilities,
+      price: parseInt(this.state.price),
+      imageCollection: this.state.imageCollection,
+      additionalImage: JSON.stringify(this.state.previewSource),
     };
     console.log(data);
     console.log(typeof JSON.stringify(data));
-    axios
-      .post("/api/ad/addRoom", data)
-      .then((res) => console.log(res.data))
-      .catch((error) => {
-        console.log(error.response);
-      });
+    if (this.props.location.state.area) {
+      axios
+        .put(`/api/profile/updateHomePost/${this.props.location.state._id}`,House)
+        .then((res) => console.log(res.data))
+        .catch((error) => {
+          console.log(error.response);
+        });
+    } else {
+      axios
+        .put(`/api/profile/updatePost/${this.props.location.state._id}`, data)
+        .then((res) => console.log(res.data))
+        .catch((error) => {
+          console.log(error.response);
+        });
+    }
   }
 
   onDelete(e) {
@@ -286,6 +323,18 @@ class EditPost extends Component {
                     id="description"
                     onChange={this.onChangeInput}
                     value={this.state.description}
+                  />
+                </Col>
+
+                <Col>
+                  <label htmlFor="description">Area (in sqft)</label>
+
+                  <input
+                    type="number"
+                    name="area"
+                    id="area"
+                    onChange={this.onChangeInput}
+                    value={this.state.area}
                   />
                 </Col>
               </Row>
