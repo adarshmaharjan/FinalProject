@@ -3,12 +3,15 @@ import mapboxgl from "mapbox-gl";
 import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-//this is changed
 import { Multiselect } from "multiselect-react-dropdown";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import { Container, Row, Col } from "react-bootstrap";
 import "./EditPost.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import { ToastContainer, toast } from "react-toastify";
+import { withRouter } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWJzazEyMzQiLCJhIjoiY2s3Z3Z3azB6MDQyNzNmbzkxd3MwN3hnNyJ9.-paJt9fSR1rw0Wq0LwSmig";
@@ -30,7 +33,7 @@ class EditPost extends Component {
       toilet: 0,
       livingRoom: 0,
       price: 0,
-      area:0,
+      area: 0,
       furnished: "Furnished",
       imageCollection: null,
       previewSource: [],
@@ -49,7 +52,7 @@ class EditPost extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.location.state._id);
+    console.log(this.props);
     const data = this.props.location.state;
     let coor = [data.coordinates.longitude, data.coordinates.latitude];
     console.log(data);
@@ -70,8 +73,8 @@ class EditPost extends Component {
     this.setState({ toilet: data.rooms.toilet });
     this.setState({ coordinates: coor });
     this.setState({ imageCollection: data.imageCollection });
-    if(this.props.location.state.area){
-      this.setState({area: data.area});
+    if (this.props.location.state.area) {
+      this.setState({ area: data.area });
     }
 
     const map = new mapboxgl.Map({
@@ -209,7 +212,7 @@ class EditPost extends Component {
         latitude: this.state.coordinates[0],
         longitude: this.state.coordinates[1],
       },
-      area:this.state.area,
+      area: this.state.area,
       rooms: {
         bedroom: parseInt(this.state.bedroom),
         kitchen: parseInt(this.state.kitchen),
@@ -226,7 +229,10 @@ class EditPost extends Component {
     console.log(typeof JSON.stringify(data));
     if (this.props.location.state.area) {
       axios
-        .put(`/api/profile/updateHomePost/${this.props.location.state._id}`,House)
+        .put(
+          `/api/profile/updateHomePost/${this.props.location.state._id}`,
+          House
+        )
         .then((res) => console.log(res.data))
         .catch((error) => {
           console.log(error.response);
@@ -234,7 +240,24 @@ class EditPost extends Component {
     } else {
       axios
         .put(`/api/profile/updatePost/${this.props.location.state._id}`, data)
-        .then((res) => console.log(res.data))
+        .then((res) => {
+          console.log(res);
+
+          if (res.status == 201) {
+            this.props.history.goBack();
+            // let history = useHistory();
+            // history.goBack();
+            // toast.info(`${res.data.msg}`, {
+            //   position: "bottom-right",
+            //   autoClose: 5000,
+            //   hideProgressBar: false,
+            //   closeOnClick: true,
+            //   pauseOnHover: true,
+            //   draggable: true,
+            //   progress: undefined,
+            // });
+          }
+        })
         .catch((error) => {
           console.log(error.response);
         });
@@ -326,17 +349,18 @@ class EditPost extends Component {
                   />
                 </Col>
 
-                <Col>
-                  <label htmlFor="description">Area (in sqft)</label>
-
-                  <input
-                    type="number"
-                    name="area"
-                    id="area"
-                    onChange={this.onChangeInput}
-                    value={this.state.area}
-                  />
-                </Col>
+                {this.props.location.state.area && (
+                  <Col>
+                    <label htmlFor="description">Area (in sqft)</label>
+                    <input
+                      type="number"
+                      name="area"
+                      id="area"
+                      onChange={this.onChangeInput}
+                      value={this.state.area}
+                    />
+                  </Col>
+                )}
               </Row>
 
               <Row>
@@ -493,6 +517,17 @@ class EditPost extends Component {
               ))}
           </div>
         </Container>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </section>
     );
   }
@@ -508,4 +543,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(EditPost);
+export default connect(mapStateToProps)(withRouter(EditPost));

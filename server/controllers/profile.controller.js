@@ -113,7 +113,8 @@ const UPDATE_USER_POST = async (req, res) => {
       console.log(updated);
       Room.findByIdAndUpdate(req.params.id, updated).then((data) => {
         console.log(data);
-        res.json({ message: "Post updated" });
+        res.status(201).send({msg:"Post Updated"});
+        // res.json({ message: "Post updated" });
       });
     });
   } else {
@@ -141,7 +142,8 @@ const UPDATE_USER_POST = async (req, res) => {
     };
     Room.findByIdAndUpdate(req.params.id, updated).then((data) => {
       console.log(data);
-      res.json({ message: "Post updated" });
+      // res.json({ message: "Post updated" });
+        res.status(201).send({msg:"Post Updated"});
     });
   }
 };
@@ -188,7 +190,8 @@ const UPDATE_HOME_POST = async (req, res) => {
       console.log(updated);
       House.findByIdAndUpdate(req.params.id, updated).then((data) => {
         console.log(data);
-        res.json({ message: "Post updated" });
+        // res.json({ message: "Post updated" });
+        res.status(201).send({msg:"Post Updated"});
       });
     });
   } else {
@@ -217,7 +220,8 @@ const UPDATE_HOME_POST = async (req, res) => {
     };
     House.findByIdAndUpdate(req.params.id, updated).then((data) => {
       console.log(data);
-      res.json({ message: "Post updated" });
+      // res.json({ message: "Post updated" });
+        res.status(201).send({msg:"Post Updated"});
     });
   }
 };
