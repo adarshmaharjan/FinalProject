@@ -29,6 +29,20 @@ const UserPosts = (props) => {
     fetchPost(props);
   }, [props]);
 
+const updator = () => {
+  setLoading(true);
+    const fetchPost = async (props) => {
+      const res = await axios
+        .get(`/api/profile/post/${props.auth.user.id}`)
+        .then((data) => {
+          setLoading(false);
+          return data;
+        });
+      setPosts(res.data);
+    };
+    fetchPost(props);
+}
+
   const indexOfLastPost = currentPage * postPerPage;
   const indexOfFirstPost = indexOfLastPost - postPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
@@ -49,7 +63,7 @@ const UserPosts = (props) => {
   } else {
     return (
       <div>
-        <Post posts={currentPosts} loading={loading} url="/editPost" />
+        <Post posts={currentPosts} loading={loading} url="/editPost" update={updator}/>
         <Pagination
           postPerPage={postPerPage}
           totalPosts={posts.length}
