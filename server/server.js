@@ -12,6 +12,7 @@ const SearchRouter = require('./routes/search.route');
 const CommentRouter = require('./routes/comment.route');
 const ProfileRouter = require('./routes/profile.route');
 const AdminRouter = require('./routes/admin.route');
+const PostNotifications= require('./routes/postNotification.route');
 
 const app = express();
 
@@ -43,7 +44,7 @@ app.use('/api/ad', AdRouter);
 app.use('/api/search', SearchRouter);
 app.use('/api/comment', CommentRouter);
 app.use('/api/profile',ProfileRouter);
-// app.use('/api/admin',AdminRouter);
+app.use('/api/notify', PostNotifications);
 
 
 if (process.env.NODE_ENV === 'production') {

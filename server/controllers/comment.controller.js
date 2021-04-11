@@ -17,7 +17,6 @@ const ADD_COMMENT = async (req, res) => {
     .save()
     .then((data) => {
       console.log(data);
-      console.log("asdfasdf");
       // let link =
       //   " <h1>`${data.name} asks {data.question}`,<br> Click to answer.<br><a href=" +
       //   `http://${req.get("host")}/profile` +
@@ -29,6 +28,10 @@ const ADD_COMMENT = async (req, res) => {
       //     res.end(response);
       //   }
       // );
+        let link = `<h1>${data.name} asks ${data.question},</h1> <br> 
+          <a href="` + `http://${req.get("host")}/profile`+ `"> Click here to verify</a>`; 
+        mailNotification(`${req.body}`)
+        console.log(link);
       res.status(200).send({msg:"comment is added"});
     })
     .catch((err) => res.status(400).json("error" + err));
