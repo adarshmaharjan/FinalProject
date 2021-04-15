@@ -46,7 +46,7 @@ const searchPost = (req, res) => {
   }
 };
 
-const getLatest = (req,res) => {
+const getLatest = (req, res) => {
   House.find({})
     .then((data) => {
       return data.slice(-4);
@@ -58,4 +58,18 @@ const getLatest = (req,res) => {
     });
 };
 
-module.exports = { searchPost, getLatest };
+const searchOne = (req, res) => {
+  if (req.params.type == "Room") {
+    Room.findById(req.params.id).then((data) => {
+      console.log(data);
+      res.json(data);
+    });
+  } else {
+  House.findById(req.params.id).then((data) => {
+      console.log(data);
+      res.json(data);
+    });
+  }
+};
+
+module.exports = { searchPost, getLatest , searchOne};

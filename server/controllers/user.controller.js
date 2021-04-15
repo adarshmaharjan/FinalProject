@@ -118,6 +118,7 @@ const loginUser = (req, res) => {
           id: user.id,
           name: user.name,
           profile: user.profile,
+          email:user.email
         };
 
         jwt.sign(

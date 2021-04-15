@@ -20,6 +20,8 @@ class Map extends React.Component {
     }
 
     componentDidMount() {
+        this.setState({lng:this.props.lng});
+        this.setState({lat:this.props.lat});  
         const map = new mapboxgl.Map({
             container: this.mapContainer,
             style: "mapbox://styles/mapbox/streets-v11",
@@ -30,10 +32,16 @@ class Map extends React.Component {
         console.log(this.state.lng,this.state.lat)
         
         var marker = new mapboxgl.Marker()
-            .setLngLat([this.state.lng, this.state.lat])
+            .setLngLat([this.props.lng, this.props.lat])
             .addTo(map);
 
     }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(this.props);
+    this.setState({lng:this.props.lng});  
+    this.setState({lat:this.props.lat});  
+  }
 
     render() {
         return (

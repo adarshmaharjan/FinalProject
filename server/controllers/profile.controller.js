@@ -285,6 +285,10 @@ const ANSWER_USER_COMMENTS = (req, res) => {
     });
 };
 
+const Notify = (req,res) => {
+   
+}
+
 module.exports = {
   USER_PROFILE_POST,
   USER_PROFILE_INFO,

@@ -45,7 +45,7 @@ const mailNotification = async (emailId, message, link) => {
   let mailOptions = {
     from: `Bot <${user}>`,
     to: `${emailId}`,
-    subject: "Notification",
+    subject: "Airbnb 2.0",
     text: message,
     html: link,
   };

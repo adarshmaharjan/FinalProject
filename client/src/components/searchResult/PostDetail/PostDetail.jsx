@@ -45,6 +45,7 @@ const PostDetail = (props) => {
   }
 
   useEffect(() => {
+    console.log(props.auth);
     localStorage.jwtToken != null ? setIsLogged(true) : setIsLogged(false);
     axios
       .get(
