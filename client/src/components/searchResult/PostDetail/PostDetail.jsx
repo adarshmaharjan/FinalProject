@@ -49,7 +49,7 @@ const PostDetail = (props) => {
     localStorage.jwtToken != null ? setIsLogged(true) : setIsLogged(false);
     axios
       .get(
-        `http://localhost:5000/api/comment/loadComment/${props.location.state._id}`
+        `/api/comment/loadComment/${props.location.state._id}`
       )
       .then((data) => {
         console.log(data.data);
@@ -78,7 +78,7 @@ const PostDetail = (props) => {
       console.log(id);
       axios
         .post(
-          `http://localhost:5000/api/comment/addComment/${JSON.stringify(id)}`,
+          `/api/comment/addComment/${JSON.stringify(id)}`,
           data
         )
         .then((data) => {
@@ -109,7 +109,7 @@ const PostDetail = (props) => {
           console.log(data);
           axios
             .get(
-              `http://localhost:5000/api/comment/loadComment/${props.location.state._id}`
+              `/api/comment/loadComment/${props.location.state._id}`
             )
             .then((data) => {
               console.log(data);

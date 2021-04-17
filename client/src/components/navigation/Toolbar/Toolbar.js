@@ -42,17 +42,13 @@ const Toolbar = (props) => {
                       <a href="/">FOR OWNERS</a>
                     </li>
                   </Link>
-                </ul>
+                                  </ul>
               </div>
               <div className="spacer"></div>
 
               <div className="toolbar-button">
                 <DrawerToggleButton click={props.drawerClickHandler} />
               </div>
-
-              <Link to="/notify">
-                <li className="btn-post">Notify</li>
-              </Link>
 
               <Link to="/login">
                 <button className="login-button" click={props.formClickHandler}>

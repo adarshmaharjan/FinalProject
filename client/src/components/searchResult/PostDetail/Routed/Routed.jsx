@@ -95,7 +95,7 @@ class RoutedPostDetail extends React.Component {
           : this.setState({ isLogged: false });
         axios
           .get(
-            `http://localhost:5000/api/comment/loadComment/${this.state.postId}`
+            `/api/comment/loadComment/${this.state.postId}`
           )
           .then((data) => {
             console.log(data.data);
@@ -126,7 +126,7 @@ class RoutedPostDetail extends React.Component {
       };
       axios
         .post(
-          `http://localhost:5000/api/comment/addComment/${JSON.stringify(id)}`,
+          `/api/comment/addComment/${JSON.stringify(id)}`,
           data
         )
         .then((data) => {
@@ -157,7 +157,7 @@ class RoutedPostDetail extends React.Component {
           console.log(data);
           axios
             .get(
-              `http://localhost:5000/api/comment/loadComment/${this.state.postId}`
+              `/api/comment/loadComment/${this.state.postId}`
             )
             .then((data) => {
               console.log(data);
