@@ -43,7 +43,7 @@ const BannerSearch = (props) => {
       console.log(result.result.text);
       updatelocation(result.result.text);
     });
-    axios.get("http://localhost:5000/api/search/latest-post").then((data) => {
+    axios.get("/api/search/latest-post").then((data) => {
       updateLatestRoom(data.data[1]);
       updateLatestHouse(data.data[0]);
       console.log(data.data);

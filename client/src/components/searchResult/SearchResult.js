@@ -24,7 +24,7 @@ const SearchResult = (props) => {
     const fetchPost = async (props) => {
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:5000/api/search/search-post",
+        "/api/search/search-post",
         props.data
       );
       if (res.data.length != 0) {
