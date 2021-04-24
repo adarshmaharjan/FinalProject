@@ -29,6 +29,8 @@ import { setCurrentUser, logoutUser } from "./actions/authAction.jsx";
 import Profile from './components/Profile/Profile.jsx';
 import PostNotification from './components/Profile/PostNotification/PostNotifications.jsx';
 import RoutedPostDetail from './components/searchResult/PostDetail/Routed/Routed.jsx';
+import ResetPassword from './components/FormContainer/ResetPassword/ResetPassword.jsx';
+import EmailForm from './components/FormContainer/ResetPassword/Email.jsx';
 // import EditPost from './components/Profile/EditPost/form.component.jsx';
 
 (() => {
@@ -90,8 +92,11 @@ class App extends Component {
                 <Route path="/details" component={PostDetail}/>
                 <PrivateRoute path="/profile" component={Profile}/>
                 <PrivateRoute path="/editPost" component={EditPost}/>
-                <Route path="/notify" component={PostNotification}/>
-                  <Route path="/routed/detail/:id/:type" component={RoutedPostDetail} />
+                <PrivateRoute path="/notify" component={PostNotification}/>
+                <Route path="/routed/detail/:id/:type" component={RoutedPostDetail} />
+                <Route  path="/resetPassword/:token?" exact component={ResetPassword}/>
+                <Route path="/resetPasswordLink" exact component={EmailForm} />
+
               </Switch>
               <Footer />
             </div>
@@ -103,3 +108,5 @@ class App extends Component {
 }
 
 export default App;
+
+                  // <Route  path="/resetPassword/link/:token" exact component={ResetPassword}/>

@@ -15,7 +15,7 @@ router.route('/info/:id').get(USER_PROFILE_INFO);
 router.route('/updatePost/:id').put(UPDATE_USER_POST);
 router.route('/updateHomePost/:id').put(UPDATE_HOME_POST);
 router.route('/updateUser/:id').put(UPDATE_USER_INFO);
-router.route('/deletepost/:id').delete(DELETE_USER_POST);
+router.route('/deletepost/:id').post(DELETE_USER_POST);
 router.route('/loadComment/:id').get(ANSWER_USER_COMMENTS);
 
 

@@ -11,7 +11,7 @@ const UserPosts = (props) => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage] = useState(2);
+  const [postPerPage] = useState(3);
 
   useEffect(() => {
     console.log(props.auth.user.id);

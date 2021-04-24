@@ -18,7 +18,7 @@ const SearchResult = (props) => {
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage] = useState(2);
+  const [postPerPage] = useState(3);
 
   useEffect(() => {
     const fetchPost = async (props) => {

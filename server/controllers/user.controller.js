@@ -1,5 +1,6 @@
 const validateRegisterInput = require("../validation/register.validate.js");
 const validateLoginInput = require("../validation/login.validate.js");
+const validateResetPassword = require("../validation/resetPassword.validate.js");
 const key = require("../config/key.js");
 const { v4: uuidv4 } = require("uuid");
 const nodemailer = require("nodemailer");
@@ -7,6 +8,7 @@ const User = require("../models/user.model.js");
 const Token = require("../models/token.model.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 const {
   pushNotification,
   mailNotification,
@@ -118,7 +120,7 @@ const loginUser = (req, res) => {
           id: user.id,
           name: user.name,
           profile: user.profile,
-          email:user.email
+          email: user.email,
         };
 
         jwt.sign(
@@ -144,4 +146,98 @@ const loginUser = (req, res) => {
   });
 };
 
-module.exports = { registerUser, loginUser, verifyUser };
+const resetPasswordLink = async (req, res) => {
+  let baseUrl =
+    process.env.NODE_ENV === "production"
+      ? `http://${req.get("host")}`
+      : "http://localhost:3000";
+  const user = await User.findOne({ email: req.body.email });
+  if (!user) {
+    return res.status(404).json({ msg: "User does not exists" });
+  } else {
+    console.log(`user exist ${user}`);
+  }
+  let token = await Token.findOne({ userId: user._id });
+  if (token) await token.deleteOne();
+  const newToken = uuidv4();
+  await new Token({
+    _userId: user._id,
+    token: newToken,
+  }).save();
+
+  let link =
+    "Hello,<br> Please Click on the link to  reset your password.<br><a href=" +
+    `${baseUrl}/resetPassword/${newToken}` +
+    ">Click here to verify</a>";
+
+  mailNotification(`${req.body.email}`, `${user.name}`, link).then(
+    (response) => {
+      return res
+        .status(201)
+        .json({ msg: `Password Reset link sent to ${req.body.email}` });
+      // res.json(response);
+      // res.end(response);
+    }
+  );
+};
+
+const passwordResetToken = async (req, res) => {
+  let token = await Token.findOne({ token: req.params.token });
+  if (!token) {
+    return res.status(404).json({ emailnotfound: "Email not found" });
+  }
+
+  const { errors, isValid } = validateResetPassword(req.body);
+  if (!isValid) {
+    console.log("is not valid");
+    return res.status(400).json(errors);
+  }
+  console.log(token._userId);
+  bcrypt.genSalt(10, (err, salt) => {
+    bcrypt.hash(req.body.newPassword, salt, (err, hash) => {
+      if (err) throw err;
+      User.findByIdAndUpdate(token._userId, {
+        password: hash,
+      }).then((data) => {
+        console.log(data);
+        res.status(200).send({ msg: "Password reset successful" });
+      });
+    });
+  });
+};
+
+const resetPasswordLogged = async (req, res) => {
+  const user = await User.findById(req.params.id);
+  bcrypt.compare(req.body.oldPassword, user.password).then((isMatch) => {
+    if (isMatch) {
+      console.log("asdf");
+      const { errors, isValid } = validateResetPassword(req.body);
+      if (!isValid) {
+        console.log("is not valid");
+        return res.status(400).json(errors);
+      }
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(req.body.newPassword, salt, (err, hash) => {
+          if (err) throw err;
+          User.findByIdAndUpdate(req.params.id, {
+            password: hash,
+          }).then((data) => {
+            console.log(data);
+            res.status(200).send({ msg: "Password reset successful" });
+          });
+        });
+      });
+    } else {
+      res.status(403).send({ msg: "Incorrect OldPassword" });
+    }
+  });
+};
+
+module.exports = {
+  registerUser,
+  loginUser,
+  verifyUser,
+  resetPasswordLogged,
+  resetPasswordLink,
+  passwordResetToken,
+};
