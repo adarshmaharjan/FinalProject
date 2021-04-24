@@ -113,7 +113,7 @@ const UPDATE_USER_POST = async (req, res) => {
       console.log(updated);
       Room.findByIdAndUpdate(req.params.id, updated).then((data) => {
         console.log(data);
-        res.status(201).send({msg:"Post Updated"});
+        res.status(201).send({ msg: "Post Updated" });
         // res.json({ message: "Post updated" });
       });
     });
@@ -143,7 +143,7 @@ const UPDATE_USER_POST = async (req, res) => {
     Room.findByIdAndUpdate(req.params.id, updated).then((data) => {
       console.log(data);
       // res.json({ message: "Post updated" });
-        res.status(201).send({msg:"Post Updated"});
+      res.status(201).send({ msg: "Post Updated" });
     });
   }
 };
@@ -191,7 +191,7 @@ const UPDATE_HOME_POST = async (req, res) => {
       House.findByIdAndUpdate(req.params.id, updated).then((data) => {
         console.log(data);
         // res.json({ message: "Post updated" });
-        res.status(201).send({msg:"Post Updated"});
+        res.status(201).send({ msg: "Post Updated" });
       });
     });
   } else {
@@ -220,12 +220,10 @@ const UPDATE_HOME_POST = async (req, res) => {
     };
     House.findByIdAndUpdate(req.params.id, updated).then((data) => {
       console.log(data);
-      // res.json({ message: "Post updated" });
-        res.status(201).send({msg:"Post Updated"});
+      res.status(201).send({ msg: "Post Updated" });
     });
   }
 };
-
 
 /**
  * DELETE_USER_POST.
@@ -234,19 +232,36 @@ const UPDATE_HOME_POST = async (req, res) => {
  * @param {} res
  */
 const DELETE_USER_POST = (req, res) => {
+  console.log("yehol");
   console.log(req.params.id);
-  Room.findByIdAndDelete(req.params.id)
-    .then((data) => {
-      console.log(data);
-      data.imageCollection.map(async (id) => {
-        console.log("deleted" + id);
-        await cloudinary.uploader.destroy(id, async (error, result) =>
-          console.log(result, error)
-        );
-      });
-    })
-    .then(() => res.json("post deleted"))
-    .catch((err) => res.status(404).json("error" + err));
+  console.log(req.body.type);
+  if (req.body.type == "Room") {
+    Room.findByIdAndDelete(req.params.id)
+      .then((data) => {
+        console.log("image data" + data);
+        data.imageCollection.map(async (id) => {
+          console.log("deleted" + id);
+          await cloudinary.uploader.destroy(id, async (error, result) =>
+            console.log(result, error)
+          );
+        });
+      })
+      .then(() => res.json("post deleted"))
+      .catch((err) => res.status(404).json("error" + err));
+  } else {
+    House.findByIdAndDelete(req.params.id)
+      .then((data) => {
+        console.log("image data" + data);
+        data.imageCollection.map(async (id) => {
+          console.log("deleted" + id);
+          await cloudinary.uploader.destroy(id, async (error, result) =>
+            console.log(result, error)
+          );
+        });
+      })
+      .then(() => res.json("post deleted"))
+      .catch((err) => res.status(404).json("error" + err));
+  }
 };
 
 const ANSWER_USER_COMMENTS = (req, res) => {
@@ -285,9 +300,7 @@ const ANSWER_USER_COMMENTS = (req, res) => {
     });
 };
 
-const Notify = (req,res) => {
-   
-}
+const Notify = (req, res) => {};
 
 module.exports = {
   USER_PROFILE_POST,

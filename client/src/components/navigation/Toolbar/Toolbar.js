@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import { logoutUser } from "../../../actions/authAction.jsx";
 import DrawerToggleButton from "../SideDrawer/DrawerToggleButton";
-import { Container } from "react-bootstrap";
+import { Container, Dropdown } from "react-bootstrap";
 import "./Toolbar.css";
 
 const Toolbar = (props) => {
@@ -14,7 +14,7 @@ const Toolbar = (props) => {
     props.logoutUser();
   };
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log(props.auth);
   const toggle = () => setIsOpen(!isOpen);
   if (!props.auth.isAuthenticated) {
     return (
@@ -42,7 +42,7 @@ const Toolbar = (props) => {
                       <a href="/">FOR OWNERS</a>
                     </li>
                   </Link>
-                                  </ul>
+                </ul>
               </div>
               <div className="spacer"></div>
 
@@ -80,16 +80,13 @@ const Toolbar = (props) => {
                     </li>
                   </Link>
 
-                  <Link to="/profile">
-                    <li className="btn-profile">Dashboard</li>
-                  </Link>
-
+                  
                   <Link to="/form">
                     <li className="btn-post">Add Post</li>
                   </Link>
 
                   <Link to="/notify">
-                    <li className="btn-post">Notify</li>
+                    <li className="btn-post">Alert</li>
                   </Link>
                 </ul>
               </div>
@@ -99,9 +96,23 @@ const Toolbar = (props) => {
                 <DrawerToggleButton click={props.drawerClickHandler} />
               </div>
 
-              <button className="login-button" onClick={onLogoutClick}>
-                Logout
-              </button>
+              <Dropdown>
+                <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                  {props.auth.user.name} 
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item href="/profile">Profile</Dropdown.Item>
+                    <Dropdown.Item href="/resetPassword">
+                    Reset Password
+                  </Dropdown.Item>
+                 <Dropdown.Item href="#/action-2" onClick={onLogoutClick}>
+                   LogOut 
+                  </Dropdown.Item>
+
+                </Dropdown.Menu>
+              </Dropdown>
+
             </nav>
           </div>
         </Container>

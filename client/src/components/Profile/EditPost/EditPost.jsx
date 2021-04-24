@@ -245,17 +245,6 @@ class EditPost extends Component {
 
           if (res.status == 201) {
             this.props.history.goBack();
-            // let history = useHistory();
-            // history.goBack();
-            // toast.info(`${res.data.msg}`, {
-            //   position: "bottom-right",
-            //   autoClose: 5000,
-            //   hideProgressBar: false,
-            //   closeOnClick: true,
-            //   pauseOnHover: true,
-            //   draggable: true,
-            //   progress: undefined,
-            // });
           }
         })
         .catch((error) => {
@@ -266,8 +255,14 @@ class EditPost extends Component {
 
   onDelete(e) {
     axios
-      .delete(`/api/profile/deletepost/${this.props.location.state._id}`)
-      .then((res) => console.log(res.data))
+      .post(`/api/profile/deletepost/${this.props.location.state._id}`, {
+        type: this.state.area.length == 0 ? "Room" : "House",
+      })
+      .then((res) => {
+        this.props.history.push({
+          pathname: "/profile",
+        });
+      })
       .catch((error) => console.log(error.response));
   }
 

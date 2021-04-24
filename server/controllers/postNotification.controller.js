@@ -5,11 +5,12 @@ const {
 } = require("../middleware/notification.controller");
 
 const ADD_NOTIFICATION = async (req, res) => {
+  console.log("llogg");
   const notification = new Notify({
     createdBy: req.params.id,
     location: req.body.location,
     email: req.body.email,
-    type:req.body.type,
+    type: req.body.type,
   });
   console.log("hitting");
   notification
@@ -22,4 +23,18 @@ const ADD_NOTIFICATION = async (req, res) => {
     .catch((err) => res.status(400).json("error" + err));
 };
 
-module.exports = { ADD_NOTIFICATION };
+const FETCH_NOTIFICATION = async (req, res) => {
+  Notify.findOne({createdBy: req.params.id}).then((data) => {
+    console.log(data);
+    res.json(data);
+  });
+};
+
+const DELETE_NOTIFICATION = async (req, res) => {
+  console.log(req.params.id);
+  Notify.findByIdAndDelete(req.params.id).then((data) => {
+    res.status(201).json({ msg: "Notification Deleted" });
+  });
+};
+
+module.exports = { ADD_NOTIFICATION , FETCH_NOTIFICATION, DELETE_NOTIFICATION};

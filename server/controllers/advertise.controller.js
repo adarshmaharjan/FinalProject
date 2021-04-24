@@ -3,7 +3,7 @@ const House = require("../models/house.model.js");
 const Room = require("../models/rooms.model.js");
 const { v4: uuidv4 } = require("uuid");
 const { cloudinary } = require("../config/cloudinary");
-const Notifier = require('../middleware/notifier.middleware');
+const Notifier = require("../middleware/notifier.middleware");
 
 /**
  * addPost.
@@ -57,8 +57,8 @@ const addRoomPost = async (req, res, next) => {
       newRoom
         .save()
         .then((data) => {
-          Notifier(_.location, "Room", data._id , req.get("host"));
-          res.json("post added");
+          Notifier(_.location, "Room", data._id, req.get("host"));
+          res.status(201).json({msg: "Post added" });
         })
         .catch((err) => res.status(400).json("error" + err));
     });
@@ -121,9 +121,8 @@ const addHousePost = async (req, res, next) => {
       newHouse
         .save()
         .then((data) => {
-          Notifier(_.location, "House", data._id, req.get("host") );
-          res.json("post added");
-
+          Notifier(_.location, "House", data._id, req.get("host"));
+          res.status(201).json({msg: "Post added" });
         })
         .catch((err) => res.status(400).json("error" + err));
     });

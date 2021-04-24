@@ -5,6 +5,7 @@ import storage from "redux-persist/lib/storage"; //localstorage as default stora
 import authReducer from "./authReducer";
 import errorReducer from "./errorReducer";
 import searchReducer from "./searchReducer";
+import messageReducer from "./messageReducer.js";
 
 const persistConfig = {
     key: "root",
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
 
     auth:authReducer,
     data: searchReducer,
+    msg: messageReducer,
     errors: errorReducer
 })
 

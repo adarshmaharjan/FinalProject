@@ -21,6 +21,7 @@ class PostNotification extends React.Component {
       location: "",
     };
     this.submit = this.submit.bind(this);
+    this.onChangeInput = this.onChangeInput.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +37,10 @@ class PostNotification extends React.Component {
     });
   }
 
+  onChangeInput(e){
+    this.setState({ [e.target.name]: e.target.value });
+  }
+
   async submit(e) {
     e.preventDefault();
     const data = {
@@ -43,7 +48,7 @@ class PostNotification extends React.Component {
       location: this.state.location,
       email: this.props.auth.user.email,
     };
-    console.log(this.props);
+    console.log(data);
     axios
       .post(`/api/notify/add/notification/${this.props.auth.user.id}`, data)
       .then((res) => {
@@ -61,9 +66,9 @@ class PostNotification extends React.Component {
           <div className="type">
             <label htmlFor="type">Type</label>
             <select
+              name="type"
               id="type"
               value={this.state.type}
-              id="type"
               onChange={this.onChangeInput}
             >
               <option value="House">House</option>

@@ -7,3 +7,8 @@
 .user-info-container{
   padding: 16px 0;
 }
+
+.notifier-flex{
+  display:flex;
+  justify-content:space-between;
+}

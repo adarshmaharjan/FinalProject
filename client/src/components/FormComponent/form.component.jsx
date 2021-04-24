@@ -10,6 +10,7 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import { Container, Row, Col } from "react-bootstrap";
 import "./formComponent.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import { routeAndDisplay } from "../../actions/postAction.js";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWJzazEyMzQiLCJhIjoiY2s3Z3Z3azB6MDQyNzNmbzkxd3MwN3hnNyJ9.-paJt9fSR1rw0Wq0LwSmig";
@@ -181,17 +182,15 @@ class Addroom extends Component {
 
     axios
       .post(`${url}/${this.props.auth.user.id}`, data)
-      .then((res) =>{
-        toast.info(`🦄 ${res.data}`, {
-          position: "bottom-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
-})
+      .then((res) => {
+        console.log(res);
+        if (res.status == 201) {
+          routeAndDisplay(res.data.msg);
+          this.props.history.push({
+            pathname: "/profile",
+          });
+        }
+      })
       .catch((error) => {
         console.log(error.response);
       });
@@ -420,10 +419,9 @@ class Addroom extends Component {
 
               <Row>
                 <Col>
-                <div className = "btn-content">
-                  <input type="submit" value="Submit" />
-
-                </div>
+                  <div className="btn-content">
+                    <input type="submit" value="Submit" />
+                  </div>
                 </Col>
               </Row>
             </form>
@@ -465,4 +463,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(Addroom);
+export default connect(mapStateToProps,{routeAndDisplay})(Addroom);

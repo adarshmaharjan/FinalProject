@@ -12,16 +12,27 @@ const UserInfo = (props) => {
   const [info, setInfo] = useState({});
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [notificationLocation, setNotificationLocation] = useState("");
+  const [notificationLocationType, setNotificationLocationType] = useState("");
+  const [alertId, setAlertId] = useState("");
 
   useEffect(() => {
     const fetchInfo = async (props) => {
-      const res = await axios.get(
-        `/api/profile/info/${props.auth.user.id}`
-      );
+      const res = await axios.get(`/api/profile/info/${props.auth.user.id}`);
+
       console.log(res.data);
       setName(res.data.name);
       setEmail(res.data.email);
       setInfo(res.data);
+
+      const notificationRes = await axios.get(
+        `/api/notify/notification/${props.auth.user.id}`
+      );
+      if (notificationRes.data != null) {
+        setNotificationLocation(notificationRes.data.location);
+        setNotificationLocationType(notificationRes.data.type);
+        setAlertId(notificationRes.data._id);
+      }
     };
     fetchInfo(props);
   }, [props]);
@@ -33,10 +44,7 @@ const UserInfo = (props) => {
       name: name,
     };
     axios
-      .put(
-        `/api/profile/updateUser/${props.auth.user.id}`,
-        newInfo
-      )
+      .put(`/api/profile/updateUser/${props.auth.user.id}`, newInfo)
       .then((res) =>
         toast.info(`🦄 ${res.data.message}`, {
           position: "bottom-right",
@@ -49,6 +57,13 @@ const UserInfo = (props) => {
         })
       )
       .catch((err) => console.log(err));
+  }
+
+  function deleteNotification(e) {
+    //deletes notification based on usrs id
+    axios.delete(`/api/notify/delete/notification/${alertId}`).then((res) => {
+      window.location.reload(false);
+    });
   }
 
   return (
@@ -76,6 +91,18 @@ const UserInfo = (props) => {
           UPDATE
         </Button>
       </Form>
+      {notificationLocation != "" && (
+        <div>
+          <div>Your Active Alert</div>
+          <div className="notifier-flex">
+            {`Location: ${notificationLocation}  Type:${notificationLocationType}`}
+            <button className="delete-notifier" onClick={deleteNotification}>
+              Remove
+            </button>
+          </div>
+        </div>
+      )}
+
       <ToastContainer
         position="bottom-right"
         autoClose={5000}
