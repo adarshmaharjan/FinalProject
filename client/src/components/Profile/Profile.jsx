@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 const Profile = (props) => {
-  const [key, setKey] = useState("profile");
+  const [key, setKey] = useState("home");
 
   useEffect(() => {
     console.log(props);
