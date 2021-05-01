@@ -48,9 +48,7 @@ const PostDetail = (props) => {
     console.log(props.auth);
     localStorage.jwtToken != null ? setIsLogged(true) : setIsLogged(false);
     axios
-      .get(
-        `/api/comment/loadComment/${props.location.state._id}`
-      )
+      .get(`/api/comment/loadComment/${props.location.state._id}`)
       .then((data) => {
         console.log(data.data);
         setComments(data.data);
@@ -77,10 +75,7 @@ const PostDetail = (props) => {
       };
       console.log(id);
       axios
-        .post(
-          `/api/comment/addComment/${JSON.stringify(id)}`,
-          data
-        )
+        .post(`/api/comment/addComment/${JSON.stringify(id)}`, data)
         .then((data) => {
           setQuestion("");
           if (data.status == 200) {
@@ -108,9 +103,7 @@ const PostDetail = (props) => {
 
           console.log(data);
           axios
-            .get(
-              `/api/comment/loadComment/${props.location.state._id}`
-            )
+            .get(`/api/comment/loadComment/${props.location.state._id}`)
             .then((data) => {
               console.log(data);
               setComments(data.data);
@@ -185,70 +178,68 @@ const PostDetail = (props) => {
               {props.location.state.area && (
                 <div className="post-room-facilities">
                   <h5>Area:</h5>
-                  <p>{props.location.state.area} sqft</p>         
+                  <p>{props.location.state.area} sqft</p>
                 </div>
               )}
             </div>
           </Col>
         </Row>
 
-        <div className="post-detail-outer-content">
-          <div className="post-room-location-container">
+        <Row>
+          <Col>
             <h5>Location</h5>
-            <div className="post-room-location">
-              <div>Map</div>
-              <Map
-                lng={props.location.state.coordinates.longitude}
-                lat={props.location.state.coordinates.latitude}
-              />
-            </div>
-          </div>
+            <Map
+              lng={props.location.state.coordinates.longitude}
+              lat={props.location.state.coordinates.latitude}
+            />
+          </Col>
+        </Row>
 
-          <div className="post-room-comment">
-            <h5>Comment</h5>
-            {isLogged ? (
-              <div className="cmnt-container">
-                <textarea
-                  name="cmnt"
-                  id="comment"
-                  cols="70"
-                  rows="3"
-                  placeholder="Add Comment"
-                  value={question}
-                  onChange={(e) => {
-                    setQuestion(e.target.value);
-                  }}
-                ></textarea>
+        <div className="post-room-comment">
+          <h5>Comment</h5>
+          {isLogged ? (
+            <div className="cmnt-container">
+              <textarea
+                name="cmnt"
+                id="comment"
+                cols="70"
+                rows="3"
+                placeholder="Add Comment"
+                value={question}
+                onChange={(e) => {
+                  setQuestion(e.target.value);
+                }}
+              ></textarea>
 
-                <button
-                  disabled={question.length < 1}
-                  className={btnColor}
-                  id="comment-btn"
-                  onClick={comment}
-                >
-                  Add Comment
-                </button>
+              <button
+                disabled={question.length < 1}
+                className={btnColor}
+                id="comment-btn"
+                onClick={comment}
+              >
+                Add Comment
+              </button>
 
-                <div className="post-comments">
-                  <div className="comment-container">{loadComment()}</div>
-                </div>
+              <div className="post-comments">
+                <div className="comment-container">{loadComment()}</div>
               </div>
-            ) : (
-              <span>Log in to add comment</span>
-            )}
-          </div>
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+            </div>
+          ) : (
+            <span>Log in to add comment</span>
+          )}
         </div>
+
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </Container>
     </div>
   );
