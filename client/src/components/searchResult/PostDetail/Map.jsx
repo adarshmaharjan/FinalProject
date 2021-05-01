@@ -32,7 +32,7 @@ class Map extends React.Component {
         console.log(this.state.lng,this.state.lat)
         
         var marker = new mapboxgl.Marker()
-            .setLngLat([this.props.lng, this.props.lat])
+            .setLngLat([this.state.lng, this.state.lat])
             .addTo(map);
 
     }

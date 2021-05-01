@@ -9,6 +9,7 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import { Container, Row, Col } from "react-bootstrap";
 import "./PostNotification.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import { addAlert } from "../../../actions/userAction.js";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYWJzazEyMzQiLCJhIjoiY2s3Z3Z3azB6MDQyNzNmbzkxd3MwN3hnNyJ9.-paJt9fSR1rw0Wq0LwSmig";
@@ -37,7 +38,7 @@ class PostNotification extends React.Component {
     });
   }
 
-  onChangeInput(e){
+  onChangeInput(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -48,15 +49,9 @@ class PostNotification extends React.Component {
       location: this.state.location,
       email: this.props.auth.user.email,
     };
+
     console.log(data);
-    axios
-      .post(`/api/notify/add/notification/${this.props.auth.user.id}`, data)
-      .then((res) => {
-        console.log("added");
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+    this.props.addAlert(data, this.props.history, this.props.auth.user.id);
   }
 
   render() {
@@ -110,4 +105,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(withRouter(PostNotification));
+export default connect(mapStateToProps, { addAlert })(
+  withRouter(PostNotification)
+);

@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "../PostDetails.css";
-import Map from "../Map.jsx";
+import Map from "../../../../utils/Maps/Map.jsx";
 
 const Image = (props) => (
   <div>
@@ -34,7 +34,7 @@ class RoutedPostDetail extends React.Component {
     super(props);
     this.state = {
       post: {},
-      coordinates: { longitude: 0, latitude: 0 },
+      coordinates: { longitude: 2, latitude: 2 },
       longitude: 0,
       latitude: 0,
       description: "",
@@ -70,7 +70,7 @@ class RoutedPostDetail extends React.Component {
       .then((data) => {
         console.log(data.data);
         this.setState({ post: data.data });
-        this.setState({ coordinates: data.data.coordinates });
+        // this.setState({ coordinates: data.data.coordinates });
         this.setState({ longitude: data.data.coordinates.longitude });
         this.setState({ latitude: data.data.coordinates.latitude });
         this.setState({ description: data.data.description });
@@ -249,7 +249,7 @@ class RoutedPostDetail extends React.Component {
               <h5>Location</h5>
               <div className="post-room-location">
                 <div>Map</div>
-                  <Map lng={this.state.latitude} lat={this.state.longitude} />
+                  <Map lng={this.state.longitude} lat={this.state.latitude} />
               </div>
             </div>
 

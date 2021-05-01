@@ -20,10 +20,11 @@ export const registerUser = (userData, history) => (dispatch) => {
     .then((res) =>
       history.push({ pathname: "/login", state: "verify your email" })
     )
-    .catch((err) =>
+    .catch((err) => {
+      console.log(err);
       // dispatch({ type: GET_ERRORS, payload: err.response.data })
-      dispatch({ type: GET_ERRORS, payload: err })
-    );
+      dispatch({ type: GET_ERRORS, payload: err });
+    });
 };
 
 /**
@@ -83,7 +84,7 @@ export const resetPasswordLink = (email) => (dispatch) => {
 
 export const resetPasswordToken = (userPassword, token) => (dispatch) => {
   axios
-.patch(`/api/user/resetPassword/link/verify/${token}`, userPassword)
+    .patch(`/api/user/resetPassword/link/verify/${token}`, userPassword)
     .then((res) => {
       console.log(res);
       dispatch(setMessage(res));

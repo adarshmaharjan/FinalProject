@@ -12,6 +12,7 @@ const UserInfo = (props) => {
   const [info, setInfo] = useState({});
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [number, setNumber] = useState("");
   const [notificationLocation, setNotificationLocation] = useState("");
   const [notificationLocationType, setNotificationLocationType] = useState("");
   const [alertId, setAlertId] = useState("");
@@ -24,6 +25,7 @@ const UserInfo = (props) => {
       setName(res.data.name);
       setEmail(res.data.email);
       setInfo(res.data);
+      setNumber(res.data.number);
 
       const notificationRes = await axios.get(
         `/api/notify/notification/${props.auth.user.id}`
@@ -42,6 +44,7 @@ const UserInfo = (props) => {
     let newInfo = {
       email: email,
       name: name,
+      number: number,
     };
     axios
       .put(`/api/profile/updateUser/${props.auth.user.id}`, newInfo)
@@ -84,6 +87,15 @@ const UserInfo = (props) => {
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Phone Number</Form.Label>
+          <Form.Control
+            type="text"
+            value={number}
+            onChange={(e) => setNumber(e.target.value)}
           />
           <br />
         </Form.Group>

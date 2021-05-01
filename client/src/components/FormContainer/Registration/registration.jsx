@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { registerUser } from "../../../actions/authAction.jsx";
 import { connect } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
+import validateRegisterInput from "../../../utils/Validator/validateRegister.js";
 
 class Registration extends React.Component {
   constructor() {
@@ -14,6 +15,7 @@ class Registration extends React.Component {
       email: "",
       password: "",
       password2: "",
+      number: "",
       errors: {},
     };
   }
@@ -35,7 +37,7 @@ class Registration extends React.Component {
     }
     if (nextProps.errors.response.status == 400) {
       console.log("asdfasdf");
-      toast.info(`${nextProps.errors.response.data.msg}`, {
+      toast.error(`${nextProps.errors.response.data.msg}`, {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -70,10 +72,25 @@ class Registration extends React.Component {
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
+      number: this.state.number,
     };
-    console.log(newUser);
 
-    this.props.registerUser(newUser, this.props.history);
+    let { errors, isValid } = validateRegisterInput(newUser);
+    if (isValid) {
+      this.props.registerUser(newUser, this.props.history);
+    } else {
+      Object.values(errors).map((value) => {
+          toast.error(`${value}`, {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+      });
+    }
   };
 
   render() {
@@ -128,6 +145,19 @@ class Registration extends React.Component {
                 name="password2"
                 onChange={this.onChange}
                 value={this.state.password2}
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-25">Mobile Phone</div>
+            <div className="col-75">
+              <input
+                type="tel"
+                id="number"
+                name="number"
+                onChange={this.onChange}
+                value={this.state.number}
               />
             </div>
           </div>

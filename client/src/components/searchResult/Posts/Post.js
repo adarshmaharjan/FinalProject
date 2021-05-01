@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Container, Row, Col } from "react-bootstrap";
-// import {connect} from "react-redux";
 import { displayDetails } from "../../../actions/postAction.js";
 import "./Post.css";
 

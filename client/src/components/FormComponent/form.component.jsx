@@ -39,7 +39,6 @@ class Addroom extends Component {
       lng: 85.314038,
       lat: 27.70549,
       zoom: 5,
-      //this is changed
       facilities: [],
     };
 
@@ -47,12 +46,15 @@ class Addroom extends Component {
     this.onChangeInput = this.onChangeInput.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onPreviewFile = this.onPreviewFile.bind(this);
-    //this is changed
     this.onSelect = this.onSelect.bind(this);
   }
 
   componentDidMount() {
-    console.log(this.props.auth.user.id);
+    this.setState({ email: this.props.auth.user.email });
+    this.setState({ name: this.props.auth.user.name });
+    this.setState({ number: this.props.auth.user.number });
+
+    console.log(this.props.auth.user);
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: "mapbox://styles/mapbox/streets-v11",
@@ -73,6 +75,9 @@ class Addroom extends Component {
         lat: map.getCenter().lat.toFixed(4),
         zoom: map.getZoom().toFixed(2),
       });
+    });
+    map.on("load", function () {
+      map.resize();
     });
 
     map.addControl(new mapboxgl.NavigationControl());
@@ -463,4 +468,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps,{routeAndDisplay})(Addroom);
+export default connect(mapStateToProps, { routeAndDisplay })(Addroom);
