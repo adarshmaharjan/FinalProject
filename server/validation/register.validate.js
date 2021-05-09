@@ -9,10 +9,19 @@ module.exports = function validateRegisterInput(data){
   data.email = !isEmpty(data.email) ? data.email : '';
   data.password = !isEmpty(data.password) ? data.password : '';
   data.password2 = !isEmpty(data.password2) ? data.password2 : '';
+  data.number = !isEmpty(data.number) ? data.number : '';
 
   //name checks
   if (Validator.isEmpty(data.name)){
     errors.name = ' Name field is required';
+  }
+
+  if (Validator.isEmpty(data.number)){
+    errors.number = ' Number field is required';
+  }
+
+  if (!Validator.isLength(data.number,{min:10, max:10})){
+    errors.password = 'Number must be 10 digits';
   }
 
   //email checks

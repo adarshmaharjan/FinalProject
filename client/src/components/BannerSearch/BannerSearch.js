@@ -19,7 +19,7 @@ mapboxgl.accessToken =
 const BannerSearch = (props) => {
   const [location, updatelocation] = useState("");
   const [price, updateprice] = useState(0);
-  const [furnished, updateFurnished] = useState("");
+  const [furnished, updateFurnished] = useState("Not-Furnished");
   const [type, updatetype] = useState("");
   const [bedroom, updateBedroom] = useState(1);
   const [kitchen, updateKitchen] = useState(1);

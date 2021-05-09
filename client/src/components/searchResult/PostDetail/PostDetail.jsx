@@ -219,14 +219,13 @@ const PostDetail = (props) => {
               >
                 Add Comment
               </button>
-
-              <div className="post-comments">
-                <div className="comment-container">{loadComment()}</div>
-              </div>
             </div>
           ) : (
             <span>Log in to add comment</span>
           )}
+          <div className="post-comments">
+            <div className="comment-container">{loadComment()}</div>
+          </div>
         </div>
 
         <ToastContainer

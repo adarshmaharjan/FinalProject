@@ -22,10 +22,15 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  number: {
+    type: String,
+    required: true,
+  },
   isVerified: {
     type: Boolean,
     default: false,
   },
+
   pushData: {
     endpoint: {
       type: String,

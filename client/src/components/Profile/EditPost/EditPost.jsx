@@ -256,7 +256,7 @@ class EditPost extends Component {
   onDelete(e) {
     axios
       .post(`/api/profile/deletepost/${this.props.location.state._id}`, {
-        type: this.state.area.length == 0 ? "Room" : "House",
+        type: this.state.area == 0 ? "Room" : "House",
       })
       .then((res) => {
         this.props.history.push({

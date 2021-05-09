@@ -58,6 +58,7 @@ const UPDATE_USER_INFO = (req, res) => {
   const data = {
     name: req.body.name,
     email: req.body.email,
+    number: req.body.number,
   };
   User.findByIdAndUpdate(req.params.id, data).then((data) => {
     console.log(data);
@@ -232,18 +233,20 @@ const UPDATE_HOME_POST = async (req, res) => {
  * @param {} res
  */
 const DELETE_USER_POST = (req, res) => {
-  console.log("yehol");
   console.log(req.params.id);
   console.log(req.body.type);
   if (req.body.type == "Room") {
+    console.log("Room is deletig ..");
     Room.findByIdAndDelete(req.params.id)
-      .then((data) => {
-        console.log("image data" + data);
-        data.imageCollection.map(async (id) => {
+      .then(async (data) => {
+        Comment.deleteMany({ postId: req.params.id });
+        console.log("image data" + data.imageCollection);
+        data.imageCollection.map((id) => {
           console.log("deleted" + id);
-          await cloudinary.uploader.destroy(id, async (error, result) =>
-            console.log(result, error)
-          );
+          cloudinary.uploader.destroy(`images/${id}`, async (error, result) => {
+            console.log("Something");
+            console.log(result, error);
+          });
         });
       })
       .then(() => res.json("post deleted"))
@@ -254,7 +257,7 @@ const DELETE_USER_POST = (req, res) => {
         console.log("image data" + data);
         data.imageCollection.map(async (id) => {
           console.log("deleted" + id);
-          await cloudinary.uploader.destroy(id, async (error, result) =>
+          cloudinary.uploader.destroy(`images/${id}`, async (error, result) =>
             console.log(result, error)
           );
         });
@@ -265,13 +268,11 @@ const DELETE_USER_POST = (req, res) => {
 };
 
 const ANSWER_USER_COMMENTS = (req, res) => {
-  console.log("ansercomment");
   Room.find({ createdBy: req.params.id })
     .then(async (data) => {
       let datum1 = await Promise.all(
         data.map(async (item) => {
           return await Comment.find({ postId: item._id }).then((comment) => {
-            // console.log(comment);
             return {
               title: item.title,
               image: item.imageCollection[0],

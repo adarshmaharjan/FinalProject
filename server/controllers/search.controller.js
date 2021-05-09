@@ -8,11 +8,11 @@ const searchPost = (req, res) => {
   if (req.body.data.type == "room") {
     Room.find({ location: req.body.data.location })
       .then(async (data) => {
-        console.log(data);
+        // console.log(data);
         let arr = new Array(data.length).fill(0);
         let arr2 = [];
         const list = await recommend(data, req.body);
-        console.log("this is recommendation", list);
+        console.log("this is recommendation", list.length);
         list.map((value) => {
           arr2.push(value.id);
         });
@@ -20,14 +20,14 @@ const searchPost = (req, res) => {
           index = arr2.indexOf(data.id);
           arr[index] = data;
         });
-        console.log("this is sorted recommendation", arr);
+        console.log("this is sorted recommendation", arr.length);
         res.json(arr);
       })
       .catch((err) => console.log(err));
   } else {
     House.find({ location: req.body.data.location })
       .then(async (data) => {
-        console.log(data);
+        // console.log(data);
         let arr = new Array(data.length).fill(0);
         let arr2 = [];
         const list = await recommend(data, req.body);
