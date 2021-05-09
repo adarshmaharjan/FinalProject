@@ -1,4 +1,5 @@
 const validateRegisterInput = require("../validation/register.validate.js");
+
 const validateLoginInput = require("../validation/login.validate.js");
 const validateResetPassword = require("../validation/resetPassword.validate.js");
 const key = require("../config/key.js");
@@ -21,7 +22,11 @@ const registerUser = (req, res, next) => {
 
   //check validation
   if (!isValid) {
-    return res.status(400).json(errors);
+    console.log("validing" + errors);
+    for (var property in errors) {
+      console.log(property + "=" + errors[property]);
+    }
+    return res.status(400).json({ err: errors });
   }
 
   User.findOne({ email: req.body.email }).then((user) => {
@@ -32,6 +37,7 @@ const registerUser = (req, res, next) => {
         name: req.body.name,
         email: req.body.email,
         password: req.body.password,
+        number: req.body.number,
       });
 
       //hash password before saving in databse
@@ -121,6 +127,7 @@ const loginUser = (req, res) => {
           name: user.name,
           profile: user.profile,
           email: user.email,
+          number: user.number,
         };
 
         jwt.sign(
